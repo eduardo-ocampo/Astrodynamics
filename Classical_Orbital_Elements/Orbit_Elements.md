@@ -127,6 +127,16 @@ In other words
 \mathbf{r} \times \frac{d}{dt}\left({\mathbf{v}}\right) = 0
 :::
 
+:::{math}
+\frac{d}{dt}\left({\mathbf{r}}\right) \times \mathbf{v} = 0
+:::
+
+:::{math}
+{}
+
+\frac{d}{dt}\left({\mathbf{h}}\right) = \mathbf{v} \times \mathbf{v} + \mathbf{r} \times  \mathbf{\ddot{r}}
+:::
+
 Thus
 :::{math}
 :label:
@@ -137,7 +147,60 @@ Since our angular moementum vecotr ($\mathbf{h}$) is a 3x1 vector, this gives us
 
 Here we can segway to Slide 10 of notes. Create an animation showing i, h, Omega. Talk about them and the node vector plane (definition) n = kxh
 
-The Longitude of Ascending Node is the angle between $\hat{x}$ and Node Vector $\hat{n}$. 
+
+##### Angular Momemtum
+
+The first Integral of Motion to determine is Angular Momentum 
+
+:::{math}
+\mathbf{h} = \mathbf{r} \times \mathbf{v}
+:::
+
+##### Inclination
+
+Next we define the Inclination of the orbit to be the angle measuring the tilt of the orbit around it's "celetisal" body. For our diagram this is it is from the reference vector $\mathbf{\hat{z}}$ and unit Specific Angular Momentum vector $\hat{h}$
+
+In Astrodynamics the Inclination is restricted between 0$^\circ$ and 180$^\circ$. 
+
+:::{math}
+:label: eq:inclination
+i = \cos^{-1}\left(\frac{\mathbf{\hat{z}}}{\mathbf{\hat{h}}}\right)
+:::
+
+From Wiki: (re write and reference future docs)
+
+An inclination of 0° means the orbiting body has a prograde orbit in the planet's equatorial plane.
+- An inclination greater than 0° and less than 90° also describes a prograde orbit.
+- An inclination of 63.4° is often called a critical inclination, when describing artificial - satellites orbiting the Earth, because they have zero apogee drift.[3]
+- An inclination of exactly 90° is a polar orbit, in which the spacecraft passes over the poles of the planet.
+- An inclination greater than 90° and less than 180° is a retrograde orbit.
+- An inclination of exactly 180° is a retrograde equatorial orbit.
+
+**There are convetions for common inclinations angles:**
+
+Might want to include figures/animations here depending on how are they are
+
+$0^{\circ} \le i \le 90^{\circ}$
+: "Orbiting body" has a prograde orbit
+
+$i = 0$
+: "Orbiting body" has a prograde orbit within the "reference plane"
+
+$i = 63.4^\circ$
+: Is often called a critical inclination, when describing artificial - satellites orbiting the Earth, because they have zero apogee drift. [3] WIKI Refe
+
+$i = 90.0^\circ$
+: Is a polar orbit, in which the "spacecraft" passes over the poles of the planet
+
+$ 90.0^\circ \le i \le 180.0^\circ$
+: Is retrograde orbit
+
+
+##### Longitude of Ascending Node
+
+The Longitude of Ascending Node is the angle between $\mathbf{\hat{x}}$ and Node Vector $\mathbf{\hat{n}}$. It is also known as the Right Ascension of the Ascending Node (RAAN). The Ascending Node is the intesection of the orbit and the reference plane. Thus the Right Ascension of the Ascending Node is the angle at which the "sat" "orbit" ascends through and above the "plane of reference". 
+
+Maybe have figure/animation here
 
 :::{math}
 :label: eq:orbital-elements-Omega
