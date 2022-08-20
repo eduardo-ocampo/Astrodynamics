@@ -2,6 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.DS_Store
 
 # C extensions
 *.so
@@ -70,6 +71,11 @@ instance/
 
 # Sphinx documentation
 docs/_build/
+Makefile
+make.bat
+conf.py
+_static
+_template
 
 # PyBuilder
 target/

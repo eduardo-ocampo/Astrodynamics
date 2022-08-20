@@ -196,6 +196,18 @@ $ 90.0^\circ \le i \le 180.0^\circ$
 : Is retrograde orbit
 
 
+:::{math}
+:label: eq:raan_cases
+\mathbf{i} = \begin{cases}
+0^{\circ} \lt \mathbf{i} \lt 90^{\circ} & \text{"Orbiting body" has a prograde orbit} \\
+\mathbf{i} = 0.0^{\circ} & \text{"Orbiting body" has a prograde orbit within the "reference plane"} \\
+\mathbf{i} = 63.4^{\circ} & \text{Often called a critical inclination, when describing artificial - satellites orbiting the Earth, because they have zero apogee drift WIKI Refe} \\
+\mathbf{i} = 90.0^{\circ} & \text{A polar orbit, in which the "spacecraft" passes over the poles of the planet} \\
+90.0^{\circ} \lt \mathbf{i} \le 180.0^{\circ} & \text{"Orbiting body" has a retrograde orbit} \\
+\end{cases}
+:::
+
+
 ##### Longitude of Ascending Node
 
 The Longitude of Ascending Node is the angle between $\mathbf{\hat{x}}$ and Node Vector $\mathbf{\hat{n}}$. It is also known as the Right Ascension of the Ascending Node (RAAN). The Ascending Node is the intesection of the orbit and the reference plane. Thus the Right Ascension of the Ascending Node is the angle at which the "sat" "orbit" ascends through and above the "plane of reference". 

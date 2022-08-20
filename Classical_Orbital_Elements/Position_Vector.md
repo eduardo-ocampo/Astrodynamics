@@ -1,3 +1,3 @@
 # Position Vector
 
-Start talking about the position vectors
+Start talking about the position
