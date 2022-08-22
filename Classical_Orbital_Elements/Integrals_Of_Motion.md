@@ -134,7 +134,65 @@ If $\mathbf{\hat{n}_y} \geq 0^{\circ}$ then $\mathbf{\Omega}$ lies between I and
 ## Conservation of Energy 
 E
 
-### Eccentricity Vector
+The specific Energy of the Two-Body system is defined as:
+
+Note: Scalars
+:::{math}
+:label: energy
+\varepsilon = \frac{v^2}{2} - \frac{\mu}{r}
+:::
+
+To show that the Energy is an integral of motion, start by taking a dot product of our EOMs with respect to Velcoty.
+
+EOMs {eq}`Two_Body_EOM`:
+
+:::{math}
+\ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}
+:::
+
+
+:::{math}
+\left(\ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}\right) \cdot \mathbf{v}
+:::
+
+:::{math}
+\mathbf{\ddot{r}} \cdot \mathbf{v} = -\frac{\mu}{r^3}\mathbf{r} \cdot \mathbf{v}
+:::
+
+
+:::{math}
+
+\frac{\mathbf{\ddot{r}}\cdot\mathbf{\dot{r}} + \mathbf{\dot{r}}\cdot\mathbf{\ddot{r}}}{2} =  -\frac{\mu}{2r^3}\left( \mathbf{\dot{r}}\cdot\mathbf{r} + \mathbf{r}\cdot\mathbf{\dot{r}}\right)
+
+:::
+
+Take the integral of both sides:
+
+:::{math}
+{}
+
+\frac{d}{dt}\left({\frac{\mathbf{\dot{r}}\cdot\mathbf{\dot{r}}}{2}}\right) = \frac{d}{dt}\left(\frac{\mu}{r}\right)
+
+:::
+
+:::{math}
+{}
+
+\frac{d}{dt}\left({\frac{\mathbf{v}\cdot\mathbf{v}}{2}} - \frac{\mu}{r}\right) = 0
+
+:::
+
+Thus:
+
+:::{math}
+:label:
+\varepsilon = \frac{v^2}{2} - \frac{\mu}{r} = Constant
+:::
+
+This form of the Energy Equation is know for deriving the Vis-Viva Equation in Astrodynamics. (Since equal we can set equal to other points in traject for example va/ra = vp/rp energies) The Vis-Viva equation relates the... Talk more about this and introduce the Vis-Viva Equation
+
+
+## Eccentricity Vector
 omega
 
 ## Kepler's Law
