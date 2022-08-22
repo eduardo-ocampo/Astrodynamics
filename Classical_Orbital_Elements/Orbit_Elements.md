@@ -26,8 +26,6 @@ M = m_1 + m_2
 \mathbf{r} = \mathbf{r_{12}} = \mathbf{r_2} - \mathbf{r_1}
 :::
 
-
-
 State Vector:
 
 :::{math}
@@ -39,6 +37,15 @@ State Vector:
 :::
 
 This is a second-order differential equation which requires solving 6 intergrals of motion. Which have become to be known as the Classical Orbital Elements. They can be found solved by positions, velocities, and times that remain constant under the motion governed by the equations of motion.
+
+
+```{note}
+The term $G(m_1+m_2)$ comes up quite often in our Equations of Motion that is convient to define it as teh Gravitation Constant ($\mu$)
+
+:::{math}
+\mu = G(m_1+m_2)
+:::
+```
 
 ##### Classical Orbital Elements
 
