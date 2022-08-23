@@ -134,7 +134,7 @@ If $\mathbf{\hat{n}_y} \geq 0^{\circ}$ then $\mathbf{\Omega}$ lies between I and
 ## Conservation of Energy 
 E
 
-The specific Energy of the Two-Body system is defined as:
+The specific Energy ($\varepsilon$) of the Two-Body system is defined as:
 
 Note: Scalars
 :::{math}
@@ -191,9 +191,94 @@ Thus:
 
 This form of the Energy Equation is know for deriving the Vis-Viva Equation in Astrodynamics. (Since equal we can set equal to other points in traject for example va/ra = vp/rp energies) The Vis-Viva equation relates the... Talk more about this and introduce the Vis-Viva Equation
 
+Properites of Specific Energy:
+
+
+
+:::{math}
+:label: eq:raan_cases
+\varepsilon = \begin{cases}
+\varepsilon \lt 0.0 & \text{Orbit is bound: Elliptical Orbit}\\
+\varepsilon = 0.0   & \text{Orbit is escaped: Parabolic Orbit} \\
+\varepsilon \gt 0.0 & \text{Orbit is escaped: Hyperbolic Orbit}
+\end{cases}
+:::
+
 
 ## Eccentricity Vector
-omega
+
+The Eccentricity Vector ($\mathbf{e}$) is defined as:
+
+:::{math}
+:label: eccentricity_vector
+\mathbf{e} = \frac{1}{\mu}\left(\mathbf{v}\times\mathbf{h}\right) - \frac{\mathbf{r}}{r}
+:::
+
+To show that the Eccentricity Vector is an integral of motion, take a cross-product of our EOM with respect to Angular Momemtum ($\mathbf{h}$)
+
+EOMs {eq}`Two_Body_EOM`:
+
+:::{math}
+\ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}
+:::
+
+
+:::{math}
+\left(\ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}\right) \times \mathbf{h}
+:::
+
+
+:::{math}
+\mathbf{\ddot{r}} \times \mathbf{h} = -\frac{\mu}{r^3}\mathbf{r} \times \mathbf{h}
+:::
+
+
+:::{math}
+\mathbf{\ddot{r}} \times \mathbf{h} = -\frac{\mu}{r^3}\mathbf{r} \times \left(\mathbf{r} \times \mathbf{v}\right)
+:::
+
+Apply [Vector Triple Product](https://en.wikipedia.org/wiki/Triple_product):
+
+:::{math}
+\mathbf{\ddot{r}} \times \mathbf{h} = -\frac{\mu}{r^3} \left[\mathbf{r}\left(\mathbf{r}\cdot\mathbf{v}\right) - \mathbf{v}\left(\mathbf{r}\cdot\mathbf{r}\right) \right]
+:::
+
+:::{math}
+{}
+
+\frac{d}{dt} \left(\mathbf{v}\right)\times\mathbf{h} = \mu\cdot\frac{d}{dt}\left(\frac{\mathbf{r}}{r}\right)
+
+:::
+
+Integrate both sides to get:
+
+:::{math}
+:label:
+\mathbf{v}\times\mathbf{h} = \mu\frac{\mathbf{r}}{r} + \mathbf{C}
+:::
+
+Where $\mathbf{C}$ is a constant vector. The constant vector has the same dimensions as $\mu$, thus we can transform it into a dimensionless number by dividing Equation XXX by $\mu$ and defining the Eccentricity Vector as $\mathbf{e} = \frac{\mathbf{c}}{\mu}$
+
+Finally, we can rewrite our Eccentcity Vector as:
+
+:::{math}
+\mathbf{e} = \frac{1}{\mu}\left(\mathbf{v}\times\mathbf{h}\right) - \frac{\mathbf{r}}{r}
+:::
+
+
+Some Notes:
+
+By inspection it is known that constant vector $\mathbf{c}$ lies in the orbital plane. Therefore, the Eccentricity Vector also lies in the orbital plane. Althought $\mathbf{e}$ is a 3x1 Vector it's magnitude is define by components of Node Vector ($\mathbf{\hat{n}_\Omega}$,  $\mathbf{\hat{n}_T}$) which are already account for in defining hte Longtidue of Ascending Node (LINK HERE). The only extra integral of motion comes from the orientation of $\mathbf{e}$. This is know as the Argument of Periapsis ($\omega$). 
+
+### The Argument of Periapsis
+
+Mention it's range and maybe have animation.
+
+
+### The Trajectory Equation
+
+Define the trajectory equation based off of notes, I think there was a HW problem that derivied it. 
+
 
 ## Kepler's Law
 to
