@@ -279,6 +279,7 @@ Mention it's range and maybe have animation.
 
 Define the trajectory equation based off of notes, I think there was a HW problem that derivied it. 
 
+The trajectory equation deines the geometry of a conic section:...
 
 ## Kepler's Law
 to
@@ -297,11 +298,19 @@ Provide some intro, what position and velocity vector we'll be using. As Element
 
 Consider a statelitte orbiting earth. Let's assume we have recieved the following data about it's position and velocity vector at some time $t$. 
 
+
 ```
 Postion:  [1000, 1000, 0] km
 
 Velocity: [1000, 1000, 0] km/sec
 
+```
+
+Their magnitudes are calulcated using ```from numpy.linalg import norm```
+
+```python
+v = self.velocityMag
+r = self.positionMag
 ```
 
 In the inertial coorindate frame this can be written as:
@@ -358,6 +367,11 @@ self.orbit_elements["Inclination"] = {"value": np.degrees(incl),
                                       "units": "degrees"}
 ```
 
+### Ascending Node Vector 
+
+Maybe add this?
+
+
 ### Longitude of Ascending Node
 
 
@@ -382,3 +396,47 @@ self.orbit_elements["Long. of Ascend. Node (Ω)"] = {
                     "value": lan, 
                     "units": "degrees"}
 ```
+
+### Specific Energy 
+
+:::{math}
+\varepsilon = \frac{v^2}{2} - \frac{\mu}{r}
+:::
+
+```python 
+# Specific Energy
+# --------------------------------------------------------------------------------   
+energy = v**2/2 - self.mu/r 
+self.orbit_elements["Energy"] = {"value": energy, 
+                                 "units": "km^2/sec^2"}
+```
+
+### Eccentricity Vector
+
+:::{math}
+\mathbf{e} = \frac{1}{\mu}\left(\mathbf{v}\times\mathbf{h}\right) - \frac{\mathbf{r}}{r}
+:::
+
+```python 
+# Eccentricity Vector
+# --------------------------------------------------------------------------------   
+eccentricity = (1/self.mu)*(np.cross(self.velocity,ang_momentum))-self.position/r
+self.orbit_elements["Eccentricity"] = {"value": norm(eccentricity), 
+                                        "units": " "}
+```
+
+### Argument of Perigee 
+
+
+```python
+# Argument of Perigee (ω)
+# --------------------------------------------------------------------------------   
+arg_peri = np.arccos(np.dot(node_vec,eccentricity) / 
+                    (norm(eccentricity)*norm(node_vec)))
+# Check ecc_zcomp
+if eccentricity[-1] < 0:
+    arg_peri = 2*np.pi - arg_peri
+self.orbit_elements["Argument of Perigee (ω)"] = {"value": np.degrees(arg_peri), 
+                                                    "units": "degrees"}
+```
+
