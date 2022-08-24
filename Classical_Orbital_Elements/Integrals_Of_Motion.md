@@ -300,36 +300,87 @@ Consider a statelitte orbiting earth. Let's assume we have recieved the followin
 
 
 ```
-Postion:  [1000, 1000, 0] km
+Postion:  [10000, 1000, 0] km
 
-Velocity: [1000, 1000, 0] km/sec
+Velocity: [1, 6.324555, 1] km/sec
 
 ```
 
-Their magnitudes are calulcated using ```from numpy.linalg import norm```
-
-```python
-v = self.velocityMag
-r = self.positionMag
-```
 
 In the inertial coorindate frame this can be written as:
 
 :::{math}
-\mathbf{r} = 1000 \space \mathbf{\hat{i}} + 1000 \space \mathbf{\hat{j}} + 0.0 \space \mathbf{\hat{k}} \space \space {km}
+\mathbf{r} = 10000 \space \mathbf{\hat{i}} + 1000 \space \mathbf{\hat{j}} + 0.0 \space \mathbf{\hat{k}} \space \space {km}
 :::
 
 :::{math}
-\mathbf{v} = 1000 \space \mathbf{\hat{i}} + 1000 \space \mathbf{\hat{j}} + 0.0 \space \space \mathbf{\hat{k}} \space \space \frac{km}{s}
+\mathbf{v} = 1.0 \space \mathbf{\hat{i}} + 6.324555 \space \mathbf{\hat{j}} + 1.0 \space \space \mathbf{\hat{k}} \space \space \frac{km}{s}
 :::
 
 Let's determine the Sat's Orbital Elements using Python package twoBodyProblem.py
 
 
+Begin by importing moduel twoBodyProblem and defining the postion and state vector. Module twoBodyProblem.py requires an output file to be assigned as attribute `resultsOut`. Calling getElements() will calculate Orbital Elements of your State Vector while writeResults() will write out the results. 
+
+#### Script Setup
+
+```python
+import math
+from twoBodyProblem import orbitElements
+
+# Initial Position and Velocity Vectors
+position = [10000, 1000, 0] # km
+velocity = [1, 6.324555, 1] # km/s
+
+# Instantiate orbitElements Class
+orbitElements = orbitElements(position,velocity)
+orbitElements.resultsOut = "Example.results"
+
+# Calculate Orbital Elements and Save Results Out
+orbitElements.getElements()
+orbitElements.writeResults()
+```
+
+**Exampl.results File Contents**
+
+```
+Initial State Vectors:
+----------------------------------------
+Position = [10000, 1000, 0] km
+Velocity = [1, 6.324555, 1] km/sec
+
+
+Computed Results
+Element                            Value          Units
+-------------------------------------------------------
+Position Magnitude                 10050             km
+Velocity Magnitude                6.4807         km/sec
+Energy                           -18.662     km^2/sec^2
+Angular Momentum                   63052       km^2/sec
+Eccentricity                     0.25706               
+Inclination                       9.1716        degrees
+Long. of Ascend. Node (Ω)         5.7106        degrees
+Argument of Perigee (ω)           268.31        degrees
+Semi-Major Axis                    10679             km
+Mean Motion                   0.00057207        rad/sec
+True Anomaly                       91.69        degrees
+Eccentric Anomaly                 76.744        degrees
+Mean Anomaly                      62.408        degrees
+Period                            3.0509          hours
+
+```
 
 
 
 All code blocks below are refereenced from Class orbitElements() in `twoBodyProblem.orbitElements()`. 
+
+Their magnitudes are calulcated in twoBodyProblem.py using ```from numpy.linalg import norm```
+
+```python
+from numpy.linalg import norm
+v = norm(posVector)
+r = norm(velVector)
+```
 
 ### Anguluar Momentum 
 
