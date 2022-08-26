@@ -1,46 +1,258 @@
-
 <!DOCTYPE html>
-
-<html>
+<html >
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Integrals of Motion &#8212; Workspace 0.01 documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Examples of Rendering Plots in HTML" href="../plot_example.html" />
-    <link rel="prev" title="Orbit Elements" href="Orbit_Elements.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+      <title>Integrals of Motion</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/css/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
 
-  </head><body>
+      <!-- sphinx script_files -->
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Examples of Rendering Plots in HTML" href="../plot_example.html" />
+  <link rel="prev" title="Orbit Elements" href="Orbit_Elements.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Workspace</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-eddies-documentation"
+         class="nav-link ">
+         welcome to eddie’s documentation!
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-eddies-documentation"
+         class="nav-link ">
+         welcome to eddie’s documentation!
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-eddies-documentation"
+         class="nav-link ">
+         Newton's Law of Gravitation
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-eddies-documentation"
+         class="nav-link  router-link-active">
+         Classical Orbital Elements
+      </a>
+    </div>
   
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
           
+          <navlinks>
+            
 
-          <div class="body" role="main">
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-eddies-documentation"
+         class="nav-link ">
+         welcome to eddie’s documentation!
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-eddies-documentation"
+         class="nav-link ">
+         welcome to eddie’s documentation!
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-eddies-documentation"
+         class="nav-link ">
+         Newton's Law of Gravitation
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#welcome-to-eddies-documentation"
+         class="nav-link  router-link-active">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-eddies-documentation">welcome to eddie’s documentation!</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../intro.html" class="reference internal ">An Intro</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-eddies-documentation">welcome to eddie’s documentation!</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Math_Example.html" class="reference internal ">An Attempt To Show Math</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-eddies-documentation">Newton's Law of Gravitation</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Newtons_Law_Of_Gravitation.html" class="reference internal ">Newton’s Law of Gravitation</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#welcome-to-eddies-documentation">Classical Orbital Elements</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 "><a href="Orbit_Elements.html" class="reference internal ">Orbit Elements</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Integrals of Motion</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#conservation-of-angular-momentum" class="reference internal">Conservation of Angular Momentum</a></li>
+                
+                  <li class="toctree-l2"><a href="#conservation-of-energy" class="reference internal">Conservation of Energy</a></li>
+                
+                  <li class="toctree-l2"><a href="#eccentricity-vector" class="reference internal">Eccentricity Vector</a></li>
+                
+                  <li class="toctree-l2"><a href="#keplers-law" class="reference internal">Kepler’s Law</a></li>
+                
+                  <li class="toctree-l2"><a href="#python-examples" class="reference internal">Python Examples</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../plot_example.html" class="reference internal ">Examples of Rendering Plots in HTML</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>Integrals of Motion</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="Orbit_Elements.html"
+       title="previous chapter">← Orbit Elements</a>
+  </li>
+  <li class="next">
+    <a href="../plot_example.html"
+       title="next chapter">Examples of Rendering Plots in HTML →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
             
   <div class="tex2jax_ignore mathjax_ignore section" id="integrals-of-motion">
 <h1>Integrals of Motion<a class="headerlink" href="#integrals-of-motion" title="Permalink to this headline">¶</a></h1>
@@ -400,111 +612,26 @@ Talk about how we go from state vector to itegrals of motion</p>
 
 
           </div>
-          
-        </div>
-      </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">Workspace</a></h1>
-
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">An Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../intro.html#some-title">Some Title</a></li>
-</ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../Math_Example.html">An Attempt To Show Math</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Newton's Law of Gravitation</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../Newtons_Law_Of_Gravitation.html">Newton’s Law of Gravitation</a></li>
-</ul>
-<p class="caption" role="heading"><span class="caption-text">Classical Orbital Elements</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="Orbit_Elements.html">Orbit Elements</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Integrals of Motion</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#conservation-of-angular-momentum">Conservation of Angular Momentum</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#angular-momemtum">Angular Momemtum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#inclination">Inclination</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#longitude-of-ascending-node">Longitude of Ascending Node</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#conservation-of-energy">Conservation of Energy</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#eccentricity-vector">Eccentricity Vector</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#the-argument-of-periapsis">The Argument of Periapsis</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-trajectory-equation">The Trajectory Equation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#keplers-law">Kepler’s Law</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#python-examples">Python Examples</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#script-setup">Script Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#anguluar-momentum">Anguluar Momentum</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Inclination</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ascending-node-vector">Ascending Node Vector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Longitude of Ascending Node</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#specific-energy">Specific Energy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Eccentricity Vector</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#argument-of-perigee">Argument of Perigee</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../plot_example.html">Examples of Rendering Plots in HTML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../plot_example.html#plotly-examples">Plotly Examples</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="Orbit_Elements.html" title="previous chapter">Orbit Elements</a></li>
-      <li>Next: <a href="../plot_example.html" title="next chapter">Examples of Rendering Plots in HTML</a></li>
-  </ul></li>
-</ul>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="Orbit_Elements.html"
+       title="previous chapter">← Orbit Elements</a>
+  </li>
+  <li class="next">
+    <a href="../plot_example.html"
+       title="next chapter">Examples of Rendering Plots in HTML →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, Eddie.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
 </div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
+            </div>
+          </div>
+      </page>
     </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2022, Eddie.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.5.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../_sources/Classical_Orbital_Elements/Integrals_Of_Motion.md.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
     
-
     
   </body>
 </html>
