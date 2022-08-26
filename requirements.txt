@@ -1,0 +1,8 @@
+sphinx
+nbsphinx
+sphinxcontrib-katex 
+PyQt5
+myst-parser
+sphinx_press_theme
+sphinx_book_theme
+myst_nb
