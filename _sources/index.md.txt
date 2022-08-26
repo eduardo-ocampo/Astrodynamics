@@ -26,4 +26,6 @@ Newtons_Law_Of_Gravitation
 :caption: Classical Orbital Elements
 Classical_Orbital_Elements/Orbit_Elements
 Classical_Orbital_Elements/Integrals_Of_Motion
+Classical_Orbital_Elements/Python_Examples
+plot_example.md
 ```
