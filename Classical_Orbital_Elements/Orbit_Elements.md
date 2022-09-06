@@ -1,3 +1,17 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.14.1
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
+
 # Orbit Elements
 
 
@@ -66,7 +80,19 @@ For the remainder of this course, we will consider the second object being a sat
 NOTE: Here it might be a good idea to descrbing the elements more and create some sort of animation
 
 #### Elements defining the shape and size of the orbit
+
+<img src="./images/elliptic_orbit_image.jpeg" alt="Elliptic Orbit Definition">
+
+[source](https://space.stackexchange.com/questions/28361/spiraling-out-from-circular-orbit-to-escape-via-low-thrust-what-is-%CE%B3-gamma#:~:text=by%20uhoh%27s%20comment-,Source,-It%20is%20just)
 ##### Semi-Major Axis
+
+```{code-cell} ipython3
+:tags: ["remove-input"]
+import elliptic_orbit_semimajor
+fig = elliptic_orbit_semimajor.plot()
+fig.show()
+```
+
 ##### Eccentricity
 
 Describe elements and and figures/animations
