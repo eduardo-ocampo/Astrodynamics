@@ -61,7 +61,7 @@ The term $G(m_1+m_2)$ comes up quite often in our Equations of Motion that is co
 :::
 ```
 
-##### Classical Orbital Elements
+## Classical Orbital Elements
 
 :$a$: Semi-Major Axis
 :$e$: Eccentricity
@@ -79,32 +79,75 @@ For the remainder of this course, we will consider the second object being a sat
 
 NOTE: Here it might be a good idea to descrbing the elements more and create some sort of animation
 
-#### Elements defining the shape and size of the orbit
+### Elements Defining The Shape and Size of The Orbit
 
-<img src="./images/elliptic_orbit_image.jpeg" alt="Elliptic Orbit Definition">
+<!-- ```{image} ./images/elliptic_orbit_image.jpeg
+:alt: Elliptic Orbit Definition
+``` -->
+
+```{figure} ./images/elliptic_orbit_image.jpeg
+:name: fig:elliptical-orbit-definitions
+:width: 75%
+
+The geometry and definition of distances in an elliptical orbit.
+```
+
+TODO: Find a method for labeling and numbering figures
 
 [source](https://space.stackexchange.com/questions/28361/spiraling-out-from-circular-orbit-to-escape-via-low-thrust-what-is-%CE%B3-gamma#:~:text=by%20uhoh%27s%20comment-,Source,-It%20is%20just)
-##### Semi-Major Axis
+
+#### Semi-Major Axis ($a$)
+
+
+Figure XXX (show above), shows a satelitte orbiting a central body in an elliptical path. The focus (F) plays a role in defining the satellite's trajectory in space and its angle from Periapsis (Perigee). The Semi-Major axis of the Ellipse is defined as the length from the Geometric Center of the Ellipse to Periapsis. 
+
+Taking a fixed focus (Central Body) Figure XXX below shows how varying Semi-Major Axes changes the shape and size of a given elliptical orbit as well as its geometric center. 
 
 ```{code-cell} ipython3
 :tags: ["remove-input"]
+from myst_nb import glue
 import elliptic_orbit_semimajor
 fig = elliptic_orbit_semimajor.plot()
-fig.show()
+glue("semimajor_axis_fig",fig)
 ```
 
-##### Eccentricity
+```{glue:figure} semimajor_axis_fig
+:align: center
+**Figure XXX.** Varying Semi-Major Axis
+```
+
+
+#### Eccentricity ($e$)
+
+The eccentricity is defined as the ratio of the distance from the Geometric Center to the Focus Point (linear eccentricity) compared to the Semi-Major Axis 
+
+:::{math}
+:label:
+e = \frac{ae}{e} = \frac{c}{e}
+:::
+
+Figure XXX below shows how varying Eccentricy changes the shape and size for Elliptical Orbit. (Talk about when 1.0>e or 1.0). Note that when eccentricy is zero the orbit is circular.
+
+```{code-cell} ipython3
+:tags: ["remove-input"]
+import elliptic_orbit_eccentricity
+fig = elliptic_orbit_eccentricity.plot()
+glue("eccentricity_fig",fig)
+```
+
+```{glue:figure} eccentricity_fig
+:align: center
+**Figure XXX.** Varying Eccentricity
+```
+
+### Elements defing the orientation of the orbital plane in which the plane is embedded
+#### Incliniation
+#### Longitude of Ascending Node
 
 Describe elements and and figures/animations
 
-#### Elements defing the orientation of the orbital plane in which the plane is embedded
-##### Incliniation
-##### Longitude of Ascending Node
-
-Describe elements and and figures/animations
-
-#### Elements defining orientaion of periasis
-##### Argument of Periapsis
-##### Time of Periapsis Passage
+### Elements defining orientaion of periasis
+#### Argument of Periapsis
+#### Time of Periapsis Passage
 
 Describe elements and and figures/animations

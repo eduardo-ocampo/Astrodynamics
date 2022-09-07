@@ -5,16 +5,16 @@ def plot():
 
     # Angles
     f = np.linspace(0,2*np.pi,1000)
-    # Semi-Major Axis List and Associated colors
-    a_list = [0.1,0.2,0.4,0.6,0.8,1.0]
-    colors = ['yellow','orchid','green','darkorange','blue','red']
+    # Eccentricity List and Associated Colors
+    e_list = [0.0, 0.2, 0.4, 0.6, 0.8, 0.9, 0.95]
+    colors = ['red','green','blue','darkorange','yellow','orchid','dimgrey']
 
-    # Plot Orbits by Varying Semi-Major Axis
+    # Plot Orbits by Varying Eccentricity
     fig = go.Figure()
-    for indx,a in enumerate(a_list):
+    for indx,e in enumerate(e_list):
         
         # Eccentricity
-        e = 0.6
+        a = 1.0
         p = a*(1-e**2)
         # Orbit Position
         r = p/(1+e*np.cos(f))
@@ -25,7 +25,7 @@ def plot():
         # Draw Orbit and Their Centers
         orbit = go.Scatter3d(x=pos[:,0], 
                              y=pos[:,1],
-                             z=pos[:,2], mode='lines', name="a = {}".format(a),
+                             z=pos[:,2], mode='lines', name="e = {}".format(e),
                              line=dict(width=4,color=colors[indx])
         )
         orbit_center = go.Scatter3d(x=[-a*e], 
@@ -61,7 +61,7 @@ def plot():
     fig.update_layout(scene_camera=camera,
                       legend=dict(orientation="h",
                                   yanchor="bottom"),
-                      title={'text': "<b>Elliptical Orbit Shape by Semi-Major Axis<b>",
+                      title={'text': "<b>Elliptical Orbit Shape by Eccentricity<b>",
                              'y':0.95,
                              'x':0.5,
                              'xanchor': 'center',
