@@ -71,3 +71,4 @@ def plot():
     )
 
     return fig
+

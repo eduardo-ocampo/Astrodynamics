@@ -141,13 +141,30 @@ glue("eccentricity_fig",fig)
 ```
 
 ### Elements defing the orientation of the orbital plane in which the plane is embedded
+
 #### Incliniation
+
+```{code-cell} ipython3
+:tags: ["remove-input"]
+from myst_nb import glue
+import elliptic_orbit_inclination
+fig = elliptic_orbit_inclination.plot()
+glue("inclination_fig",fig)
+```
+
+```{glue:figure} inclination_fig
+:align: center
+**Figure XXX.** Inclination Change
+```
+
 #### Longitude of Ascending Node
 
 Describe elements and and figures/animations
 
 ### Elements defining orientaion of periasis
+
 #### Argument of Periapsis
+
 #### Time of Periapsis Passage
 
 Describe elements and and figures/animations
