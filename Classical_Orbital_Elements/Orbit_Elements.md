@@ -107,8 +107,8 @@ Taking a fixed focus (Central Body) Figure XXX below shows how varying Semi-Majo
 :tags: ["remove-input"]
 from myst_nb import glue
 import elliptic_orbit_semimajor
-fig = elliptic_orbit_semimajor.plot()
-glue("semimajor_axis_fig",fig)
+fig1 = elliptic_orbit_semimajor.plot()
+glue("semimajor_axis_fig",fig1)
 ```
 
 ```{glue:figure} semimajor_axis_fig
@@ -131,8 +131,8 @@ Figure XXX below shows how varying Eccentricy changes the shape and size for Ell
 ```{code-cell} ipython3
 :tags: ["remove-input"]
 import elliptic_orbit_eccentricity
-fig = elliptic_orbit_eccentricity.plot()
-glue("eccentricity_fig",fig)
+fig2 = elliptic_orbit_eccentricity.plot()
+glue("eccentricity_fig",fig2)
 ```
 
 ```{glue:figure} eccentricity_fig
@@ -148,8 +148,8 @@ glue("eccentricity_fig",fig)
 :tags: ["remove-input"]
 from myst_nb import glue
 import elliptic_orbit_inclination
-fig = elliptic_orbit_inclination.plot()
-glue("inclination_fig",fig)
+fig3 = elliptic_orbit_inclination.plot()
+glue("inclination_fig",fig3)
 ```
 
 ```{glue:figure} inclination_fig
@@ -174,8 +174,8 @@ arc = np.vstack((arc_x,arc_y,arc_z)).T
 :tags: ["remove-input"]
 from myst_nb import glue
 import elliptic_orbit_long_acsend_node
-fig = elliptic_orbit_long_acsend_node.plot()
-glue("lan_fig",fig)
+fig4 = elliptic_orbit_long_acsend_node.plot()
+glue("lan_fig",fig4)
 ```
 
 ```{glue:figure} lan_fig
@@ -186,6 +186,19 @@ glue("lan_fig",fig)
 ### Elements defining orientaion of periasis
 
 #### Argument of Periapsis
+
+```{code-cell} ipython3
+:tags: ["remove-input"]
+from myst_nb import glue
+import elliptic_orbit_argument_of_periapsis
+fig5 = elliptic_orbit_argument_of_periapsis.plot()
+glue("arg_peri_fig",fig5)
+```
+
+```{glue:figure} arg_peri_fig
+:align: center
+**Figure XXX.** Argument of Periapsis Change
+```
 
 #### Time of Periapsis Passage
 
