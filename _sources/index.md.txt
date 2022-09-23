@@ -27,5 +27,9 @@ Newtons_Law_Of_Gravitation
 Classical_Orbital_Elements/Orbit_Elements
 Classical_Orbital_Elements/Integrals_Of_Motion
 Classical_Orbital_Elements/Python_Examples
+```
+
+```{toctree}
+:maxdepth: 3
 plot_example.md
 ```

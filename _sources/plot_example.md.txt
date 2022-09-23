@@ -19,7 +19,9 @@ a = "my variable!"
 glue("my_variable", a)
 ```
 
-```{glue} my_variable
+```{glue:figure} my_variable
+
+This is a **caption**
 ```
 
 ```{code-cell} ipython3
@@ -118,3 +120,10 @@ p.circle(data["sepal_width"], data["sepal_length"], fill_color=data["species"], 
 show(p)
 ```
 
+
+```{code-cell} ipython3
+:tags: ["remove-input"]
+from Classical_Orbital_Elements import elliptic_orbit_semimajor
+fig = elliptic_orbit_semimajor.plot()
+fig.show()
+```
