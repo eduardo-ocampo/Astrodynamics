@@ -146,7 +146,7 @@ def plot():
                                 mode='lines+text', 
                                 name="e = {}".format(e),
                                 text=[""]*int(len(arc_z)*3/4)+["Ω"],
-                                textposition="middle center",
+                                textposition="middle right",
                                 line=dict(width=4,color='green'),
                                 hoverinfo='text',showlegend=False
     )

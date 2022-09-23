@@ -54,13 +54,13 @@ def plot():
     # Draw Orbit and Orbit Centers
     orbit = go.Scatter3d(x=pos[:,0], 
                          y=pos[:,1],
-                         z=pos[:,2], mode='lines', name="Reference Orbit \ni = 0 degrees",
+                         z=pos[:,2], mode='lines', name="Reference Orbit \ni = 0°",
                          line=dict(width=4,color='grey',dash='dashdot'),hoverinfo='text'
     )
     orbit_rot = go.Scatter3d(x=pos_rot[:,0], 
                              y=pos_rot[:,1],
                              z=pos_rot[:,2], mode='lines', 
-                             name="inclination = {} degrees".format(inclination_angle),
+                             name="Inclination = {:.1f}°".format(inclination_angle),
                              line=dict(width=4,color='red')
     )
 

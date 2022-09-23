@@ -78,7 +78,7 @@ def plot():
     orbit_rot = go.Scatter3d(x=pos_rot[:,0], 
                              y=pos_rot[:,1],
                              z=pos_rot[:,2], mode='lines', 
-                             name="Inclination = {} degrees & Ω = {} degrees".format(inclination_angle,lan),
+                             name="Inclination = {:.1f}°, Ω = {:.1f}°".format(inclination_angle,lan),
                              line=dict(width=4,color='red')
     )
 
@@ -128,7 +128,7 @@ def plot():
                                 mode='lines+text', 
                                 name="e = {}".format(e),
                                 text=[""]*int(len(arc_z)*3/4)+["Ω"],
-                                textposition="middle center",
+                                textposition="middle right",
                                 line=dict(width=4,color='green'),
                                 hoverinfo='text',showlegend=False
     )
