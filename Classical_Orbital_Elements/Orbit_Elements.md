@@ -157,9 +157,31 @@ glue("inclination_fig",fig)
 **Figure XXX.** Inclination Change
 ```
 
-#### Longitude of Ascending Node
+#### Longitude of The Ascending Node
 
+Earth related LAN, aka as  right ascension of the ascending node RAAN
 Describe elements and and figures/animations
+
+TODO: Add note about x-y being body reference axes
+
+TODO: Talk about this somewhere in docs
+arc_x = np.cos(np.radians(lan)-np.pi/2)*np.sin(np.linspace(0,np.radians(inclination_angle),100))
+arc_y = np.sin(np.radians(lan)-np.pi/2)*np.sin(np.linspace(0,np.radians(inclination_angle),100))
+arc_z = np.cos(np.linspace(0,np.radians(inclination_angle),100))
+arc = np.vstack((arc_x,arc_y,arc_z)).T
+
+```{code-cell} ipython3
+:tags: ["remove-input"]
+from myst_nb import glue
+import elliptic_orbit_long_acsend_node
+fig = elliptic_orbit_long_acsend_node.plot()
+glue("lan_fig",fig)
+```
+
+```{glue:figure} lan_fig
+:align: center
+**Figure XXX.** Longitude of The Ascending Node Change
+```
 
 ### Elements defining orientaion of periasis
 
