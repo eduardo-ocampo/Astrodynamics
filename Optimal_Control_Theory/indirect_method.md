@@ -241,5 +241,69 @@ The next section will conver how numerically solve for $\lambda(t)$ and make use
 
 # Numerical Setup - Indirect Method
 
+The Shooting Method is used in optimizing the orbit problem. For this problem the initial guess for the lambdas have been provided.
 
+Show Lambdas
+
+The Shooting method is a numerical analysis method for solving a boundary value problem by reducing it to an intial value problem. Here we will solve our initial value problem as a system of ODE:
+
+From equation we have the following Differential Equations to solve using scipy.solve_ivp:
+
+Differential Equations of Motion
+:::{math}
+:label:
+\dot{\mathbf{r}} = \mathbf{v}
+:::
+
+:::{math}
+:label:
+\dot{\mathbf{v}} = -\frac{\mu}{r^3}\mathbf{r} + \frac{T}{m}*\frac{\mathbf{\lambda_{v}}}{|\mathbf{\lambda_{v}}|} 
+:::
+
+:::{math}
+:label:
+\dot{m} = -\alpha
+:::
+
+Derivatives of Lagrange Multipliers
+
+:::{math}
+\dot{\mathbf{\lambda}_r} = -\frac{3\mu}{r^5}\mathbf{r}^T\mathbf{\lambda}_v\mathbf{r} + \frac{\mu}{r^3}\mathbf{\lambda}_v
+:::
+:::{math}
+\dot{\mathbf{\lambda}_v} = -\mathbf{\lambda}_r
+:::
+:::{math}
+\dot{\mathbf{\lambda}_m} = \frac{T}{m^2}*|\mathbf{\lambda}_v|
+::: 
+
+By treating the target orbit state as root-finding, we can use scipy.fsolve to search for a final trajectory solution that matches our target orbit. Where $\mathbf{S}(\mathbf{z})$ is the arrangment of components of $\mathbf{x^*}(t_f)$.
+
+
+
+The optimal trajectory state is denoted by $x^*(t)$ while the any other trajectory state is $x(t)$. If our system is autonomous then H = constant. We also require our Natural Boundary Condition to be met. Thus the root-finding setup has the following form:
+
+:::{math}
+:label:
+\begin{bmatrix}
+x^*_1 \\
+x^*_2 \\
+x^*_3 \\
+\vdots \\
+\lambda_m^* \\
+H \\
+\end{bmatrix} - 
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3 \\
+\vdots \\
+-1 \\
+0 \\
+\end{bmatrix}  = 0
+:::
+
+
+
+then we will have a good way to search the best result. Let’s use Python’s fsolve to find the root. We can see from the following example, we find the correct answer directly.
 ## Compare to Hohmann transfer problem
