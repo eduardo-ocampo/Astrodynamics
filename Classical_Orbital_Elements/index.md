@@ -5,9 +5,10 @@ Some Text
 
 ```{toctree}
 ---
-maxdepth: 3
+maxdepth: 4
 ---
-Orbit_Elements.md
+Two_Body_Problem.md
+Classical_Orbit_Elements.md
 Position_Vector.md
 Figures
 ```

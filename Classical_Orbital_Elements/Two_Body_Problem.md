@@ -5,9 +5,11 @@ The full two-body problem is the motion two bodies with finite masses that are a
 We are interested in their relative dynamics. The force of particle $P_1$ acting on particle $P_2$ in the inertial frame yields the following diagram: 
 
 ```{figure} ./images/two-body_image.png
-:name: fig:Two-Body Problem
+:name: fig:Two-Body_Problem_Figure
 :width: 75%
+**Figure 1.1** Two-Body Problem.
 ```
+
 
 Where $P_1$ has mass $m_1$ and $P_2$ has mass $m_2$, and we define the relative vector notation as:
 
@@ -42,7 +44,7 @@ Each particle has a State Vector made up of its position and velocity:
 
 To solve the for the Two-Body Problem we require 12 equations of motion due to 2 state vectors. However, if we assume one of the particles does not have mass or its mass is negligible  (Earth-satellite system) the system will require only 6 equations of motion. Thus 6 integrals of motion are needed to solve the relative dynamics of the Two-Body Problem.  
 
-These 6 integrals of motion have become to be known as the Classical Orbital Elements. An integral of motion is a combination of positions, velocities, and times that remain constant under the motion governed by the equations of motion.
+These 6 integrals of motion have become to be known as the [Classical Orbital Elements](Classical_Orbit_Elements.md). An integral of motion is a combination of positions, velocities, and times that remain constant under the motion governed by the equations of motion.
 
 
 ```{note}
