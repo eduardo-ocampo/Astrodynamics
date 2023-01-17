@@ -89,7 +89,7 @@ Thus the first 3 Integrals of Motion are:
 from myst_nb import glue
 import elliptic_orbit_long_acsend_node
 fig4 = elliptic_orbit_long_acsend_node.plot()
-fig4.update_layout(title={'text':"<b>First Three Integrals of Motion<b>"})
+fig4.update_layout(title={'text':"<b>First Three Integrals of Motion (h,i Ω)<b>"})
 glue("lan_fig",fig4)
 ```
 
@@ -163,16 +163,22 @@ i = 90.0^{\circ} & \text{Polar Orbit, spacecraft passes over the poles of the pr
 
 ### 3. Longitude of Ascending Node
 
-The Longitude of Ascending Node is the angle between $\mathbf{\hat{x}}$ and Node Vector $\mathbf{\hat{n}}$. It is also known as the Right Ascension of the Ascending Node (RAAN). The Ascending Node is the intesection of the orbit and the reference plane. Thus the Right Ascension of the Ascending Node is the angle at which the "sat" "orbit" ascends through and above the "plane of reference". 
-
-Maybe have figure/animation here
+The Longitude of Ascending Node is the angle between $\mathbf{\hat{x}}$ and Node Vector $\mathbf{\hat{n}}$. 
 
 :::{math}
 :label: orbital-elements-Omega
 \mathbf{\Omega} = \cos^{-1}\left(\frac{\mathbf{\hat{x}}}{\mathbf{\hat{n}}}\right)
 :::
 
-In Astrodynamics the Longitude of Ascending Node is define to be betwewn 0$^{\circ}$ and 360$^{\circ}$. To solve for the Longitude of Ascending Node we must perform a quadrant check due to its trigometric definition. By looking at the y-component of the Node Vector ($\mathbf{\hat{n}_y}$).
+```{figure} ./images/laan_reference.png
+:align: center
+:name: iom_Figure_2
+**Figure 3.2**
+```
+
+This Integral of Motion is also known as the Right Ascension of the Ascending Node (RAAN). The Ascending Node is the intesection of the orbit and the reference plane as shown in Figure 3.2. Thus the Right Ascension of the Ascending Node is the angle at which the spacecraft ascends through and above the "plane of reference". 
+
+In Astrodynamics the Longitude of Ascending Node is define to be betwewn 0$^{\circ}$ and 360$^{\circ}$. To solve for the angle we must perform a quadrant check due to its trigometric definition. By looking at the y-component of the Node Vector ($\mathbf{\hat{n}_y}$).
 
 TODO: See how codes work either use x or nx, y or ny
 
