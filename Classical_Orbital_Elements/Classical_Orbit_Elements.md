@@ -82,9 +82,9 @@ glue("eccentricity_fig",fig2)
 **Figure 2.3** Orbits with Varying Eccentricity
 ```
 
-## Elements defing the orientation of the orbital plane in which the plane is embedded
+## Elements Defining the Orientation of the Orbital Plane in which the Plane is Embedded
 
-### Incliniation
+### Inclination
 
 TODO: Write a desciption
 
@@ -127,7 +127,7 @@ glue("lan_fig",fig4)
 **Figure 2.5.** Longitude of The Ascending Node Change
 ```
 
-## Elements defining orientaion of periasis
+## Elements Defining Orientaion of Periasis
 
 ### Argument of Periapsis
 

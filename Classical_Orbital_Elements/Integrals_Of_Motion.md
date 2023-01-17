@@ -1,7 +1,19 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.14.1
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 
 # Integrals of Motion 
  
-Integrals of Motion are used to derive properities of Two-Body Motion without having to solve the equations of motion. They are constant along the trajectory of motion.
+As discussed in [the Two-Body Problem](Two_Body_Problem.md), Integrals of Motion are used to derive properties  of Two-Body Motion without having to solve the equations of motion. For a relative dynamic system, there are 6 Integrals of Motion to solve which are constant along the trajectory of motion.
 
 ## Conservation of Angular Momentum
 
@@ -14,9 +26,9 @@ The specific angular momentum vector $\mathbf{h}$ is defined as:
 
 where
 $\mathbf{r}$ is the position vector,
-$\mathbf{v}$ is the velocity vecot and both are 3x1 Vectors.
+$\mathbf{v}$ is the velocity vector and both are 3x1 Vectors.
 
-To show that the angular momentum vector is an integral of motion, take the total time derivative of $\mathbf{h}$:
+To show that the angular momentum vector is an integral of motion, take the total time derivative of $\mathbf{h}$ and show that $\frac{d}{dt}\left({\mathbf{h}}\right) = 0$:
 
 :::{math}
 :label:
@@ -63,48 +75,93 @@ Thus
 \frac{d}{dt}\left({\mathbf{h}}\right) = 0
 :::
 
-Since our angular moementum vecotr ($\mathbf{h}$) is a 3x1 vector, this gives us 3 integrals of motions to work with.
+Since our Angular Momentum Vector ($\mathbf{h}$) is a 3x1 vector, this gives us 3 integrals of motions to work with. $\mathbf{h}$ can be represented using two angles and its magnitude. 
 
-Here we can segway to Slide 10 of notes. Create an animation showing i, h, Omega. Talk about them and the node vector plane (definition) n = kxh
+Thus the first 3 Integrals of Motion are: 
+
+1. Magnitude of Angular Momentum (h)
+2. Inclination (i)
+3. Longitude of Ascending Node ($\Omega$)
 
 
-### Angular Momemtum
+```{code-cell} ipython3
+:tags: ["remove-input"]
+from myst_nb import glue
+import elliptic_orbit_long_acsend_node
+fig4 = elliptic_orbit_long_acsend_node.plot()
+fig4.update_layout(title={'text':"<b>First Three Integrals of Motion<b>"})
+glue("lan_fig",fig4)
+```
 
-The first Integral of Motion to determine is Angular Momentum {eq}`angular_momentum`
+```{glue:figure} lan_fig
+:align: center
+:name: iom_Figure_1
+**Figure 3.1.** Example Orientation of Angular Momentum Vector in an Elliptical Orbit
+```
+
+Note: The Ascending Node Vector is sometimes referred to as the Node Vector. It is defined as $\mathbf{\hat{n}_\Omega}$:
+
+:::{math}
+:label:
+\mathbf{\hat{n}_\Omega} = \hat{\mathbf{z}} \times \hat{\mathbf{h}}
+:::
+
+
+### 1. Magnitude of Angular Momentum
+
+The first Integral of Motion to determine is the Magnitude of Angular Momentum (h) using Equation {eq}`angular_momentum`
 
 :::{math}
 \mathbf{h} = \mathbf{r} \times \mathbf{v}
 :::
 
-### Inclination
+Note that $\mathbf{h}$ = h$\hat{\mathbf{h}}$, where
 
-Next we define the Inclination of the orbit to be the angle measuring the tilt of the orbit around it's "celetisal" body. For our diagram this is it is from the reference vector $\mathbf{\hat{z}}$ and unit Specific Angular Momentum vector $\mathbf{\hat{h}}$
+:::{math}
+:label:
+\hat{\mathbf{h}} = \frac{\mathbf{r}\times\mathbf{v}}{|\mathbf{r}\times\mathbf{v}|}
+:::
 
-In Astrodynamics the Inclination is restricted between 0$^\circ$ and 180$^\circ$. 
+### 2. Inclination
+
+The Inclination of an orbit is defined as the angle measuring the tilt of the orbit around the primary body. From [Figure 3.1](iom_Figure_1) it is shown as the the angle between the reference vector $\mathbf{\hat{z}}$ and unit Specific Angular Momentum vector $\mathbf{\hat{h}}$.
+
+:::{math}
+\hat{\mathbf{h}} \cdot \hat{\mathbf{z}} = cos(i)
+:::
+
+In Astrodynamics the Inclination is restricted between 0$^\circ$ $\le$ i $\le$ 180$^\circ$. 
+
+
+:::{math}
+:label:
+i = cos^{-1}\left({\hat{\mathbf{h}} \cdot \hat{\mathbf{z}}}\right)
+:::
+
+Or,
 
 :::{math}
 :label: inclination
-i = \cos^{-1}\left(\frac{\mathbf{\hat{z}}}{\mathbf{\hat{h}}}\right)
+i = \cos^{-1}\left(\frac{h_z}{|\mathbf{h}|}\right)
 :::
 
-There are convetions for common inclinations angles:
-From Wiki: (re write and reference future docs)
+There are convetions for common inclinations angles that will be discribed in other sections: TODO: Write and reference futre docs. 
 
-Might want to include figures/animations here depending on how are they are
+TODO: Consider including a figures/animations here. Already created file elliptic_orbit_inclination_types.py which can be converted to animation
 
 :::{math}
 :label: raan_cases
-\mathbf{i} = \begin{cases}
-0^{\circ} \lt \mathbf{i} \lt 90^{\circ} & \text{Prograde Orbit} \\
-\mathbf{i} = 0.0^{\circ} & \text{Prograde Orbit within the "reference plane"} \\
-\mathbf{i} = 63.4^{\circ} & \text{Critical inclination, when describing artificial - satellites orbiting the Earth, because they have zero apogee drift WIKI Refe} \\
-\mathbf{i} = 90.0^{\circ} & \text{Polar Orbit, in which the "spacecraft" passes over the poles of the planet} \\
-90.0^{\circ} \lt \mathbf{i} \le 180.0^{\circ} & \text{Retrograde Orbit} \\
+i = \begin{cases}
+i = 0.0^{\circ} & \text{Prograde Orbit - within the Reference Plane} \\
+0^{\circ} \lt i \lt 90^{\circ} & \text{Prograde Orbit} \\
+i = 63.4^{\circ} & \text{Critical Inclination - spacecraft with zero apogee drift} \\
+i = 90.0^{\circ} & \text{Polar Orbit, spacecraft passes over the poles of the primary body} \\
+90.0^{\circ} \lt i \le 180.0^{\circ} & \text{Retrograde Orbit} \\
 \end{cases}
 :::
 
 
-### Longitude of Ascending Node
+### 3. Longitude of Ascending Node
 
 The Longitude of Ascending Node is the angle between $\mathbf{\hat{x}}$ and Node Vector $\mathbf{\hat{n}}$. It is also known as the Right Ascension of the Ascending Node (RAAN). The Ascending Node is the intesection of the orbit and the reference plane. Thus the Right Ascension of the Ascending Node is the angle at which the "sat" "orbit" ascends through and above the "plane of reference". 
 
