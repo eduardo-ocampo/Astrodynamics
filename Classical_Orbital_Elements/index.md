@@ -5,10 +5,12 @@ Some Text
 
 ```{toctree}
 ---
-maxdepth: 4
+maxdepth: 6
+includehidden: true
 ---
 Two_Body_Problem.md
 Classical_Orbit_Elements.md
-Position_Vector.md
+Integrals_Of_Motion.md
+the_trajectory_equation.md
 Figures
 ```
