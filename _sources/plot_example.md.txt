@@ -3,8 +3,8 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.14.1
+    format_version: '0.8'
+    jupytext_version: 1.4.2
 kernelspec:
   display_name: Python 3
   language: python
@@ -13,16 +13,16 @@ kernelspec:
 
 # Examples of Rendering Plots in HTML
 
-```{code-cell} ipython3
+<!-- ```{code-cell} ipython3
 from myst_nb import glue
 a = "my variable!"
 glue("my_variable", a)
-```
+``` -->
 
-```{glue:figure} my_variable
+<!-- ```{glue:figure} my_variable
 
 This is a **caption**
-```
+``` -->
 
 ```{code-cell} ipython3
 import numpy as np
@@ -34,7 +34,9 @@ N = 10
 
 ```{code-cell} ipython3
 data = np.linspace(1,10,10)
-
+from elliptic_orbit_inclination_copy import plot
+fig1 =plot()
+fig1.show()
 import matplotlib.pyplot as plt
 fig, ax = plt.subplots(figsize=(6, 2))
 ax.plot(data)
@@ -78,6 +80,7 @@ glue("fig", fig_html, display=False)
 ::: -->
 
 ```{code-cell} ipython3
+:hide-input:
 import plotly.express as px
 df = px.data.iris()
 fig = px.scatter_3d(df, x='sepal_length', y='sepal_width', z='petal_width',
@@ -120,10 +123,3 @@ p.circle(data["sepal_width"], data["sepal_length"], fill_color=data["species"], 
 show(p)
 ```
 
-
-```{code-cell} ipython3
-:tags: ["remove-input"]
-from Classical_Orbital_Elements import elliptic_orbit_semimajor
-fig = elliptic_orbit_semimajor.plot()
-fig.show()
-```

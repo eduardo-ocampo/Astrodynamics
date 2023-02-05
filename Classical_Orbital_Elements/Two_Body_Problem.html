@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>The Two-Body Problem</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/css/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Classical Orbit Elements" href="Classical_Orbit_Elements.html" />
+  <link rel="prev" title="An Attempt To Show Math" href="../Math_Example.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Workspace</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Some Intro
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Math Example
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link  router-link-active">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../Optimal_Control_Theory/index.html#optimal-control-theory"
+         class="nav-link ">
+         optimal control theory
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Plotting Example
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Reference
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Some Intro
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Math Example
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link  router-link-active">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../Optimal_Control_Theory/index.html#optimal-control-theory"
+         class="nav-link ">
+         optimal control theory
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Plotting Example
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Reference
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Some Intro</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../intro.html" class="reference internal ">An Intro</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Math Example</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Math_Example.html" class="reference internal ">An Attempt To Show Math</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Classical Orbital Elements</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">The Two-Body Problem</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#the-two-body-problem" class="reference internal">The Two-Body Problem</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="Classical_Orbit_Elements.html" class="reference internal ">Classical Orbit Elements</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="Integrals_Of_Motion.html" class="reference internal ">Integrals of Motion</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="Python_Examples.html" class="reference internal ">Python Examples</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../Optimal_Control_Theory/index.html#optimal-control-theory">optimal control theory</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Optimal_Control_Theory/indirect_method.html" class="reference internal ">Optimal Control Theory</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Plotting Example</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../plot_example.html" class="reference internal ">Examples of Rendering Plots in HTML</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Reference</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Sphinx_Reference.html" class="reference internal ">Sphinx Reference</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>The Two-Body Problem</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="../Math_Example.html"
+       title="previous chapter">← An Attempt To Show Math</a>
+  </li>
+  <li class="next">
+    <a href="Classical_Orbit_Elements.html"
+       title="next chapter">Classical Orbit Elements →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <section id="the-two-body-problem">
+<h1>The Two-Body Problem<a class="headerlink" href="#the-two-body-problem" title="Permalink to this headline">¶</a></h1>
+<p>The full two-body problem is the motion two bodies with finite masses that are attracted to each other according to Newton’s Law of Gravitation.</p>
+<p>We are interested in their relative dynamics. The force of particle <span class="math notranslate nohighlight">\(P_1\)</span> acting on particle <span class="math notranslate nohighlight">\(P_2\)</span> in the inertial frame yields the following diagram:</p>
+<figure class="align-default" id="fig-two-body-problem-figure">
+<a class="reference internal image-reference" href="../_images/two-body_image.png"><img alt="../_images/two-body_image.png" src="../_images/two-body_image.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure 1.1</strong> Two-Body Problem.</span><a class="headerlink" href="#fig-two-body-problem-figure" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Where <span class="math notranslate nohighlight">\(P_1\)</span> has mass <span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> has mass <span class="math notranslate nohighlight">\(m_2\)</span>, and we define the relative vector notation as:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\mathbf{r}_{ij} = \mathbf{r}_j - \mathbf{r}_i\\\mathbf{r}_{12} = \mathbf{r}_2 - \mathbf{r}_1\end{aligned}\end{align} \]</div>
+<p>Derived from Newton’s Law of Gravitation, the Equation of Motion for the Two-Body Problem is:</p>
+<div class="math notranslate nohighlight" id="equation-eq-two-body-eom">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-two-body-eom" title="Permalink to this equation">¶</a></span>\[\ddot{\mathbf{r}} = -G\frac{(m_1+m_2)}{r^3}\mathbf{r}\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{r} = \mathbf{r_{12}} = \mathbf{r_2} - \mathbf{r_1}\]</div>
+<p>Each particle has a State Vector made up of its position and velocity:</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-vector">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-state-vector" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{\bar{x}} = \begin{bmatrix} 
+    \mathbf{x} \\ \mathbf{y} \\ \mathbf{z} \\
+    \mathbf{\dot{x}} \\ \mathbf{\dot{y}} \\ \mathbf{\dot{z}}
+\end{bmatrix}\end{split}\]</div>
+<p>To solve the for the Two-Body Problem we require 12 equations of motion due to 2 state vectors. However, if we assume one of the particles does not have mass or its mass is negligible  (Earth-satellite system) the system will require only 6 equations of motion. Thus 6 integrals of motion are needed to solve the relative dynamics of the Two-Body Problem.</p>
+<p>These 6 integrals of motion have become to be known as the <a class="reference internal" href="Classical_Orbit_Elements.html"><span class="doc std std-doc">Classical Orbital Elements</span></a>. An integral of motion is a combination of positions, velocities, and times that remain constant under the motion governed by the equations of motion.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The term <span class="math notranslate nohighlight">\(G(m_1+m_2)\)</span> comes up quite often in our Equations of Motion that is convenient to define it as the Gravitation Constant (<span class="math notranslate nohighlight">\(\mu\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[\mu = G(m_1+m_2)\]</div>
+</div>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="../Math_Example.html"
+       title="previous chapter">← An Attempt To Show Math</a>
+  </li>
+  <li class="next">
+    <a href="Classical_Orbit_Elements.html"
+       title="next chapter">Classical Orbit Elements →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, Eddie.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

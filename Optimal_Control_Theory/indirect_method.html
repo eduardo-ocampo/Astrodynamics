@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>Optimal Control Theory</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/css/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Examples of Rendering Plots in HTML" href="../plot_example.html" />
+  <link rel="prev" title="Optimal Control Theory" href="index.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Workspace</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Some Intro
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Math Example
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#optimal-control-theory"
+         class="nav-link  router-link-active">
+         optimal control theory
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Plotting Example
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Reference
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Some Intro
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Math Example
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="index.html#optimal-control-theory"
+         class="nav-link  router-link-active">
+         optimal control theory
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Plotting Example
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics-workspace"
+         class="nav-link ">
+         Reference
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Some Intro</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../intro.html" class="reference internal ">An Intro</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Math Example</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Math_Example.html" class="reference internal ">An Attempt To Show Math</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Classical Orbital Elements</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/Two_Body_Problem.html" class="reference internal ">The Two-Body Problem</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/Classical_Orbit_Elements.html" class="reference internal ">Classical Orbit Elements</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/Integrals_Of_Motion.html" class="reference internal ">Integrals of Motion</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/Python_Examples.html" class="reference internal ">Python Examples</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="index.html#optimal-control-theory">optimal control theory</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Optimal Control Theory</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#optimal-control-theory" class="reference internal">Optimal Control Theory</a></li>
+                
+                  <li class="toctree-l2"><a href="#numerical-setup-indirect-method" class="reference internal">Numerical Setup - Indirect Method</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Plotting Example</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../plot_example.html" class="reference internal ">Examples of Rendering Plots in HTML</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics-workspace">Reference</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Sphinx_Reference.html" class="reference internal ">Sphinx Reference</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+      <li><a href="index.html">Optimal Control Theory</a> &raquo;</li>
+    
+    <li>Optimal Control Theory</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="index.html"
+       title="previous chapter">← Optimal Control Theory</a>
+  </li>
+  <li class="next">
+    <a href="../plot_example.html"
+       title="next chapter">Examples of Rendering Plots in HTML →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="optimal-control-theory">
+<h1>Optimal Control Theory<a class="headerlink" href="#optimal-control-theory" title="Permalink to this headline">¶</a></h1>
+<section id="background">
+<h2>Background<a class="headerlink" href="#background" title="Permalink to this headline">¶</a></h2>
+<p>TODO: Mark latex math for label</p>
+<p>In this section, we will look at optimizing a co-planar rendezvous manevour. We disire a thrurst direction function that minimizes fuel mass and time of flight. Given a constant thrust rocket engine T = thrust operation for a given length of time tf. Show the optimal trajetory from a cirular orbit of XXX to XXX which are coplanar.</p>
+<p>Simplififed equations of motion,</p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-0">
+<span class="eqno">(1)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-0" title="Permalink to this equation">¶</a></span>\[\dot{\mathbf{r}} = \mathbf{v}\]</div>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-1">
+<span class="eqno">(2)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-1" title="Permalink to this equation">¶</a></span>\[\begin{split}\dot{\mathbf{v}} = -\frac{\mu}{r^3}\mathbf{r} + \frac{T}{m}
+\begin{pmatrix}
+\cos{\theta}\cos{\phi} \\
+\sin{\theta}\cos{\phi} \\
+\sin{\phi}
+\end{pmatrix}\end{split}\]</div>
+<p>The transfer starts at <span class="math notranslate nohighlight">\(t_0\)</span> = 0 and ends with thrust burn cutoff at <span class="math notranslate nohighlight">\(t_f\)</span>, with a given mass flow rate of <span class="math notranslate nohighlight">\(\alpha\)</span></p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-2">
+<span class="eqno">(3)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-2" title="Permalink to this equation">¶</a></span>\[\dot{m} = -\alpha\]</div>
+<p>Boundary conditions</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{matrix}
+ Initial &amp; Final \\ 
+ \mathbf{r}(t_0) = \mathbf{r_0} &amp; \mathbf{r}(t_f) = \mathbf{r_f} \\  
+ \mathbf{v}(t_0) = \mathbf{v_0} &amp; \mathbf{v}(t_f) = \mathbf{v_0} \\  
+ m(t_0) = m_0                   &amp; m(t_f) = \text{free variable} \\  
+\end{matrix}\end{split}\]</div>
+<p>To meet our objective of minizing fuel mass we will want to maximize <span class="math notranslate nohighlight">\(m(t_f)\)</span> which is the same as minizime transfer time.</p>
+</section>
+<section id="optimal-transfer-indirect-method">
+<h2>Optimal Transfer - Indirect Method<a class="headerlink" href="#optimal-transfer-indirect-method" title="Permalink to this headline">¶</a></h2>
+<p>Using Optimal Control Theory to select the optimal thrust direction over time. This section follows the notation from LINK BOOK.</p>
+<p>Write out the cost function</p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-3">
+<span class="eqno">(4)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-3" title="Permalink to this equation">¶</a></span>\[\bar{J} = \Phi(x(t_f),t_f) + \int_{t_0}^{t_f} L(x(t),u(t),t) dt\]</div>
+<div class="math notranslate nohighlight">
+\[\bar{J} = \Phi(x(t_f),t_f) + 0\]</div>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-4">
+<span class="eqno">(5)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-4" title="Permalink to this equation">¶</a></span>\[\bar{J} = -m(t_f)\]</div>
+<div class="math notranslate nohighlight">
+\[\Phi = -m(t_f)\]</div>
+<p>The control parameter is</p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-5">
+<span class="eqno">(6)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-5" title="Permalink to this equation">¶</a></span>\[\begin{split}u(t) = 
+\begin{bmatrix}
+\theta(t) \\
+\phi(t)
+\end{bmatrix}\end{split}\]</div>
+<p>The Hamiltonian is, therefore,</p>
+<div class="math notranslate nohighlight">
+\[H = \lambda(t)^T\]</div>
+<div class="math notranslate nohighlight">
+\[H[x(t),u(t),\lambda(t),t] = L(x(t),u(t),t) + \mathbf{\lambda(t)}^T \mathbf{\mathit{f}} \]</div>
+<div class="math notranslate nohighlight">
+\[H = \mathbf{\lambda}(t)^T \mathbf{\mathit{f}} = \mathbf{\lambda^T}\mathbf{\mathit{f}}\]</div>
+<p>Where,</p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-6">
+<span class="eqno">(7)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-6" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{\lambda}(t) = 
+\begin{bmatrix}
+\lambda_r(t) \\
+\lambda_v(t) \\
+\lambda_m(t)
+\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-7">
+<span class="eqno">(8)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-7" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{\mathit{f}} = 
+\begin{bmatrix}
+\mathbf{v} \\
+-\frac{\mu}{r^3}\mathbf{r} + \frac{T}{m}
+\begin{pmatrix}
+\cos{\theta}\cos{\phi} \\
+\sin{\theta}\cos{\phi} \\
+\sin{\phi}
+\end{pmatrix} \\
+-\alpha
+\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-8">
+<span class="eqno">(9)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-8" title="Permalink to this equation">¶</a></span>\[\begin{split}H = \mathbf{\lambda}_r^T\mathbf{v} -\frac{\mu}{r^3}\mathbf{\lambda}_r^T\mathbf{r} + \frac{T}{m}\mathbf{\lambda}_r^T 
+\begin{pmatrix}
+\cos{\theta}\cos{\phi} \\
+\sin{\theta}\cos{\phi} \\
+\sin{\phi}
+\end{pmatrix}
+- \lambda_m\alpha\end{split}\]</div>
+<p>Obtain the differential equations for <span class="math notranslate nohighlight">\(\lambda(t)\)</span> by evaluting</p>
+<div class="math notranslate nohighlight">
+\[\dot{\mathbf{\lambda}}(t) = -\frac{\partial{H}}{\partial{x}}\]</div>
+<p>Recall that position and velocity vectors each contain 3 states, thus in total there will be 7 differtial equations for <span class="math notranslate nohighlight">\(\lambda(t)\)</span>.</p>
+<p>TODO: Left align this</p>
+<div class="math notranslate nohighlight">
+\[\dot{\mathbf{\lambda}_r} = -\frac{3\mu}{r^5}\mathbf{r}^T\mathbf{\lambda}_v\mathbf{r} + \frac{\mu}{r^3}\mathbf{\lambda}_v\]</div>
+<div class="math notranslate nohighlight">
+\[\dot{\mathbf{\lambda}_v} = -\mathbf{\lambda}_r\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\dot{\mathbf{\lambda}_m} = \frac{T}{m^2}
+\begin{pmatrix}
+\cos{\theta}\cos{\phi} \\
+\sin{\theta}\cos{\phi} \\
+\sin{\phi}
+\end{pmatrix}
+\mathbf{\lambda}_v\end{split}\]</div>
+<p>Next, we obtain the control by evaluting</p>
+<div class="math notranslate nohighlight">
+\[\frac{\partial{H}}{\partial{u(t)}}= 0\]</div>
+<p>The components that contain our control parameters influence the result. Those partials are shown below</p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-9">
+<span class="eqno">(10)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-9" title="Permalink to this equation">¶</a></span>\[\begin{split}\frac{\partial{H}}{\partial{\theta}} = \frac{T}{m}\mathbf{\lambda}_v^T
+\begin{bmatrix}
+-\sin{\theta}\cos{\phi} \\
+\cos{\theta}\cos{\phi} \\
+0
+\end{bmatrix}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-10">
+<span class="eqno">(11)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-10" title="Permalink to this equation">¶</a></span>\[\begin{split}\frac{\partial{H}}{\partial{\phi}} = \frac{T}{m}\mathbf{\lambda}_v^T
+\begin{bmatrix}
+-\cos{\theta}\sin{\phi} \\
+-\sin{\theta}\sin{\phi} \\
+0
+\end{bmatrix} \end{split}\]</div>
+<p>After a few algebraic steps the control matrix has the form,</p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-11">
+<span class="eqno">(12)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-11" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix}
+\cos{\theta}\cos{\phi} \\
+\sin{\theta}\cos{\phi} \\
+\sin{\phi}
+\end{bmatrix} =
+\begin{bmatrix}
+\frac{\lambda_{v1}}{\lambda_{v12}} \frac{\lambda_{v12}}{|\lambda_{v}|} \\
+\frac{\lambda_{v2}}{\lambda_{v12}} \frac{\lambda_{v12}}{|\lambda_{v}|} \\
+\frac{\lambda_{v3}}{|\lambda_{v}|} \\
+\end{bmatrix} = 
+\frac{\mathbf{\lambda_{v}}}{|\mathbf{\lambda_{v}}|} \end{split}\]</div>
+<p>The result is the so-called primer vector noteably coined by Derek Lawden and his investiageiton of optimal orbit transfers. LINK SOMETHING HERE.Lawden, D. F. (1963) Optimal Trajectories for Space Navigation, Butterworths, London.Google Scholar</p>
+<p>Finally, we can use prime vector Eq XXX to simplify equation XXX and equation XXX</p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-12">
+<span class="eqno">(13)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-12" title="Permalink to this equation">¶</a></span>\[\dot{\lambda}_m = \frac{T}{m^2}|\mathbf{\lambda}_v|\]</div>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-13">
+<span class="eqno">(14)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-13" title="Permalink to this equation">¶</a></span>\[H = \mathbf{\lambda}_r^T\mathbf{v} -\frac{\mu}{r^3}\mathbf{\lambda}_r^T\mathbf{r} + \frac{T}{m}|\mathbf{\lambda}_v| - \lambda_m\alpha\]</div>
+<p>Now determine the bound conditions for <span class="math notranslate nohighlight">\(\lambda(t)\)</span> by evalutaing <span class="math notranslate nohighlight">\(\frac{\partial{\Phi}}{\partial{x}}\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\lambda}(t_f) = \left[\frac{\partial{\Phi}}{\partial{x(t_f)}}\right]^T\]</div>
+<p>Note that if a value is specified for a component of the state x(<span class="math notranslate nohighlight">\(t_f\)</span>) then there is no condition its <span class="math notranslate nohighlight">\(\lambda\)</span>(<span class="math notranslate nohighlight">\(t_f\)</span>) and it is a free variable.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{matrix}
+ \mathbf{\lambda}_r(t_0) = \text{free} &amp; \mathbf{\lambda}_r(t_f) = \text{free} \\  
+ \mathbf{\lambda}_v(t_0) = \text{free} &amp; \mathbf{\lambda}_v(t_f) = \text{free} \\  
+ \mathbf{\lambda}_m(t_0) = \text{free} &amp; \mathbf{\lambda}_m(t_f) = -1 \\  
+\end{matrix}\end{split}\]</div>
+<p>The results shows our natural boundary condition. Note that the control is not a function of <span class="math notranslate nohighlight">\(\mathbf{\lambda}_m(t)\)</span>. Solving this problem now depends on finding <span class="math notranslate nohighlight">\(\mathbf{\lambda}_r(t_0)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{\lambda}_v(t_0)\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{r}(t_f) = \mathbf{r}_f\)</span> and <span class="math notranslate nohighlight">\(\mathbf{v}(t_f) = \mathbf{v}_f\)</span></p>
+<p>The next section will conver how numerically solve for <span class="math notranslate nohighlight">\(\lambda(t)\)</span> and make use of the boundary conditions.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="numerical-setup-indirect-method">
+<h1>Numerical Setup - Indirect Method<a class="headerlink" href="#numerical-setup-indirect-method" title="Permalink to this headline">¶</a></h1>
+<p>The Shooting Method is used in optimizing the orbit problem. For this problem the initial guess for the lambdas have been provided.</p>
+<p>Show Lambdas</p>
+<p>The Shooting method is a numerical analysis method for solving a boundary value problem by reducing it to an intial value problem. Here we will solve our initial value problem as a system of ODE:</p>
+<p>From equation we have the following Differential Equations to solve using scipy.solve_ivp:</p>
+<p>Differential Equations of Motion</p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-14">
+<span class="eqno">(15)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-14" title="Permalink to this equation">¶</a></span>\[\dot{\mathbf{r}} = \mathbf{v}\]</div>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-15">
+<span class="eqno">(16)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-15" title="Permalink to this equation">¶</a></span>\[\dot{\mathbf{v}} = -\frac{\mu}{r^3}\mathbf{r} + \frac{T}{m}*\frac{\mathbf{\lambda_{v}}}{|\mathbf{\lambda_{v}}|} \]</div>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-16">
+<span class="eqno">(17)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-16" title="Permalink to this equation">¶</a></span>\[\dot{m} = -\alpha\]</div>
+<p>Derivatives of Lagrange Multipliers</p>
+<div class="math notranslate nohighlight">
+\[\dot{\mathbf{\lambda}_r} = -\frac{3\mu}{r^5}\mathbf{r}^T\mathbf{\lambda}_v\mathbf{r} + \frac{\mu}{r^3}\mathbf{\lambda}_v\]</div>
+<div class="math notranslate nohighlight">
+\[\dot{\mathbf{\lambda}_v} = -\mathbf{\lambda}_r\]</div>
+<div class="math notranslate nohighlight">
+\[\dot{\mathbf{\lambda}_m} = \frac{T}{m^2}*|\mathbf{\lambda}_v|\]</div>
+<p>By treating the target orbit state as root-finding, we can use scipy.fsolve to search for a final trajectory solution that matches our target orbit. Where <span class="math notranslate nohighlight">\(\mathbf{S}(\mathbf{z})\)</span> is the arrangment of components of <span class="math notranslate nohighlight">\(\mathbf{x^*}(t_f)\)</span>.</p>
+<p>The optimal trajectory state is denoted by <span class="math notranslate nohighlight">\(x^*(t)\)</span> while the any other trajectory state is <span class="math notranslate nohighlight">\(x(t)\)</span>. If our system is autonomous then H = constant. We also require our Natural Boundary Condition to be met. Thus the root-finding setup has the following form:</p>
+<div class="math notranslate nohighlight" id="equation-optimal-control-theory-indirect-method-17">
+<span class="eqno">(18)<a class="headerlink" href="#equation-optimal-control-theory-indirect-method-17" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix}
+x^*_1 \\
+x^*_2 \\
+x^*_3 \\
+\vdots \\
+\lambda_m^* \\
+H \\
+\end{bmatrix} - 
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3 \\
+\vdots \\
+-1 \\
+0 \\
+\end{bmatrix}  = 0\end{split}\]</div>
+<p>then we will have a good way to search the best result. Let’s use Python’s fsolve to find the root. We can see from the following example, we find the correct answer directly.</p>
+<section id="compare-to-hohmann-transfer-problem">
+<h2>Compare to Hohmann transfer problem<a class="headerlink" href="#compare-to-hohmann-transfer-problem" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="index.html"
+       title="previous chapter">← Optimal Control Theory</a>
+  </li>
+  <li class="next">
+    <a href="../plot_example.html"
+       title="next chapter">Examples of Rendering Plots in HTML →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, Eddie.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>
