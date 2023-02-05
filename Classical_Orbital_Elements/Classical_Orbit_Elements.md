@@ -22,7 +22,7 @@ In this section let us consider the Two-Body system of a satellite orbiting Eart
 2. Eccentricity ($e$)
 3. Inclination  ($i$)
 4. Longitude of Ascending Node ($\Omega$)
-5. rgument of Periapsis ($\omega$)
+5. Argument of Periapsis ($\omega$)
 6. Time of Periapsis Passage ($t_0$)
 
 ## Elements Defining The Shape and Size of The Orbit
