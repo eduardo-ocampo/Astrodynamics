@@ -10,10 +10,13 @@ kernelspec:
   language: python
   name: python3
 ---
-
+.. _
 # Integrals of Motion 
- 
+
+TOOD: review when variable are and should be capatilized
+
 As discussed in [the Two-Body Problem](Two_Body_Problem.md), Integrals of Motion are used to derive properties  of Two-Body Motion without having to solve the equations of motion. For a relative dynamic system, there are 6 Integrals of Motion to solve which are constant along the trajectory of motion.
+
 
 ## Conservation of Angular Momentum
 
@@ -176,7 +179,7 @@ The Longitude of Ascending Node is the angle between $\mathbf{\hat{x}}$ and Node
 **Figure 3.2**
 ```
 
-This Integral of Motion is also known as the Right Ascension of the Ascending Node (RAAN). The Ascending Node is the intesection of the orbit and the reference plane as shown in Figure 3.2. Thus the Right Ascension of the Ascending Node is the angle at which the spacecraft ascends through and above the "plane of reference". 
+This Integral of Motion is also known as the Right Ascension of the Ascending Node (RAAN). The Ascending Node is the intesection of the orbit and the reference plane as shown in [Figure 3.2](iom_Figure_2). Thus the Right Ascension of the Ascending Node is the angle at which the spacecraft ascends through and above the "plane of reference". 
 
 In Astrodynamics the Longitude of Ascending Node is define to be betwewn 0$^{\circ}$ and 360$^{\circ}$. To solve for the angle we must perform a quadrant check due to its trigometric definition. By looking at the y-component of the Node Vector ($\mathbf{\hat{n}_y}$).
 
@@ -194,27 +197,21 @@ If $\mathbf{\hat{n}_y} \geq 0^{\circ}$ then $\mathbf{\Omega}$ lies between I and
 
 
 
-## Conservation of Energy 
-E
+## Conservation of Energy (ε)
 
-The specific Energy ($\varepsilon$) of the Two-Body system is defined as:
+The specific energy ($\varepsilon$) of the Two-Body system is defined as:
 
-Note: Scalars
 :::{math}
-:label: energy
+:label: energy 
 \varepsilon = \frac{v^2}{2} - \frac{\mu}{r}
 :::
 
-To show that the Energy is an integral of motion, start by taking a dot product of our EOMs with respect to Velcoty.
+### 4. Specific Energy
 
-EOMs {eq}`Two_Body_EOM`:
-
-:::{math}
-\ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}
-:::
-
+To show that the energy is an integral of motion, start by taking a dot product of our Equations of Motion for the Two-Body Problem with respect to velocity.
 
 :::{math}
+:label:
 \left(\ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}\right) \cdot \mathbf{v}
 :::
 
@@ -252,11 +249,9 @@ Thus:
 \varepsilon = \frac{v^2}{2} - \frac{\mu}{r} = Constant
 :::
 
-This form of the Energy Equation is know for deriving the Vis-Viva Equation in Astrodynamics. (Since equal we can set equal to other points in traject for example va/ra = vp/rp energies) The Vis-Viva equation relates the... Talk more about this and introduce the Vis-Viva Equation
+This form of the specific energy is know as the vis-viva equation in Astrodynamics. Specific energy does not change as a function of time, thus it is considered an Integral of Motion. Note the scalar values and that $\mu$ is the gravitational constant for the Two-Body Problem.
 
-Properites of Specific Energy:
-
-
+**Properites of Specific Energy:**
 
 :::{math}
 :label: eq:raan_cases
@@ -267,8 +262,23 @@ Properites of Specific Energy:
 \end{cases}
 :::
 
+For a bound orbit
 
-## Eccentricity Vector
+:::{math}
+r \lt -\frac{\mu}{\varepsilon}
+:::
+
+For an escaped orbit
+
+:::{math}
+r \rightarrow \infty
+:::
+
+:::{math}
+\frac{v^2}{2} = \varepsilon
+:::
+
+## Eccentricity Vector (e)
 
 The Eccentricity Vector ($\mathbf{e}$) is defined as:
 
@@ -277,9 +287,7 @@ The Eccentricity Vector ($\mathbf{e}$) is defined as:
 \mathbf{e} = \frac{1}{\mu}\left(\mathbf{v}\times\mathbf{h}\right) - \frac{\mathbf{r}}{r}
 :::
 
-To show that the Eccentricity Vector is an integral of motion, take a cross-product of our EOM with respect to Angular Momemtum ($\mathbf{h}$)
-
-EOMs {eq}`Two_Body_EOM`:
+To show that the Eccentricity Vector is an integral of motion, take a cross-product of our Equations of Motion for the Two-Body Problem with respect to Angular Momemtum ($\mathbf{h}$)
 
 :::{math}
 \ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}
@@ -316,11 +324,16 @@ Apply [Vector Triple Product](https://en.wikipedia.org/wiki/Triple_product):
 Integrate both sides to get:
 
 :::{math}
-:label:
+:label: proof_eccent
 \mathbf{v}\times\mathbf{h} = \mu\frac{\mathbf{r}}{r} + \mathbf{C}
 :::
 
-Where $\mathbf{C}$ is a constant vector. The constant vector has the same dimensions as $\mu$, thus we can transform it into a dimensionless number by dividing Equation XXX by $\mu$ and defining the Eccentricity Vector as $\mathbf{e} = \frac{\mathbf{c}}{\mu}$
+Where $\mathbf{C}$ is a constant vector. The constant vector has the same dimensions as $\mu$, thus we can transform it into a dimensionless number by dividing Equation {eq}`proof_eccent` by $\mu$ and defining the Eccentricity Vector as 
+
+:::{math}
+:label:
+\mathbf{e} = \frac{\mathbf{c}}{\mu}
+:::
 
 Finally, we can rewrite our Eccentcity Vector as:
 
@@ -331,289 +344,33 @@ Finally, we can rewrite our Eccentcity Vector as:
 
 Some Notes:
 
-By inspection it is known that constant vector $\mathbf{c}$ lies in the orbital plane. Therefore, the Eccentricity Vector also lies in the orbital plane. Althought $\mathbf{e}$ is a 3x1 Vector it's magnitude is define by components of Node Vector ($\mathbf{\hat{n}_\Omega}$,  $\mathbf{\hat{n}_T}$) which are already account for in defining hte Longtidue of Ascending Node (LINK HERE). The only extra integral of motion comes from the orientation of $\mathbf{e}$. This is know as the Argument of Periapsis ($\omega$). 
+By inspection it is known that constant vector $\mathbf{c}$ lies in the orbital plane. Therefore, the Eccentricity Vector also lies in the orbital plane. Althought $\mathbf{e}$ is a 3x1 vector its magnitude is define by components of Node Vector ($\mathbf{\hat{n}_\Omega}$,  $\mathbf{\hat{n}_T}$) which are already account for in defining the third Integral of Motion: [Longitdue of Ascending Node](#3-longitude-of-ascending-node). The only extra integral of motion comes from the orientation of $\mathbf{e}$ within the orbital plane. This angle is know as the Argument of Periapsis ($\omega$). 
 
-### The Argument of Periapsis
+### 5. The Argument of Periapsis ($\omega$)
 
-Mention it's range and maybe have animation.
+TODO: Insert a figure here showing eccent vector and $\omega$
 
-
-### The Trajectory Equation
-
-From the Eccentricty Vector the trajectory equation cab be derived by taking the dot product of Position Vector ($\mathbf{r}$) with the Eccentricity Vector ($\mathbf{e}$).
+As shown in figure XXX, The Argument of Periapsis is defined as the angled between the Node Vector ($\mathbf{n}$) and Eccentcity Vector ($\mathbf{e}$). It has a range of $0^\circ \lt \omega \lt 360^\circ$ and points towards periapsis. To solve for the angle a quadrant check is required by looking at z-component of the Eccentrcity Vector.
 
 :::{math}
-\mathbf{r}\cdot\left[ \mathbf{e} = \left( \frac{\mathbf{v}\times\mathbf{h}}{\mu} - \frac{\mathbf{r}}{r} \right) \right]
-:::
-
-:::{math}
-\mathbf{r}\cdot\mathbf{e} = \left( \frac{\left(\mathbf{v}\times\mathbf{r}\right)\cdot\mathbf{h}}{\mu} - {r} \right) 
-:::
-
-Here show a diagram of some sort that defines True Anomally (f/v)
-
-:::{math}
-\mathbf{r}\cdot\mathbf{e} = re\cos{f}
-:::
-
-Recall 
-
-:::{math}
-\mathbf{h} = \mathbf{r} \times \mathbf{v}
-:::
-
-:::{math}
-re\cos{f} = \frac{h^2}{\mu} - r
-:::
-
-:::{math}
-r\left( 1 + e\cos{f} \right) = \frac{h^2}{\mu}
-:::
-
-:::{math}
-r = \frac{h^2}{\mu} \frac{1}{\left( 1 + e\cos{f} \right)}
-:::
-
-Define $p$ which is the Semi-lastus Rectrum
-
-:::{math}
-p = \frac{h^2}{\mu}
-:::
-
-Thus the Trajector Equation as a function of True Anomally is:
-https://en.wikipedia.org/wiki/True_anomaly
-
-:::{math}
-r(f) = \frac{p}{\left( 1 + e\cos{f} \right)} = 
-:::
-
-Write something here about Trajector Equation 
-https://en.wikipedia.org/wiki/Kepler_orbit
-
-The trajectory equation deines the geometry of a conic section. Which describes four different orbit types for the Two-Body Problem:
-
-Good idea to have some figures here
-
-
-Change this format to something better
-
-:::{math}
-\text{Oribt Type} = \begin{cases}
-e = 0.0   & \text{Circular Orbit} \\
-0.0 \lt e \lt 1.0 & \text{Elliptical Orbit} \\
-e = 1.0   & \text{Parabolic Orbit} \\
-e \gt 1.0 & \text{Hyperbolic Orbit} \\
+:label: raan_cases
+\mathbf{\omega} = \begin{cases}
+\cos^{-1}\left(\frac{\mathbf{n}\cdot\mathbf{e}}{|\mathbf{n}||\mathbf{e}|}\right) & e_z \geq 0^{\circ} \\
+360^{\circ} - \cos^{-1}\left(\frac{\mathbf{n}\cdot\mathbf{e}}{|\mathbf{n}||\mathbf{e}|}\right) & e_z < 0^{\circ}
 \end{cases}
 :::
 
+# Kepler's Law
 
-## Kepler's Law
+The last Integral of Motion comes from Kepler's Law:
+
+:::{math}
+:label:
+\frac{d}{dt}\left(A\right) = \frac{h}{2}
+:::
+
 to
 
 Write about where they come from and describe the 6 that come out
 Talk about how we go from state vector to itegrals of motion
-
-
-
-
-
-
-## Python Examples
-
-Provide some intro, what position and velocity vector we'll be using. As Elements are shown consider writing out outputs and then summarizing at the end of them all. Talk about what units are assume (SI) km/s etc. 
-
-Consider a statelitte orbiting earth. Let's assume we have recieved the following data about it's position and velocity vector at some time $t$. 
-
-
-```
-Postion:  [10000, 1000, 0] km
-
-Velocity: [1, 6.324555, 1] km/sec
-
-```
-
-
-In the inertial coorindate frame this can be written as:
-
-:::{math}
-\mathbf{r} = 10000 \space \mathbf{\hat{i}} + 1000 \space \mathbf{\hat{j}} + 0.0 \space \mathbf{\hat{k}} \space \space {km}
-:::
-
-:::{math}
-\mathbf{v} = 1.0 \space \mathbf{\hat{i}} + 6.324555 \space \mathbf{\hat{j}} + 1.0 \space \space \mathbf{\hat{k}} \space \space \frac{km}{s}
-:::
-
-Let's determine the Sat's Orbital Elements using Python package twoBodyProblem.py
-
-
-Begin by importing moduel twoBodyProblem and defining the postion and state vector. Module twoBodyProblem.py requires an output file to be assigned as attribute `resultsOut`. Calling getElements() will calculate Orbital Elements of your State Vector while writeResults() will write out the results. 
-
-#### Script Setup
-
-```python
-import math
-from twoBodyProblem import orbitElements
-
-# Initial Position and Velocity Vectors
-position = [10000, 1000, 0] # km
-velocity = [1, 6.324555, 1] # km/s
-
-# Instantiate orbitElements Class
-orbitElements = orbitElements(position,velocity)
-orbitElements.resultsOut = "Example.results"
-
-# Calculate Orbital Elements and Save Results Out
-orbitElements.getElements()
-orbitElements.writeResults()
-```
-
-**Exampl.results File Contents**
-
-```
-Initial State Vectors:
-----------------------------------------
-Position = [10000, 1000, 0] km
-Velocity = [1, 6.324555, 1] km/sec
-
-
-Computed Results
-Element                            Value          Units
--------------------------------------------------------
-Position Magnitude                 10050             km
-Velocity Magnitude                6.4807         km/sec
-Energy                           -18.662     km^2/sec^2
-Angular Momentum                   63052       km^2/sec
-Eccentricity                     0.25706               
-Inclination                       9.1716        degrees
-Long. of Ascend. Node (Ω)         5.7106        degrees
-Argument of Perigee (ω)           268.31        degrees
-Semi-Major Axis                    10679             km
-Mean Motion                   0.00057207        rad/sec
-True Anomaly                       91.69        degrees
-Eccentric Anomaly                 76.744        degrees
-Mean Anomaly                      62.408        degrees
-Period                            3.0509          hours
-
-```
-
-
-
-All code blocks below are refereenced from Class orbitElements() in `twoBodyProblem.orbitElements()`. 
-
-Their magnitudes are calulcated in twoBodyProblem.py using ```from numpy.linalg import norm```
-
-```python
-from numpy.linalg import norm
-v = norm(posVector)
-r = norm(velVector)
-```
-
-### Anguluar Momentum 
-
-:::{math}
-\mathbf{h} = \mathbf{r} \times \mathbf{v}
-:::
-
-Utilizes [NumPy](https://numpy.org/) packages to perfrom cross product. 
-
-```python
-
-# Specific Angular Momentum Vector
-# --------------------------------------------------------------------------------  
-ang_momentum = np.cross(self.position,self.velocity)
-self.orbit_elements["Angular Momentum"] = {"value": norm(ang_momentum), 
-                                           "units": "km^2/sec"}
-
-```
-
-### Inclination
-
-
-:::{math}
-i = \cos^{-1}\left(\frac{\mathbf{\hat{z}}}{\mathbf{\hat{h}}}\right)
-:::
-
-Utilizes [NumPy](https://numpy.org/) packages to perfrom inverser trigometric functions and dot product. np.arccos() returns the angle of the ray intersecting the unit circle at the given x-coordinate in radians (0, $\pi$).
-
-```python
-
-# Inclination
-# --------------------------------------------------------------------------------
-incl = np.arccos(np.dot([0,0,1],ang_momentum)/norm(ang_momentum))
-self.orbit_elements["Inclination"] = {"value": np.degrees(incl), 
-                                      "units": "degrees"}
-```
-
-### Ascending Node Vector 
-
-Maybe add this?
-
-
-### Longitude of Ascending Node
-
-
-:::{math}
-\mathbf{\Omega} = \begin{cases}
-\cos^{-1}\left(\frac{\mathbf{\hat{x}}}{\mathbf{\hat{n}}}\right) & \mathbf{\hat{n}_y} \geq 0^{\circ} \\
-360^{\circ} - \cos^{-1}\left(\frac{\mathbf{\hat{x}}}{\mathbf{\hat{n}}}\right) & \mathbf{\hat{n}_y} < 0^{\circ}
-\end{cases}
-:::
-
-```python
-
-# Longitude of Ascending Node (Ω)
-# --------------------------------------------------------------------------------   
-long_ascend_node = np.arccos(np.dot([1,0,0],node_vec)/norm(node_vec))
-
-if node_vec[1] >= 0.0:
-    lan = np.degrees(norm(long_ascend_node))
-elif node_vec[1] < 0.0:
-    lan = np.degrees(2*np.pi - norm(long_ascend_node))
-self.orbit_elements["Long. of Ascend. Node (Ω)"] = {
-                    "value": lan, 
-                    "units": "degrees"}
-```
-
-### Specific Energy 
-
-:::{math}
-\varepsilon = \frac{v^2}{2} - \frac{\mu}{r}
-:::
-
-```python 
-# Specific Energy
-# --------------------------------------------------------------------------------   
-energy = v**2/2 - self.mu/r 
-self.orbit_elements["Energy"] = {"value": energy, 
-                                 "units": "km^2/sec^2"}
-```
-
-### Eccentricity Vector
-
-:::{math}
-\mathbf{e} = \frac{1}{\mu}\left(\mathbf{v}\times\mathbf{h}\right) - \frac{\mathbf{r}}{r}
-:::
-
-```python 
-# Eccentricity Vector
-# --------------------------------------------------------------------------------   
-eccentricity = (1/self.mu)*(np.cross(self.velocity,ang_momentum))-self.position/r
-self.orbit_elements["Eccentricity"] = {"value": norm(eccentricity), 
-                                        "units": " "}
-```
-
-### Argument of Perigee 
-
-
-```python
-# Argument of Perigee (ω)
-# --------------------------------------------------------------------------------   
-arg_peri = np.arccos(np.dot(node_vec,eccentricity) / 
-                    (norm(eccentricity)*norm(node_vec)))
-# Check ecc_zcomp
-if eccentricity[-1] < 0:
-    arg_peri = 2*np.pi - arg_peri
-self.orbit_elements["Argument of Perigee (ω)"] = {"value": np.degrees(arg_peri), 
-                                                    "units": "degrees"}
-```
 
