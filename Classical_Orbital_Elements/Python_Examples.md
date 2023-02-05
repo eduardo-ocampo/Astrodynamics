@@ -41,7 +41,7 @@ In the inertial coorindate frame the position and velocity vectors are:
 \end{bmatrix} \frac{km}{sec}
 ::: 
 
-Determine the spacecraft's orbital properties using Python package [twoBodyProblem.py](twoBodyProblem.py)
+Determine the spacecraft's orbital properties using Python package [twoBodyProblem.py](https://github.com/thatguyeddieo/Astrodynamics-Workspace/blob/main/Classical_Orbital_Elements/twoBodyProblem.py)
 
 Begin by importing module ``twoBodyProblem`` and defining the postion and velocity vector. Instantiate class ``orbitElements()`` with the initial state vector. Calling method ``orbitElements.getElements()`` will calculate orbital properities for the state vector while ``orbitElements.writeResults()`` will write out the results. Package ``twoBodyProblem.py`` writes the calulated orbital properites results to orbitElements.txt and can be overwritten by reassigning attribute ``resultsOut``.
 
