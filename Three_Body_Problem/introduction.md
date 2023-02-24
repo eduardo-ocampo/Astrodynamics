@@ -35,24 +35,24 @@ From Newton's Law of Gravitation, the mutual gravitational interaction on one fi
 
 :::{math}
 :label:
-m_i \ddot{\mathbf{r_i}} = \mathbf{F_ij} + \mathbf{F_ik} 
+m_i \mathbf{\ddot{r}}_i = \mathbf{F_ij} + \mathbf{F_ik} 
 :::
 
 For the Three-Body System the three force interactions are:
 
 :::{math}
 :label: eom_1
-m_1\ddot{\mathbf{r_1}} = -G\frac{(m_1m_2)}{{r^3_{21}}}\mathbf{r_{21}} -G\frac{(m_1m_3)}{{r^3_{31}}}\mathbf{r_{31}}
+m_1\mathbf{\ddot{r}}_1 = -G\frac{(m_1m_2)}{{r^3_{21}}}\mathbf{r_{21}} -G\frac{(m_1m_3)}{{r^3_{31}}}\mathbf{r_{31}}
 :::
 
 :::{math}
 :label: eom_2
-m_1\ddot{\mathbf{r_2}} = -G\frac{(m_2m_1)}{{r^3_{12}}}\mathbf{r_{12}} -G\frac{(m_2m_3)}{{r^3_{32}}}\mathbf{r_{32}}
+m_1\mathbf{\ddot{r}}_2 = -G\frac{(m_2m_1)}{{r^3_{12}}}\mathbf{r_{12}} -G\frac{(m_2m_3)}{{r^3_{32}}}\mathbf{r_{32}}
 :::
 
 :::{math}
 :label: eom_3
-m_3\ddot{\mathbf{r_3}} = -G\frac{(m_3m_1)}{{r^3_{13}}}\mathbf{r_{13}} -G\frac{(m_3m_2)}{{r^3_{23}}}\mathbf{r_{23}}
+m_3\mathbf{\ddot{r}}_3 = -G\frac{(m_3m_1)}{{r^3_{13}}}\mathbf{r_{13}} -G\frac{(m_3m_2)}{{r^3_{23}}}\mathbf{r_{23}}
 :::
 
 These are equations of motion for the Three-Body Problem. 
