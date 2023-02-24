@@ -35,6 +35,13 @@ Classical_Orbital_Elements/Python_Examples
 
 ```{toctree}
 :maxdepth: 6
+:caption: Three Body Problem
+Three_Body_Problem/introduction.md
+Three_Body_Problem/cr3bp.md
+```
+
+```{toctree}
+:maxdepth: 6
 :caption: Optimal Control Theory
 Optimal_Control_Theory/index.md
 ```
