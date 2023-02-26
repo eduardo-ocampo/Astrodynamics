@@ -38,6 +38,7 @@ Classical_Orbital_Elements/Python_Examples
 :caption: Three Body Problem
 Three_Body_Problem/introduction.md
 Three_Body_Problem/cr3bp.md
+Three_Body_Problem/jacobi_integral.md
 ```
 
 ```{toctree}

@@ -1,5 +1,5 @@
 
-## Circular Restricted Three-Body Problem 
+# Circular Restricted Three-Body Problem 
 
 By letting $m_3 \rightarrow 0$ then Equation 10-11 as derived from the [Jacobian Coordinate Frame](introduction.md/#jacobian-coordinate-frame) simplifies to the Two-Body Problem form. 
 
@@ -149,13 +149,15 @@ U\left(\mathbf{r} \right) = \frac{Gm_1}{\sqrt{\left( x + \frac{m_2}{m_1+m_2}R \r
 
 :::
 
-Let us write this a bit more concisely by defining a new force pontential as $\mathbf{V}$ in order to simplify our equations of motion Equation {eq}`cr3bp_eom`;
+Let us write this a bit more concisely by defining a new force potential as $\mathbf{V}$ in order to simplify our equations of motion Equation {eq}`cr3bp_eom`:
 
 :::{math}
-:label:
+:label: cr3bp_V
 
 V\left(x,y,z\right) = \frac{1}{2}n^2\left( x^2 + y^2 \right) + U
+:::
 
+:::{math}
 U = \frac{Gm_1}{r_1} + \frac{Gm_2}{r_2}
 :::
 
@@ -168,10 +170,19 @@ r_1 = \sqrt{\left( x + \frac{m_2}{m_1+m_2}R \right)^2+y^2+z^2}
 r_ 2 = \sqrt{\left( x - \frac{m_1}{m_1+m_2}R \right)^2+y^2+z^2}
 :::
 
-Finally, are equations of motion for the Circular Restricted Three-Body Problem becomes:
+```{note}
+The potential energy is made up of three components
+
+1. The potential energy due to the force induced by the rotating reference frame
+2. The gravitational potential energy from $P_1$
+3. The gravitational potential energy from $P_2$
+
+```
+
+Finally, the equations of motion for the **Circular Restricted Three-Body Problem** become:
 
 :::{math}
-:label: cr3bp_eom
+:label: cr3bp_eom_simp
 
 \ddot{x} - 2n\dot{y} = \frac{\partial{V}}{\partial{x}}
 
@@ -183,3 +194,143 @@ Finally, are equations of motion for the Circular Restricted Three-Body Problem 
 
 
 TODO: Create a plot of V potential for an arbitrary mu
+
+# Non-Dimensional Circular Restricted Three-Body Problem 
+
+Non-dimensionalization of the Circular Restricted Three-Body Problem has the advantage of solving one problem and applying the results to a general number of problems. The system is generalized for any Three-Body Problem by removing the dependence of the rotating reference rate.
+
+Normalize the equations for the Three-Body Problem along 3 physical properties of the system 
+
+**1. Mass**
+
+As shown in **Figure 1.4** the primary masses are normalized such that: 
+
+:::{math}
+:label:
+\mu = \frac{m_2}{m_1+m_2} 
+
+1 - \mu = \frac{m_1}{m_1+m_2} 
+
+:::
+
+This allows our equations of motion to be independent of the primary masses and relies more on their relative size ratio. 
+
+**2. Length**
+
+As shown in the [Jacobian Coordinate Frame](introduction.md#jacobian-coordinate-frame) the characteristic length of the Three-Body system is the vector $\mathbf{R}$. Define the non-dimensional length scale as $\mathbf{R}$ and normalize position vectors $\mathbf{r_1}$, $\mathbf{r_2}$, etc. 
+
+the length scale is:
+
+:::{math}
+r_s = R
+:::
+
+and yields the non-dimensional length term
+
+:::{math}
+:label:
+\mathbf{r}^* = \frac{\mathbf{r}}{r_s} = \frac{\mathbf{r}}{R}
+:::
+
+**3. Time**
+
+The time scale is simply normalized against the period of the circular orbit such that:
+
+:::{math}
+t_s = \frac{1}{n}
+:::
+
+this yields the non-dimensional time term:
+
+:::{math}
+:label:
+\tau = nt
+:::
+
+***********
+Apply the non-dimensional terms to Equation {eq}`cr3bp_eom_simp` to get non-dimensional equations of motion:
+
+
+:::{math}
+:label: cr3bp_eom_norm
+
+n^2R\ddot{x}^* - 2n^2R\dot{y}^* = \frac{1}{R}\frac{\partial{V}}{\partial{x^*}}
+
+n^2R\ddot{y}^* - 2n^2R\dot{x}^* = \frac{1}{R}\frac{\partial{V}}{\partial{x^*}}
+
+n^2R\ddot{z}^* = \frac{1}{R}\frac{\partial{V}}{\partial{z^*}}
+
+:::
+
+Normalize the force potential Equation {eq}`cr3bp_V` as:
+
+:::{math}
+:label:
+
+\tilde{V} = \frac{V}{n^2R^2}
+
+:::
+
+Now the equations of motion for the **Non-Dimensional Circular Restricted Three-Body Problem** become: 
+
+:::{math}
+:label: cr3bp_eom_norm_simp
+
+\ddot{x}^* - 2\dot{y}^* = \frac{\partial{\tilde{V}}}{\partial{x^*}}
+
+\ddot{y}^* + 2\dot{x}^* = \frac{\partial{\tilde{V}}}{\partial{y^*}}
+
+\ddot{z}^* = \frac{\partial{\tilde{V}}}{\partial{z^*}}
+
+:::
+
+Note that is this looks similar to Equation {eq}`cr3bp_eom_simp` it's just that the definition of $\tilde{V}$ and $\tilde{U}$ are different. Different in the sense that we scaled the force potential. 
+
+:::{math}
+:label: cr3bp_V_norm
+\tilde{V}\left(x^*,y^*,z^*\right) = \frac{1}{2}\left( {x^*}^2 + {y^*}^2\right) + \tilde{U}
+:::
+
+:::{math}
+
+\tilde{U} = \frac{U}{n^2R^2}
+:::
+
+We assume for the Non-Dimensional Restricted Three-Body Problem that $\mu < \frac{1}{2}$. This is not a bad assumptions for most problems we are Non-Dimensional Restricted Three-Body Problem that in solving. If not one can always swap $m_1$ and $m_2$.
+
+The gravity potential can be written as 
+
+:::{math}
+:label:
+\tilde{U} = \frac{1-\mu}{r^*_1} + \frac{\mu}{r^*_2}
+:::
+
+where $r^*_1$ and $r^*_2$ are:
+
+:::{math}
+r^*_1 = \sqrt{\left( x + \frac{m_2}{m_1+m_2}R \right)^2+y^2+z^2}
+:::
+
+:::{math}
+r^*_2 = \sqrt{\left( x - \frac{m_1}{m_1+m_2}R \right)^2+y^2+z^2}
+:::
+
+Given a solution for the the Non-Dimensional Circular Restricted Three-Body Problem ($\mathbf{r^*}$, $\mathbf{\dot{r}^*}$) we can transform back to dimensional system by introducing $\mathbf{R}$, $m_1$ and $m_2$ and solving for the mean motion of the two masses:
+
+:::{math}
+n = \sqrt{\frac{G\left( m_1 + m_2 \right)}{R^3}}
+:::
+
+:::{math}
+
+x = Rx^*, y = Ry^*, z = Rz^*
+:::
+
+:::{math}
+\dot{x} = nR\dot{x}^*, \dot{y} = nR\dot{y}^*, \dot{z} = nR\dot{z}^*
+
+:::
+
+By solving one non-dimensional problem, we actually solve **infinite** number of problems in dimensional set.
+
+TODO: Add simple cr3bp Python solution
