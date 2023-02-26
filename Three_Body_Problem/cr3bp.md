@@ -44,7 +44,7 @@ For example, consider the Earth-Moon system the x-coordinate axis is always from
 
 ```{figure} ./images/jacobi_frame_shift.png
 :name: fig:jacobi_frame_shift
-:width: 75%
+:width: 90%
 **Figure 1.3** Jacobi Coordinate Frame Shifted to The Rotating Frame
 ```
 
@@ -123,7 +123,7 @@ These equations represent where the spacecraft is relative to the Jacobian Coord
 
 ```{figure} ./images/jacobi_frame_shift_updated.png
 :name: fig:jacobi_frame_shift_updated
-:width: 75%
+:width: 90%
 **Figure 1.4** Circular Restricted Three-Body Problem in the Jacobian Coordinate Frame
 ```
 
@@ -195,7 +195,7 @@ Finally, the equations of motion for the **Circular Restricted Three-Body Proble
 
 TODO: Create a plot of V potential for an arbitrary mu
 
-# Non-Dimensional Circular Restricted Three-Body Problem 
+## Non-Dimensional Circular Restricted Three-Body Problem 
 
 Non-dimensionalization of the Circular Restricted Three-Body Problem has the advantage of solving one problem and applying the results to a general number of problems. The system is generalized for any Three-Body Problem by removing the dependence of the rotating reference rate.
 
@@ -301,18 +301,18 @@ We assume for the Non-Dimensional Restricted Three-Body Problem that $\mu < \fra
 The gravity potential can be written as 
 
 :::{math}
-:label:
+:label: cr3bp_U_norm
 \tilde{U} = \frac{1-\mu}{r^*_1} + \frac{\mu}{r^*_2}
 :::
 
 where $r^*_1$ and $r^*_2$ are:
 
 :::{math}
-r^*_1 = \sqrt{\left( x + \frac{m_2}{m_1+m_2}R \right)^2+y^2+z^2}
+r^*_1 = \sqrt{\left( x^* + \mu \right)^2+{y^*}^2+{z^*}^2}
 :::
 
 :::{math}
-r^*_2 = \sqrt{\left( x - \frac{m_1}{m_1+m_2}R \right)^2+y^2+z^2}
+r^*_2 = \sqrt{\left( x^* - 1 + \mu \right)^2+{y^*}^2+{z^*}^2}
 :::
 
 Given a solution for the the Non-Dimensional Circular Restricted Three-Body Problem ($\mathbf{r^*}$, $\mathbf{\dot{r}^*}$) we can transform back to dimensional system by introducing $\mathbf{R}$, $m_1$ and $m_2$ and solving for the mean motion of the two masses:
@@ -333,4 +333,129 @@ x = Rx^*, y = Ry^*, z = Rz^*
 
 By solving one non-dimensional problem, we actually solve **infinite** number of problems in dimensional set.
 
-TODO: Add simple cr3bp Python solution
+
+## Python Example
+
+Using the functions derived in this section let's walk through a simple example of solving for the trajectory of a spacecraft among the Earth-Moon system. 
+
+The Earth-Moon mass ratio is:
+
+:::{math}
+\mu = 0.012150515586657583
+:::
+
+In the rotating frame the initial position and velocity normalized vectors are given as:
+
+:::{math}
+:label: py_example_state
+\mathbf{r}^*(t_0) = 
+\begin{bmatrix}
+0.50 \\
+0.50  \\
+0.00
+\end{bmatrix}
+
+\mathbf{v}^*(t_0) = 
+\begin{bmatrix}
+0.01 \\
+0.01 \\
+0.00
+\end{bmatrix}
+:::
+
+Begin by importing module [three_body_problem](three_body_problem.py) and setting the initial state vector {eq}`py_example_state`
+
+```python
+import numpy as np
+import three_body_problem as three_body_problem
+
+# Initial State Vectors
+# --------------------------------------------------------------------------------
+initial_pos = [0.50, 0.50, 0.0]
+initial_vel = [0.01, 0.01, 0.0]
+```
+
+Instantiate class `three_body_problem.cr3bp()` with the initial state vector and set the mass ratio $\mu$ for the analysis of the Earth-Moon system.
+
+```python
+
+# Instantiate CR3BP Object:
+# --------------------------------------------------------------------------------
+# Set Earth-Moon Mass Ratio
+mu = 0.012150515586657583
+sc = three_body_problem.cr3bp(initial_pos,initial_vel)
+sc.mu = mu
+```
+
+For this example analysis the trajectory of the spacecraft up to a non-dimensional time of $8\pi$.
+
+```python
+# Numerical Analysis Setup
+# --------------------------------------------------------------------------------
+sc.time = np.linspace(0, 2*np.pi*4, 10000)
+```
+
+The numerical solver relies on running [scipy.integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) for solving the initial value problem for the system of non-dimensional {eq}`cr3bp_eom_norm_simp` ordinary differential equations. Note that when taking the partial derivate of $\tilde{V}$ or $\tilde{U}$ the distance vectors $\mathbf{r^*}(t)$ are a function of time and must be decomposed in the process. 
+
+:::{math}
+:label: odes_1
+\frac{d}{dt}
+\begin{bmatrix}
+x^* \\
+y^* \\
+z^* \end{bmatrix}
+= 
+\begin{bmatrix}
+v^*_x(t)\\
+v^*_y(t) \\
+v^*_z(t)
+\end{bmatrix}
+:::
+
+:::{math}
+:label: odes_2
+\frac{d^2}{dt^2}
+\begin{bmatrix}
+x^* \\
+y^* \\
+z^*
+\end{bmatrix}
+= 
+\begin{bmatrix}
+2v_y + x - \frac{\left(1-\mu\right)\left(x+\mu \right)}{{r^*_1}^3} - \frac{\mu\left(x + \mu -1\right)}{{r^*_2}^3}\\
+-2v_x + y\left[1 - \frac{1-\mu}{{r^*_1}^3} - \frac{\mu}{{r^*_2}^3}\right] \\
+-z \left[ \frac{1-\mu}{{r^*_1}^3}  + \frac{\mu}{{r^*_2}^3} \right]
+\end{bmatrix}
+:::
+
+Solve for the spacecraft trajectory. By flagging the argument `saveAnalysis = True ` the numerical solution is saved off as a pickle file. This gives the a time advantage of solving a complex initial value problem only once and loading the results later for post-processing.
+
+```python
+# Run Numerical Analysis: scipy.integrate methods
+# --------------------------------------------------------------------------------
+# Run scipy solver 
+sc.solve_threeBody_trajectory(saveAnalysis=False)
+
+# Extract Results
+position_numerical = sc.position_numerical
+velocity_numerical = sc.velocity_numerical
+```
+
+The default absolute tolerance is set to 1e-10 and relative tolerance is also set to 1e- 10. However, they can be updated prior to running `solve_threeBody_trajectory` as:
+
+```python
+# Set up tolerances, relative & absolute
+sc.relTol = 1e-12
+sc.absTol = 1e-13
+```
+
+The full [scipy.integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html) solution is assigned to `sc.num_sol` but for convenience the position and velocity time history are store as `sc.position_numerical` and `sc.position_numerical`.
+
+Plotting the results shows the spacecraft’s trajectory for a non-dimensional time of $8\pi$. It appears to be stable while orbiting the Earth at some periodic rate. To better illustrate the time of flight a blue gradient trajectory is plotted along non-dimensional axes showing where the spacecraft started and ended along the Earth-Moon system. 
+
+
+```{figure} ./images/cr3bp_example.png
+:name: fig:cr3bp_example
+:width: 100%
+**Figure 1.5** Example Solution to the Circular Restricted Three-Body Problem 
+```
