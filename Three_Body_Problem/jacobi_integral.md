@@ -90,7 +90,36 @@ In Astrodynamics this is sometimes refer to as the forbidden regions and it can 
 \tilde{V}\left( x^*, y^*\right) + C = 0
 :::
 
-Below are plots of the forbidden region for the Earth-Moon Three-Body System at select Jacobi constants. Here the Lagrange Points are plotted for reference as they are relevant to the forbidden regions. More information about the Lagrange Points can be found here (TODO: SOURCE THIS).
+
+## Python Example
+
+Consider the Saturn-Titan System. The planetary satellite mean elements are pulled from [Solar System Dynamics](https://ssd.jpl.nasa.gov/sats/elem/) database courtesy of NASA JPL. 
+
+| Planet      | Satellite  | Code  | Ephemeris | a (km)   | e     | ω (deg) | M (deg) | i (deg) | node (deg) | P (days)  |
+| :---:       | :----:     | :---- | :-------- | :----    | :---- | :------ | :-----  | :----   | :--------  | :------   |
+| **Saturn**  | **Titan**  | 606   | SAT441    | 1221900. | 0.029 | 78.3    | 11.7    | 0.3     | 78.6       | 15.945448 |
+
+Given Titan's inclination is 0.3$^\circ$ the Circular Restricted Planar assumption is valid for this analysis.
+
+The following constants were generated for the Saturn-Titan system using NASA JPL's Solar System Dynamics [Horizon System Toolset](https://ssd.jpl.nasa.gov/horizons/app.html#/) and [Astrodynamic Parameters](https://ssd.jpl.nasa.gov/astro_par.html) dataset:
+
+:::{math}
+
+GM_{Saturn} = 3.7940584841 \times 10^7 \mspace{10mu} \frac{km^3}{s^2}
+:::
+
+:::{math}
+GM_{Titan} = 8978.14 \mspace{10mu} \frac{km^3}{s^2}
+:::
+
+:::{math}
+P_{System} = 15.945448 \mspace{10mu} \text{days}
+
+:::
+
+For this example, plot the forbidden regions for the CRP3BP at Jacobi constants ranging from XXX to XXX. Here the Lagrange Points are plotted for reference as they are relevant to the forbidden regions. More information about the Lagrange Points can be found here (TODO: SOURCE THIS).
+
+TODO: Either point to python script or talk about it here. probably better to point to it.
 
 TODO: Talk and add and example of having a constant Jacobi for different states
 TODO: Start talking about forbbin regions, look at om.space and make plots
@@ -106,9 +135,12 @@ Plot A at C = -5.0 is shown for reference. As C grows towards 0 notice how the f
 
 At Plot C notice the forbidden region between the Earth-Moon system to the right comes to a singularity which at Lagrange Point 1. 
 
-Now by increasing C a bit more from Plot C to Plot D a direct path from the Earth to the Moon begins to appear (Low Energy Transfer). At a high level, Mission Design Engineers aim to change a spacecraft's velocity just enough so that a trajectory exists between the Earth and the Moon using very small energy. Here are some more references on [Low Energy Transfer](http://www.gg.caltech.edu/~mwl/publications/papers/lowEnergy.pdf) and [Free-Return Trajectory](https://en.wikipedia.org/wiki/Free-return_trajectory) as they relate to maneuvering to the Moon. 
+Now by increasing C a bit more from Plot C to Plot D a direct path from the Earth to the Moon begins to appear (Low Energy Transfer). At a high level, Mission Design Engineers aim to change a spacecraft's velocity just enough so that a trajectory exists between two primary bodies using very small energy. For example, here are some more references for how this is used on the Earth-Moon system for [Low Energy Transfer](http://www.gg.caltech.edu/~mwl/publications/papers/lowEnergy.pdf) and [Free-Return Trajectory](https://en.wikipedia.org/wiki/Free-return_trajectory) as means of sending spacecraft to the Moon. 
 
 As C continues to increase both L2 and L3 begin to open up. as shown in Plots XXXX, and as C gets closer to 0.0 the forbidden regions begins to disappear at singularity corresponding to the location of L4 and L5. 
+
+TODO: Create an animation
+
 
 Lastly, consider a non-planar system. The same analysis can be done to illustrate how the forbidden regions change in 3-dimenionsl space along the potential surfaces:
 
