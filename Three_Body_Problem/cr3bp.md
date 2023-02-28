@@ -1,5 +1,5 @@
 
-# Circular Restricted Three-Body Problem 
+## Circular Restricted Three-Body Problem 
 
 By letting $m_3 \rightarrow 0$ then Equation 10-11 as derived from the [Jacobian Coordinate Frame](introduction.md/#jacobian-coordinate-frame) simplifies to the Two-Body Problem form. 
 

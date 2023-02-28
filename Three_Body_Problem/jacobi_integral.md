@@ -5,11 +5,11 @@ When dealing with the [Circular Restricuted Three-Body Problem](cr3bp.md) there 
 :::{math}
 :label: 
 
-\dot{x}\left[\ddot{x} - 2n\dot{y}\right] = \dot{x}\left[\frac{\partial{V}}{\partial{x}}\right]
+\dot{x}\left(\ddot{x} - 2n\dot{y}\right) = \dot{x}\left(\frac{\partial{V}}{\partial{x}}\right)
 
-\dot{y}\left[\ddot{y} + 2n\dot{x}\right] = \dot{y}\left[\frac{\partial{V}}{\partial{y}}\right]
+\dot{y}\left(\ddot{y} + 2n\dot{x}\right) = \dot{y}\left(\frac{\partial{V}}{\partial{y}}\right)
 
-\dot{z}\left[\ddot{z} \right] = \dot{z}\left[\frac{\partial{V}}{\partial{z}}\right]
+\dot{z}\left(\ddot{z} \right) = \dot{z}\left(\frac{\partial{V}}{\partial{z}}\right)
 
 :::
 
@@ -25,7 +25,7 @@ and then integrate both ends
 :::{math}
 :label: 
 
-\frac{1}{2} \frac{d}{dt} \left( \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \right) = \frac{d}{dt} V\left(x,y,z \right)
+\frac{1}{2} \frac{d}{dt} \left[ \dot{x}^2 + \dot{y}^2 + \dot{z}^2 \right] = \frac{d}{dt} V\left(x,y,z \right)
 
 :::
 
@@ -70,3 +70,5 @@ TODO: CR Planar section
 TODO: Restricted regions
 
 TODO: Zero Velocity surfaces
+
+
