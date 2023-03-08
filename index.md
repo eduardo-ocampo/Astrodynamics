@@ -16,15 +16,13 @@ Math_Example
 ```
 
 ```{toctree}
----
-maxdepth: 6
+:maxdepth: 6
 :caption: Newton's Law of Gravitation
----
 Newtons_Law_Of_Gravitation
 ```
 
 ```{toctree}
-:maxdepth: 3
+:maxdepth: 6
 :caption: Classical Orbital Elements
 Classical_Orbital_Elements/Two_Body_Problem.md
 Classical_Orbital_Elements/Classical_Orbit_Elements
@@ -39,6 +37,7 @@ Classical_Orbital_Elements/Python_Examples
 Three_Body_Problem/introduction.md
 Three_Body_Problem/cr3bp.md
 Three_Body_Problem/jacobi_integral.md
+Three_Body_Problem/lagrange.md
 ```
 
 ```{toctree}
