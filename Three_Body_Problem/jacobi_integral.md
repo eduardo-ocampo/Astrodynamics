@@ -4,17 +4,14 @@ When dealing with the [Circular Restricuted Three-Body Problem](cr3bp.md) there 
 
 :::{math}
 :label: 
-
-\dot{x}\left(\ddot{x} - 2n\dot{y}\right) = \dot{x}\left(\frac{\partial{V}}{\partial{x}}\right)
-
-\dot{y}\left(\ddot{y} + 2n\dot{x}\right) = \dot{y}\left(\frac{\partial{V}}{\partial{y}}\right)
-
-\dot{z}\left(\ddot{z} \right) = \dot{z}\left(\frac{\partial{V}}{\partial{z}}\right)
-
+\begin{align*}
+\dot{x}\left(\ddot{x} - 2n\dot{y}\right) &= \dot{x}\left(\frac{\partial{V}}{\partial{x}}\right) \\ 
+\dot{y}\left(\ddot{y} + 2n\dot{x}\right) &= \dot{y}\left(\frac{\partial{V}}{\partial{y}}\right) \\
+\dot{z}\left(\ddot{z} \right) &= \dot{z}\left(\frac{\partial{V}}{\partial{z}}\right)
+\end{align*}
 :::
 
 :::{math}
-:label: 
 
 \dot{x}\ddot{x} + \dot{y}\ddot{y} + \dot{z}\ddot{z} = \frac{\partial{V}}{\partial{x}}\dot{x} + \frac{\partial{V}}{\partial{y}}\dot{y} + \frac{\partial{V}}{\partial{z}}\dot{z}
 
@@ -104,17 +101,11 @@ Given Titan's inclination is 0.3$^\circ$ the Circular Restricted Planar assumpti
 The following constants were generated for the Saturn-Titan system using NASA JPL's Solar System Dynamics [Horizon System Toolset](https://ssd.jpl.nasa.gov/horizons/app.html#/) and [Astrodynamic Parameters](https://ssd.jpl.nasa.gov/astro_par.html) dataset:
 
 :::{math}
-
-GM_{Saturn} = 3.7940584841 \times 10^7 \mspace{10mu} \frac{km^3}{s^2}
-:::
-
-:::{math}
-GM_{Titan} = 8978.14 \mspace{10mu} \frac{km^3}{s^2}
-:::
-
-:::{math}
-P_{System} = 15.945448 \mspace{10mu} \text{days}
-
+\begin{align*}
+GM_{Saturn} &= 3.7940584841 \times 10^7 \mspace{10mu} \frac{km^3}{s^2} \\
+GM_{Titan}  &= 8978.14 \mspace{10mu} \frac{km^3}{s^2} \\
+P_{System}  &= 15.945448 \mspace{10mu} \text{days}
+\end{align*}
 :::
 
 For this example, plot the forbidden regions for the CRP3BP at Jacobi constants ranging from XXX to XXX. Here the Lagrange Points are plotted for reference as they are relevant to the forbidden regions. More information about the Lagrange Points can be found here (TODO: SOURCE THIS).
