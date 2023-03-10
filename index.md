@@ -38,6 +38,7 @@ Three_Body_Problem/introduction.md
 Three_Body_Problem/cr3bp.md
 Three_Body_Problem/jacobi_integral.md
 Three_Body_Problem/lagrange.md
+Three_Body_Problem/stability.md
 ```
 
 ```{toctree}

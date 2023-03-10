@@ -155,8 +155,9 @@ Theses results demonstrate that Lagrange Points $L_{4}$ and $L_{5}$ lie equalite
 
 We now have the exact results of for Lagrange Points $L_{4-5}$ whereas Lagrange Points $L_{1-3}$ need to be solved iteratively using a root-finding soler with the aid of the approximate $x_1$, $x_2$ and $x_3$ values {eq}`x1_x2_x3_approx`. 
 
-For a non-restricted Three-Body Problem system ($\mu_3 \neq 0$), these 5 Lagrange Points still exist. However, the positions of the co-linear Lagrange Points are shifted. If the primaries P1 and P2 are on an elliptical orbit, analogue of the Lagrange Points do also exists. It is also known that $L_{1-3}$ are unstable and $L_{4-5}$ are stable.
+For a non-restricted Three-Body Problem system ($\mu_3 \neq 0$), these 5 Lagrange Points still exist. However, the positions of the co-linear Lagrange Points are shifted. If the primaries P1 and P2 are on an elliptical orbit, analogue of the Lagrange Points do also exists. 
 
 
 ### Python Example
+
 
