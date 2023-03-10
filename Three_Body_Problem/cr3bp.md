@@ -197,6 +197,9 @@ TODO: Create a plot of V potential for an arbitrary mu
 
 ## Non-Dimensional Circular Restricted Three-Body Problem 
 
+TODO: There are some parts where V and U are not bolded to denote vector notation, Fix this
+TODO: Loook through latex format and align where needed.
+
 Non-dimensionalization of the Circular Restricted Three-Body Problem has the advantage of solving one problem and applying the results to a general number of problems. The system is generalized for any Three-Body Problem by removing the dependence of the rotating reference rate.
 
 Normalize the equations for the Three-Body Problem along 3 physical properties of the system 
