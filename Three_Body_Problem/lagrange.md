@@ -1,30 +1,29 @@
-## Lagrange 
+## Lagrange Points
 
-The Lagrange Points are equilibrium points in a dynimcal system. Here the dynamical system to analysis is the [Non-Dimensional Circular Restricuted Three-Body Problem](cr3bp.md#non-dimensional-circular-restricted-three-body-problem). 
-
-TODO: Provide figure Topology of Lagrange Points in the rotating coordinate fram
+The Lagrange Points are equilibrium points in a dynamic system. Here the dynamical system to analysis is the [Non-Dimensional Circular Restricted Three-Body Problem](cr3bp.md#non-dimensional-circular-restricted-three-body-problem). 
 
 The potential for this system is define as Equation {eq}`cr3bp_V_norm`
  
 :::{math}
+:label:
 \tilde{V}\left(x^*,y^*,z^*\right) = \frac{1}{2}\left( {x^*}^2 + {y^*}^2\right) + \frac{1-\mu}{r^*_1} + \frac{\mu}{r^*_2}
 :::
 
 where $r^*_1$ and $r^*_2$ are:
 
 :::{math}
-r^*_1 = \sqrt{\left( x^* + \mu \right)^2+{y^*}^2+{z^*}^2}
-:::
-
-:::{math}
-r^*_2 = \sqrt{\left( x^* - 1 + \mu \right)^2+{y^*}^2+{z^*}^2}
+:label: postion_vectors_lagrange
+\begin{align*}
+r^*_1 &= \sqrt{\left( x^* + \mu \right)^2+{y^*}^2+{z^*}^2} \\
+r^*_2 &= \sqrt{\left( x^* - 1 + \mu \right)^2+{y^*}^2+{z^*}^2}
+\end{align*}
 :::
 
 ```{warning}
-The non-dimensional length term in section [Non-Dimensional Circular Restricuted Three-Body Problem](cr3bp.md#non-dimensional-circular-restricted-three-body-problem) is defined as:
+The non-dimensional length term in section [Non-Dimensional Circular Restricted Three-Body Problem](cr3bp.md#non-dimensional-circular-restricted-three-body-problem) is defined as:
 
 
-:::{math}
+:::{math} 
 \mathbf{r}^* = \frac{\mathbf{r}}{r_s} = \frac{\mathbf{r}}{R}
 :::
 
@@ -33,46 +32,50 @@ For this section on **Lagrange Points & Stability**, $^*$ notation will be dropp
 
 ```
 
-To find the location of the Lagrange Points take the partile of $\mathbf{\tilde{V}}$ and find locations where motion is zero. Taking the partial of $\mathbf{\tilde{V}}$ yields:
-
-Show partile direviate of V
+To find the location of the Lagrange Points take the  partial derivative of $\mathbf{\tilde{V}}$ and find locations where motion is zero. Taking the partial of $\mathbf{\tilde{V}}$ yields:
 
 :::{math}
-:label:
-\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}} = x - \frac{(1-\mu)(x+\mu)}{{r_1}^3} - \frac{\mu(x+\mu-1)}{{r_2}^3}
+:label: dv_dx_dy_dz
+\begin{align*}
+\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}} &= x - \frac{(1-\mu)(x+\mu)}{{r_1}^3} - \frac{\mu(x+\mu-1)}{{r_2}^3} \\
+\frac{\partial{\mathbf{\tilde{V}}}}{\partial{y}} &= \left[ 1 -\frac{1-\mu}{{r_1}^3} - \frac{\mu}{{r_2}^3} \right]y \\
+\frac{\partial{\mathbf{\tilde{V}}}}{\partial{z}} &= -\left[ \frac{1-\mu}{{r_1}^3} + \frac{\mu}{{r_2}^3} \right]
+\end{align*}
 :::
+
+From plotting the potential there are clues about how many and where the Lagrange Points lie.
+
+TODO: Point or paste the 3d graph here
+
+There are known to be 5 equilibrium points along the potential surface. $L_{1-3}$ lie co-linear along the axis joining primaries P1 and P2 and $L_{4-5}$ lies somewhere along the sides. 
+
+
+TODO: Provide figure Topology of Lagrange Points in the rotating coordinate frame
+
+
+### Co-Linear Lagrange Points
+
+For the co-linear Lagrange Points $L_{1-3}$ the y- and z-coordinates are zero. This reduces their known position vectors {eq}`postion_vectors_lagrange` to depend only on their location along the x-axis relative to primary bodies.
 
 :::{math}
-:label:
-dv/dy
-\frac{\partial{\mathbf{\tilde{V}}}}{\partial{y}}
+:label: position_vectors_L1_L2_L3
+\begin{align*}
+r_1 &= |x+mu| \\ 
+r_2 &= |x-1+mu|
+\end{align*}
 :::
+
+Now substitute the relative position vectors {eq}`position_vectors_L1_L2_L3` into $\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}}$. To compute the x-coordinates of the co-linear Lagrange Points we need to solve $\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}}$ only since $y = 0$  and $z = 0$. 
+
 
 :::{math}
-:label:
-dv/dz
-\frac{\partial{\mathbf{\tilde{V}}}}{\partial{z}}
-:::
+:label: L1-L3_dv_dx
 
-L1, L2, L3 are unstable
-
-L4, and L5 are stable
-
-### Co-Linaer Points
-
-For L1, L2, and L3 the y- and z-coordnaties are zero. This reduces their known position vectors Eq ABOVE to depending only on their location along the x-axis relative to primary bodies.
-
-r_1 = |x+mu|
-r_2 = |x-1+mu|
-
-Now subsitiute the relative position vector Eq {}`above` into dv/dx. To compute the x-coordnates of L1, L2, adn L3 we need to solve dv/dx only since dv/dy= 0 dv/dz = 0.
-
-slide 3
-:::{math}
-
-dv/dx = 0
+\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}} = x - \frac{(1-\mu)(x+\mu)}{|x+\mu|^3} - \frac{\mu(x+\mu-1)}{|x-1+\mu|^3} = 0
 
 :::
+
+By simply plotting $\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}}$ it gives a quick and easy means of locating Lagrange Points $L_{1-3}$ for an arbituary $\mu$. 
 
 Show plot for dv vs dx
 
@@ -80,57 +83,80 @@ Plot dv/dx to illustraute how the potential changes as a funciton of position.
 
 Figure 
 
+Notice the function cross the x-axis precisely were the co-linear points lie. Then $\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}}$ heads asymptotically towards infinity at primary P1 and similarly as the x-coordinates approaches P2.
 
-What you will see is that as x -> P1, it that dv crosses L3 and the head asymptotically to infition at P1. Then as x -> P2 the potential trend from negative infinity to positive infinity while crossing L1. Fianlly the potentialtneds from negative infitinty to positive infitiny while crossing L2. 
+To aid in solving for the roots $\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}}\big|_{x=0}$  it helps to approximate the co-linear equilibrium points. Expanding out {eq}`L1-L3_dv_dx` up to the first power yields:
 
-By simply plotting dv/dx it gives a quick and easy means of locating L1, L2, and L3 for an arbituary mu. There are many numerical solvers for getting the roots of a funciton like dv/dx and an example is shown below TODO ADD EXAMPLE. 
 
-To aid in solving the lagrantge points using Equation EQ{} let us approxiamte the co-linear equalirbirum points. If we expand out Eq{} up to the first power we get:
-
-Show HOT approximate terms
 :::{math}
-
+\begin{align*}
+x_1 &\approx 1 - \left(\frac{\mu}{3}\right)^{\frac{1}{3}} + \sigma\left(\mu^{\frac{2}{3}} \right) \\
+x_2 &\approx 1 + \left(\frac{\mu}{3}\right)^{\frac{1}{3}} + \sigma\left(\mu^{\frac{2}{3}} \right) \\
+x_3 &\approx -1 + \left(\frac{\sqrt(2)-1}{3}\right)\mu + \sigma\mu^2
+\end{align*}
 :::
      
-By remvoing higer order terms the equations are roughly 
+By removing higher order terms, the equations reduce to:
 
 
-Show HOT approximate terms
 :::{math}
-
+:label: x1_x2_x3_approx
+\begin{align*}
+x_1 &\cong 1 - \left(\frac{\mu}{3}\right)^{\frac{1}{3}} \\
+x_2 &\cong 1 + \left(\frac{\mu}{3}\right)^{\frac{1}{3}} \\
+x_3 &\cong -1 + \left(\frac{\sqrt(2)-1}{3}\right)\mu 
+\end{align*}
 :::
 
-The approximate equations for co-lineary Lagrange POints can be used to intiailize a solver before solving for Equation dv/dx.  
+
+There are many numerical solvers for getting the roots of Equation {eq}`L1-L3_dv_dx`. Approximating the co-linear Lagrange Points can be used to initialize a solver. An example is shown TODO ADD EXAMPLE. 
 
 ### Example
 
 Here add homeworrk problem that asks us to craete plots of L1, L2, and L3 for vary mu
 
-## equilateral lagrange points
+## Equilateral Lagrange Points
 
-Solving for the posiiton of Lagrange Ponints 4 and 5 are failry straighforwad compared to the co-linear lagrange points. The equailaterl lagrange opints exist such that y=/ 0. Now check Equation {}`dv/dy` 
-
-:::{math}
-dv/dy = 0
-:::
-
-Equation ABOVE is trival and results in the relative position vectors t have a magnitude of r_1 = 1 and r_2 = 1. Now applying this information to the dfeineito of dv/dx eq{adove dv/dx} reduces to 
-
+Solving for the position of Lagrange Points $L_{4}$ and $L_{5}$ are fairly straightforward compared to the [co-linear lagrange points](#co-linear-lagrange-points). $L_{4}$ and $L_{5}$ exist such that $y = 0$. Now check Equation {eq}`dv_dx_dy_dz` for $\frac{\partial{\mathbf{\tilde{V}}}}{\partial{y}} = 0$.
 
 :::{math}
-dv/dx = x - (1-mu)(x+mu) - mu(x+mu-1)
+\frac{\partial{\mathbf{\tilde{V}}}}{\partial{y}} = \left[ 1 -\frac{1-\mu}{{r_1}^3} - \frac{\mu}{{r_2}^3} \right]y = 0
 :::
 
-Sovling for dv/dx = 0 gives exatcly:
+The root for this function is trivial and results in the relative position vectors ${r_1}^3$ and ${r_2}^3$ to both be 1. Now applying this information to the definition of $\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}}$ from Equation {eq}`dv_dx_dy_dz` becomes:
 
-x_4,5 = 1/2 -mu
 
-and using equation for r_1^2 = (x+mu)^2 + y^2 + z^2 and r_2^2 = (x-1+mu)^2 +y^2 + z^2 gives the y-coordintea of the equlatiater lagrante oitns
+:::{math}
+:label:
+\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}} = x - (1-\mu)(x+\mu) - \mu(x+\mu-1)
+:::
 
-y_4,5, = +- sqrt(3/2)
+Sovling for $\frac{\partial{\mathbf{\tilde{V}}}}{\partial{x}} = 0$ gives exactly:
 
-This shows that lagrange points L4 and L5 lie equaliteraly along P1 and P2. 
+:::{math}
+:label:
 
-Thus we have exact results of for Lagrange POints 4 and 5 whereas Lagraen Points 1,2,3 are needed to solve iterativly while you can intiialized your solver by using the approxiamte values eq{}. 
+x_{4,5} = \frac{1}{2} - \mu
 
-For a non-restricted Three-body problem system (mu_3 not 0), these 5 Lagrante Poitns still exits. However, the positions of the co-linear lagrange points are shifted. If the primarires P1 and P2 are on a ellitpical orbit analogue of the Lagrange Points due exisits. If 
+:::
+
+and using Equation {eq}`postion_vectors_lagrange` from the Three-Body definition of vectors ${r_1}$ and ${r_2}$ the y-coordinates for $L_{4-5}$ are:
+
+:::{math}
+:label:
+
+y_4 = \frac{\sqrt{3}}{2}
+
+y_5 = -\frac{\sqrt{3}}{2}
+
+:::
+
+Theses results demonstrate that Lagrange Points $L_{4}$ and $L_{5}$ lie equaliteraly with respect to primaries P1 and P2. As shown in FIGURE above.
+
+We now have the exact results of for Lagrange Points $L_{4-5}$ whereas Lagrange Points $L_{1-3}$ need to be solved iteratively using a root-finding soler with the aid of the approximate $x_1$, $x_2$ and $x_3$ values {eq}`x1_x2_x3_approx`. 
+
+For a non-restricted Three-Body Problem system ($\mu_3 \neq 0$), these 5 Lagrange Points still exist. However, the positions of the co-linear Lagrange Points are shifted. If the primaries P1 and P2 are on an elliptical orbit, analogue of the Lagrange Points do also exists. It is also known that $L_{1-3}$ are unstable and $L_{4-5}$ are stable.
+
+
+### Python Example
+
