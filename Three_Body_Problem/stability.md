@@ -87,7 +87,7 @@ becomes
 \end{align*}
 :::
 
-Linearize the remaining partial potentials in a similar manner and subustitue into Equation {eq}`deviated_eom` to get the linearized equations of motion for the devivated system:
+Linearize the remaining partial potentials in a similar manner and substitute into Equation {eq}`deviated_eom` to get the linearized equations of motion for the deviated system:
 
 :::{math}
 :label: linearized_deviated_eom
@@ -98,7 +98,7 @@ Linearize the remaining partial potentials in a similar manner and subustitue in
 \end{align*}
 :::
 
-To make things easier to work with rewritte {eq}`linearized_deviated_eom` in matrix form:
+To make things easier to work with rewrite {eq}`linearized_deviated_eom` in matrix form:
 
 :::{math}
 :label: linearized_deviated_eom_matrix
@@ -139,9 +139,9 @@ Matrix {eq}`vrr_matrix` is a symmetric matrix and the partial notation is define
 \tilde{V}_{ij} = \frac{\partial{\tilde{V}}}{\partial{x}\partial{y}}
 :::
 
-Alltogether, Equation {eq}`linearized_deviated_eom_matrix` is the linearzied equations of motion for a spacecraft perturbed to a deviated state.
+Altogether, Equation {eq}`linearized_deviated_eom_matrix` is the linearized equations of motion for a spacecraft perturbed to a deviated state.
 
-TODO: Consider writing partial derivaites of Vrr slide 11 somewhere. Maybe as an appendix and point to it. 3 diagnol terms and 3 off-diagnol terms
+TODO: Consider writing partial derivates of Vrr slide 11 somewhere. Maybe as an appendix and point to it. 3 diagonal terms and 3 off-diagonal terms
 
 ## Stability of Co-Linear Lagrange Points
 
@@ -151,8 +151,8 @@ Now consider the [co-linear equilibrium points](#co-linear-lagrange-points) $L_{
 
 \begin{align*}
 y = z &= 0 \\
-r_1 &= |x+mu| \\ 
-r_2 &= |x-1+mu|
+r_1 &= |x+\mu| \\ 
+r_2 &= |x-1+\mu|
 \end{align*}
 :::
 
@@ -180,7 +180,7 @@ in matrix form:
 \end{bmatrix}
 :::
 
-The signs for the non-zero terms will be important later. By inspection we determine $\tilde{V}_{xx} > 0 $ because we assumed $\mu < \frac{1}{2}$ for the [Non-Dimensional Circular Restricted Three-Body Problem](cr3bp.md#non-dimensional-circular-restricted-three-body-problem). Similarly $\tilde{V}_{zz} < 0$ as both terms are positive and then multiplied by a negative values. For $\tilde{V}_{yy}$ it is not intuitive if the expression is positive or negative. It mostly depends on the dominating effect of either the second or third term.
+The signs for the non-zero terms will be important later. By inspection we determine $\tilde{V}_{xx} > 0 $ because we assumed $\mu < \frac{1}{2}$ for the [Non-Dimensional Circular Restricted Three-Body Problem](cr3bp.md#non-dimensional-circular-restricted-three-body-problem). Similarly, $\tilde{V}_{zz} < 0$ as both terms are positive and then multiplied by a negative values. For $\tilde{V}_{yy}$ it is not intuitive if the expression is positive or negative. It mostly depends on the dominating effect of either the second or third term.
 
 Substitute into and reduce matrix {eq}`linearized_deviated_eom_matrix` to further analyze the stability of our co-linear equilibrium points. 
 
@@ -245,7 +245,7 @@ This gives a sinusoidal solution to {eq}`delta_z_L1-L3`
 
 where $\omega$ is the characteristic frequency; $\omega =  \sqrt{|\tilde{V}_{zz}|}$. 
 
-By assuming the initial state $\delta z (0) = \delta z_0$ and $\delta \dot{z} (0) = \delta \dot{z}_0$ then we can write down the final solution to $\delta z(t)$ {eq}`delta_z_L1-L3` which shows it simply oscillates making the z-component of the devivated spacecraft a **stable** component.  
+By assuming the initial state $\delta z (0) = \delta z_0$ and $\delta \dot{z} (0) = \delta \dot{z}_0$ then we can write down the final solution to $\delta z(t)$ {eq}`delta_z_L1-L3` which shows it simply oscillates making the z-component of the deviated spacecraft a **stable** component.  
 
 Now consider the x- and y-components of {eq}`stability_eom_matrix_L1-L3` 
 
@@ -297,7 +297,7 @@ TODO: Consider working out this section as done in 589 HW 4 Problem 1
 The eigenvalues have the form:
 
 :::{math}
-
+:label: L4_L5_lambdas
 \lambda^2 = -\frac{1}{2} \pm \frac{1}{2} \sqrt{ 1 - 27\mu \left( 1 - \mu \right)}
 
 :::
@@ -314,22 +314,29 @@ or
 \lambda^2 = \alpha \pm i \beta
 :::
 
+Inspecting the square root term of {eq}`L4_L5_lambdas` the system is stable only if:
 
-If 27\mu(1-\mu) < 0 the solution will be stable
+:::{math}
+27\mu\left( 1 - \mu \right) < 1
+:::
 
-\mu^2 - \mu + 1/27 > 0
+or 
 
-from the ndcr3np \mu < 1/2
+:::{math}
+\mu^2 - \mu + \frac{1}{27} > 0
+:::
 
-then the equilateral Lagrange Points are **stable** only if
+we know $\mu \lt \frac{1}{2}$ from the controlling condition thus the equilateral Lagrange Points are **stable** only if
 
-\mu < 1/2(1 - sqrt(23/27))
+:::{math}
+:label:
+\mu \lt \frac{1}{2}\left( 1 - \sqrt{\frac{23}{27}}\right) \approx ~ 0.03852
+:::
 
-\mu ~ 0.03852
 
 There are some examples of stable and unstable $L_4$, $L_5$ points in our solar system. The Sun-Jupiter system has $\mu \approx 0.01$ making $L_4$ and $L_5$ stable equilibrium points. TODO: talk about Trojan system. 
 
-Whereas Pluto-Charon $\mu \approx 0.10$ making $L_4$ and $L_5$ unstable equilibrium points TODO: find more info about this. 
+Whereas the Pluto-Charon system $\mu \approx 0.10$ making $L_4$ and $L_5$ unstable equilibrium points TODO: find more info about this. 
 
 
 ## Non-Linear Stability 
