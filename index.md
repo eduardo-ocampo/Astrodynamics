@@ -44,6 +44,7 @@ Three_Body_Problem/stability.md
 ```{toctree}
 :maxdepth: 6
 :caption: Optimal Control Theory
+Optimal_Control_Theory/zermelos_problem.md
 Optimal_Control_Theory/index.md
 ```
 

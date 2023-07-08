@@ -8,4 +8,5 @@ Some Text
 maxdepth: 3
 ---
 indirect_method.md
+zermelos_problem.md
 ```
