@@ -423,7 +423,7 @@ x\left(t_f\right) \\
 
 ## Solving Example Using Python 
 
-Begin by importing module zermelos.py TODO link to github [zermelos](zermelos.py) and setting initial state vector and target position Equation {eq}`zerm_case2_bounds`. 
+Begin by importing module [zermelos](https://github.com/thatguyeddieo/Astrodynamics/blob/main/Optimal_Control_Theory/zermelos.py), setting initial state vector and target position Equation {eq}`zerm_case2_bounds`. 
 
 :::{math}
 :label: zerm_py_example_state
