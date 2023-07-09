@@ -582,4 +582,29 @@ Want to check if dH/du = 0
 
 ## Solving Alternative River Example Using Python 
 
-TODO: Give example of alt. river current and results
+TODO: Give example of alt. river current and results, same tf = 100s , v= 2m/s. See run_zermelos_alt.py and alt_XXX.png images in folder. Take initial guess of l1 = -0.7 55 degrees.
+
+:::{math}
+:label: zerm_alt_current
+\begin{align*}
+U_x &= \frac{y}{100} \\
+U_y &= 4\sin{\frac{\pi x}{50}}
+\end{align*}
+:::
+
+Talk about how in script we can set:
+
+```python
+def alt_current(x,y):
+
+    ux = y/100
+    uy = 4*np.sin(x*np.pi/50)
+
+    return [ux,uy]
+
+# Run Numerical Analysis: 
+# --------------------------------------------------------------------------------
+opt_analysis.current = current2
+```
+
+Interesting result is that boat flips away from landing site to conact river current.
