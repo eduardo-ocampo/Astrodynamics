@@ -1,7 +1,19 @@
+---
+jupytext:
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.14.1
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
 
 ## Circular Restricted Three-Body Problem 
 
-By letting $m_3 \rightarrow 0$ then Equation 10-11 as derived from the [Jacobian Coordinate Frame](introduction.md/#jacobian-coordinate-frame) simplifies to the Two-Body Problem form. 
+By letting $m_3 \rightarrow 0$ then Equation {eq}`3bp_eom_1`-{eq}`3bp_eom_2` as derived from the [Jacobian Coordinate Frame](introduction.md/#jacobian-coordinate-frame) simplifies to the Two-Body Problem form. 
 
 :::{math}
 :label:
@@ -179,6 +191,24 @@ The potential energy is made up of three components
 
 ```
 
+TODO: Write a note that talks about interactive plots and how to pan 
+
+TODO: Check if both interactive plots are gettin render correctly
+
+```{code-cell} ipython3
+:tags: ["remove-input"]
+from myst_nb import glue
+import cr3bp_potential_plot
+cr3bp_fig1 = cr3bp_potential_plot.force_potential()
+glue("cr3bp_potent",cr3bp_fig1)
+```
+
+```{glue:figure} cr3bp_potent
+:align: center
+:name: cr3bp_potent
+**Figure 1.5.** Example of CR3BP Potential
+```
+
 Finally, the equations of motion for the **Circular Restricted Three-Body Problem** become:
 
 :::{math}
@@ -192,8 +222,6 @@ Finally, the equations of motion for the **Circular Restricted Three-Body Proble
 
 :::
 
-
-TODO: Create a plot of V potential for an arbitrary mu
 
 ## Non-Dimensional Circular Restricted Three-Body Problem 
 
@@ -318,6 +346,25 @@ r^*_1 = \sqrt{\left( x^* + \mu \right)^2+{y^*}^2+{z^*}^2}
 r^*_2 = \sqrt{\left( x^* - 1 + \mu \right)^2+{y^*}^2+{z^*}^2}
 :::
 
+
+TODO: Write something about large mu value maybe?
+
+TODO: Write a note that talks about interactive plots and how to pan 
+
+```{code-cell} ipython3
+:tags: ["remove-input"]
+from myst_nb import glue
+import cr3bp_potential_plot
+cr3bp_fig2 = cr3bp_potential_plot.non_dim_force_potential()
+glue("cr3bp_nondim_potent",cr3bp_fig2)
+```
+
+```{glue:figure} cr3bp_nondim_potent
+:align: center
+:name: cr3bp_nondim_potent
+**Figure 1.6.** Example of Non-Dimensional CR3BP Potential
+```
+
 Given a solution for the the Non-Dimensional Circular Restricted Three-Body Problem ($\mathbf{r^*}$, $\mathbf{\dot{r}^*}$) we can transform back to dimensional system by introducing $\mathbf{R}$, $m_1$ and $m_2$ and solving for the mean motion of the two masses:
 
 :::{math}
@@ -366,7 +413,7 @@ In the rotating frame the initial position and velocity normalized vectors are g
 \end{bmatrix}
 :::
 
-Begin by importing module [three_body_problem](three_body_problem.py) and setting the initial state vector {eq}`py_example_state`
+Begin by importing module [three_body_problem](https://github.com/thatguyeddieo/Astrodynamics/blob/main/Three_Body_Problem/three_body_problem.py) and setting the initial state vector {eq}`py_example_state`
 
 ```python
 import numpy as np
@@ -402,27 +449,17 @@ The numerical solver relies on running [scipy.integrate.solve_ivp](https://docs.
 
 :::{math}
 :label: odes_1
-\frac{d}{dt}
-\begin{bmatrix}
-x^* \\
-y^* \\
-z^* \end{bmatrix}
+\mathbf{\dot{r}}^*
 = 
 \begin{bmatrix}
-v^*_x(t)\\
-v^*_y(t) \\
-v^*_z(t)
+v^*_x\\
+v^*_y \\
+v^*_z
 \end{bmatrix}
 :::
 
 :::{math}
-:label: odes_2
-\frac{d^2}{dt^2}
-\begin{bmatrix}
-x^* \\
-y^* \\
-z^*
-\end{bmatrix}
+\mathbf{\ddot{r}}^*
 = 
 \begin{bmatrix}
 2v_y + x - \frac{\left(1-\mu\right)\left(x+\mu \right)}{{r^*_1}^3} - \frac{\mu\left(x + \mu -1\right)}{{r^*_2}^3}\\
@@ -460,5 +497,5 @@ Plotting the results shows the spacecraft’s trajectory for a non-dimensional t
 ```{figure} ./images/cr3bp_example.png
 :name: fig:cr3bp_example
 :width: 100%
-**Figure 1.5** Example Solution to the Circular Restricted Three-Body Problem 
+**Figure 1.7** Example Solution to the Circular Restricted Three-Body Problem 
 ```

@@ -104,12 +104,12 @@ The Jacobian Coordinate frame is a classic example of the Earth-Moon system wher
 By taking the derivative of Equation {eq}`R`, Equation {eq}`r_3c` and utilizing the Equations {eq}`eom_1` - {eq}`eom_3` we end up with the following two equations of motion:
 
 :::{math}
-:label:
+:label: 3bp_eom_1
 \ddot{\mathbf{R}} = -G\left( m_1 + m_2 \right) \frac{\mathbf{R}}{R^3} + Gm_3 \left[ \frac{\mathbf{r} - \frac{m_1}{m_1+m_2}\mathbf{R}}{|\mathbf{r} - \frac{m_1}{m_1+m_2}\mathbf{R}|^3} - \frac{\mathbf{r} + \frac{m_2}{m_1+m_2}\mathbf{R}}{|\mathbf{r} + \frac{m_2}{m_1+m_2}\mathbf{R}|^3} \right]
 :::
 
 :::{math}
-:label:
+:label: 3bp_eom_2
 \ddot{\mathbf{r}} = -G\frac{\left( m_1 + m_2 + m_3\right)}{m_1+m_2} \left[ \frac{m_1\left(\mathbf{r} + \frac{m_2}{m_1+m_2}\mathbf{R}\right)}{|\mathbf{r} + \frac{m_2}{m_1+m_2}\mathbf{R}|^3} + \frac{m_2\left(\mathbf{r} - \frac{m_1}{m_1+m_2}\mathbf{R}\right)}{|\mathbf{r} - \frac{m_1}{m_1+m_2}\mathbf{R}|^3} \right]
 :::
 
