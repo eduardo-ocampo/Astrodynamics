@@ -6,7 +6,6 @@
             https://www.github.com/thatguyeddieo                            
 -------------------------------------------------------------------------- """
 
-
 import numpy as np
 import three_body_problem as three_body_problem
 
@@ -18,7 +17,7 @@ initial_pos = [0.50, 0.50, 0.0]
 initial_vel = [0.01, 0.01, 0.0]
 
 # Instantiate CR3BP Object:
-# --------------------------------------------------------Æ------------------------
+# --------------------------------------------------------------------------------
 # Set Earth-Moon Mass Ratio
 mu = 0.012150515586657583
 sc = three_body_problem.cr3bp(initial_pos,initial_vel)
