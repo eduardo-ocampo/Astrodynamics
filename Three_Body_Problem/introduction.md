@@ -68,6 +68,19 @@ Each particle has a State Vector made up of its position and velocity:
 
 To solve the for the Three-Body Problem we require 18 equations of motion due to 3 particle state vectors. Unfortunately, the Classical Integrals available are only 10. The Three-Body Problem is a non-trivial problem, and generally, a non-integrable problem in dynamics. 
 
+
+```{note}
+The [Solar System Dynamics](https://ssd.jpl.nasa.gov/) group at NASA JPL keeps track of parameters commonly used in Astrodynamics. Among the parameters listed on the [Astrodynamics Parameters page](https://ssd.jpl.nasa.gov/astro_par.html) is the Newtonian Constant of Gravitation ($G$). 
+
+:::{math}
+G = 6.67430\left(\pm0.00015\right) \times 10^{-11} kg^{-1} m^{3} s^{-2}
+:::
+
+Another reference of interest for the Three-Body Problem is the [Physical Parameters of Planets page](https://ssd.jpl.nasa.gov/planets/phys_par.html). Here is a useful reference for the mass of a planetary body used in astrodynamic computations.
+
+```
+
+
 # Jacobian Coordinate Frame
 
 To derive the equations of motion for the restricted Three-Body Problem, use the Jacobi Coordinate formulation. Define where $P_3$ is with respect to the barycenter of the other two particles by attaching a non-inertial coordinate system to the barycenter of $m_1$ and $m_2$.
