@@ -76,6 +76,10 @@ def force_potential():
     # Define Figure and Add Drawings
     fig = go.Figure()
     fig.add_trace(potential)
+    # Update Contour Trace
+    fig.update_traces(contours_z=dict(show=True, usecolormap=True,
+                                      highlightcolor="limegreen", 
+                                      project_z=True))     
     fig.add_trace(earth_pos)
     fig.add_trace(moon_pos)
 
@@ -143,17 +147,8 @@ def non_dim_force_potential():
     potent_min = -3.5
     V[V<potent_min] = np.nan
 
-    #
-    # fig = go.Figure(data=[go.Surface(z=V, x=X, y=Y,colorscale ='viridis')])
-
     fig = go.Figure(data=[go.Surface(z=V, x=X, y=Y,colorscale ='plasma')])
-    fig.update_layout(
-        scene = dict(
-            zaxis = dict(range=[z_axis_min,z_axis_max],),
-            )
-            # aspectmode='cube'),
-     )
-
+  
     # Plotly Figure
     # ----------------------------------------------------------
     title = "<b>Pseudo-Potential for Non-Dimensional System<sup>*</sup></b> <br>" + \
@@ -176,13 +171,16 @@ def non_dim_force_potential():
     # Define Figure and Add Drawings
     fig = go.Figure()
     fig.add_trace(potential)
+    # Update Contour Trace
+    fig.update_traces(contours_z=dict(show=True, usecolormap=True,
+                                      highlightcolor="limegreen", 
+                                      project_z=True))     
     fig.add_trace(primary_body)
     fig.add_trace(second_body)
     
     # Set Viewing Angle
     camera = dict(eye=dict(x=1.1, y=-0.7, z=0.9),
                   center=dict(z=-0.1))
-    
     # Update Figure
     fig.update_layout(title={'text': title,
                             'xanchor': 'center','yanchor': 'top',
