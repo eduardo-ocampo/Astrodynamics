@@ -145,10 +145,10 @@ In Astrodynamics the mass ratios are generally defined as:
 
 :::{math}
 :label:
-\mu = \frac{m_2}{m_1+m_2} 
-
-1 - \mu = \frac{m_1}{m_1+m_2} 
-
+\begin{align*}
+\mu &= \frac{m_2}{m_1+m_2} \\
+1 - \mu &= \frac{m_1}{m_1+m_2} 
+\end{align*}
 :::
 
 ```
@@ -166,11 +166,12 @@ Let us write this a bit more concisely by defining a new force potential as $\ma
 :::{math}
 :label: cr3bp_V
 
-V\left(x,y,z\right) = \frac{1}{2}n^2\left( x^2 + y^2 \right) + U
+\mathbf{V}\left(x,y,z\right) = \frac{1}{2}n^2\left( x^2 + y^2 \right) + \mathbf{U}
 :::
 
 :::{math}
-U = \frac{Gm_1}{r_1} + \frac{Gm_2}{r_2}
+:label:
+\mathbf{U} = \frac{Gm_1}{r_1} + \frac{Gm_2}{r_2}
 :::
 
 where $r_1$ and $r_2$ are:
@@ -191,9 +192,7 @@ The potential energy is made up of three components
 
 ```
 
-TODO: Write a note that talks about interactive plots and how to pan 
-
-TODO: Check if both interactive plots are gettin render correctly
+**Figure 1.5** below is an example of solving Force Potential {eq}`cr3bp_V` for the Earth-Moon system. The figure is interactive and generated using [Plotly](https://plotly.com/python/), an open-source graphing library for Python. The reader is encouraged to interact with **Figure 1.5** using their mouse to zoom into the region of space around the bodies and rotate the surface to inspect the potential wells.
 
 ```{code-cell} ipython3
 :tags: ["remove-input"]
@@ -213,20 +212,15 @@ Finally, the equations of motion for the **Circular Restricted Three-Body Proble
 
 :::{math}
 :label: cr3bp_eom_simp
-
-\ddot{x} - 2n\dot{y} = \frac{\partial{V}}{\partial{x}}
-
-\ddot{y} + 2n\dot{x} = \frac{\partial{V}}{\partial{y}}
-
-\ddot{z} = \frac{\partial{V}}{\partial{z}}
-
+\begin{align*}
+\ddot{x} - 2n\dot{y} &= \frac{\partial{\mathbf{V}}}{\partial{x}} \\
+\ddot{y} + 2n\dot{x} &= \frac{\partial{\mathbf{V}}}{\partial{y}} \\
+\ddot{z} &= \frac{\partial{\mathbf{V}}}{\partial{z}}
+\end{align*}
 :::
 
 
 ## Non-Dimensional Circular Restricted Three-Body Problem 
-
-TODO: There are some parts where V and U are not bolded to denote vector notation, Fix this
-TODO: Loook through latex format and align where needed.
 
 Non-dimensionalization of the Circular Restricted Three-Body Problem has the advantage of solving one problem and applying the results to a general number of problems. The system is generalized for any Three-Body Problem by removing the dependence of the rotating reference rate.
 
@@ -238,9 +232,10 @@ As shown in **Figure 1.4** the primary masses are normalized such that:
 
 :::{math}
 :label:
-\mu = \frac{m_2}{m_1+m_2} 
-
-1 - \mu = \frac{m_1}{m_1+m_2} 
+\begin{align*}
+\mu &= \frac{m_2}{m_1+m_2} \\
+1 - \mu &= \frac{m_1}{m_1+m_2} 
+\end{align*}
 
 :::
 
@@ -284,12 +279,11 @@ Apply the non-dimensional terms to Equation {eq}`cr3bp_eom_simp` to get non-dime
 
 :::{math}
 :label: cr3bp_eom_norm
-
-n^2R\ddot{x}^* - 2n^2R\dot{y}^* = \frac{1}{R}\frac{\partial{V}}{\partial{x^*}}
-
-n^2R\ddot{y}^* - 2n^2R\dot{x}^* = \frac{1}{R}\frac{\partial{V}}{\partial{x^*}}
-
-n^2R\ddot{z}^* = \frac{1}{R}\frac{\partial{V}}{\partial{z^*}}
+\begin{align*}
+n^2R\ddot{x}^* - 2n^2R\dot{y}^* &= \frac{1}{R}\frac{\partial{\mathbf{V}}}{\partial{x^*}} \\
+n^2R\ddot{y}^* - 2n^2R\dot{x}^* &= \frac{1}{R}\frac{\partial{\mathbf{V}}}{\partial{x^*}} \\
+n^2R\ddot{z}^* &= \frac{1}{R}\frac{\partial{\mathbf{V}}}{\partial{z^*}}
+\end{align*}
 
 :::
 
@@ -298,7 +292,7 @@ Normalize the force potential Equation {eq}`cr3bp_V` as:
 :::{math}
 :label:
 
-\tilde{V} = \frac{V}{n^2R^2}
+\mathbf{\tilde{V}} = \frac{\mathbf{V}}{n^2R^2}
 
 :::
 
@@ -306,25 +300,23 @@ Now the equations of motion for the **Non-Dimensional Circular Restricted Three-
 
 :::{math}
 :label: cr3bp_eom_norm_simp
-
-\ddot{x}^* - 2\dot{y}^* = \frac{\partial{\tilde{V}}}{\partial{x^*}}
-
-\ddot{y}^* + 2\dot{x}^* = \frac{\partial{\tilde{V}}}{\partial{y^*}}
-
-\ddot{z}^* = \frac{\partial{\tilde{V}}}{\partial{z^*}}
-
+\begin{align*}
+\ddot{x}^* - 2\dot{y}^* &= \frac{\partial{\tilde{\mathbf{V}}}}{\partial{x^*}} \\
+\ddot{y}^* + 2\dot{x}^* &= \frac{\partial{\tilde{\mathbf{V}}}}{\partial{y^*}} \\
+\ddot{z}^* &= \frac{\partial{\tilde{\mathbf{V}}}}{\partial{z^*}}
+\end{align*}
 :::
 
-Note that is this looks similar to Equation {eq}`cr3bp_eom_simp` it's just that the definition of $\tilde{V}$ and $\tilde{U}$ are different. Different in the sense that we scaled the force potential. 
+Note that is this looks similar to Equation {eq}`cr3bp_eom_simp` it's just that the definition of $\mathbf{\tilde{V}}$ and $\mathbf{\tilde{U}}$ are different. Different in the sense that we scaled the force potential. 
 
 :::{math}
 :label: cr3bp_V_norm
-\tilde{V}\left(x^*,y^*,z^*\right) = \frac{1}{2}\left( {x^*}^2 + {y^*}^2\right) + \tilde{U}
+\mathbf{\tilde{V}}\left(x^*,y^*,z^*\right) = \frac{1}{2}\left( {x^*}^2 + {y^*}^2\right) + \mathbf{\tilde{U}}
 :::
 
 :::{math}
-
-\tilde{U} = \frac{U}{n^2R^2}
+:label:
+\mathbf{\tilde{U}} = \frac{U}{n^2R^2}
 :::
 
 We assume for the Non-Dimensional Restricted Three-Body Problem that $\mu < \frac{1}{2}$. This is not a bad assumptions for most problems we are Non-Dimensional Restricted Three-Body Problem that in solving. If not one can always swap $m_1$ and $m_2$.
@@ -333,23 +325,19 @@ The gravity potential can be written as
 
 :::{math}
 :label: cr3bp_U_norm
-\tilde{U} = \frac{1-\mu}{r^*_1} + \frac{\mu}{r^*_2}
+\mathbf{\tilde{U}} = \frac{1-\mu}{r^*_1} + \frac{\mu}{r^*_2}
 :::
 
 where $r^*_1$ and $r^*_2$ are:
 
 :::{math}
-r^*_1 = \sqrt{\left( x^* + \mu \right)^2+{y^*}^2+{z^*}^2}
+\begin{align*}
+r^*_1 &= \sqrt{\left( x^* + \mu \right)^2+{y^*}^2+{z^*}^2} \\
+r^*_2 &= \sqrt{\left( x^* - 1 + \mu \right)^2+{y^*}^2+{z^*}^2}
+\end{align*}
 :::
 
-:::{math}
-r^*_2 = \sqrt{\left( x^* - 1 + \mu \right)^2+{y^*}^2+{z^*}^2}
-:::
-
-
-TODO: Write something about large mu value maybe?
-
-TODO: Write a note that talks about interactive plots and how to pan 
+**Figure 1.6** below is an example of solving the Non-Dimensional Force Potential {eq}`cr3bp_V_norm`. Since **Figure 1.5** gave an example for the Earth-Moon system ($\mu = 0.012156$) this example exaggerates the potential wells by looking at a large mass ratio of $\mu=0.09$. Again, the reader is encouraged to interact with **Figure 1.6** using their mouse to zoom into the region of space around the bodies and rotate the surface to inspect the potential wells.
 
 ```{code-cell} ipython3
 :tags: ["remove-input"]
@@ -372,14 +360,13 @@ n = \sqrt{\frac{G\left( m_1 + m_2 \right)}{R^3}}
 :::
 
 :::{math}
-
-x = Rx^*, y = Ry^*, z = Rz^*
+\begin{matrix}
+ x = Rx^* & \dot{x} = nR\dot{x}^* \\  
+ y = Ry^* & \dot{y} = nR\dot{y}^* \\  
+ z = Rz^* & \dot{z} = nR\dot{z}^* \\  
+\end{matrix}
 :::
 
-:::{math}
-\dot{x} = nR\dot{x}^*, \dot{y} = nR\dot{y}^*, \dot{z} = nR\dot{z}^*
-
-:::
 
 By solving one non-dimensional problem, we actually solve **infinite** number of problems in dimensional set.
 
