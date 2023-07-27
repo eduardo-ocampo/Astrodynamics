@@ -161,7 +161,7 @@ x2, y2, forb_region2 = forbidden_region(C,mu,linspace_num=lin_num,
                                         y_range=[-0.25,0.25])
 ```
 
-Using this method, interactive **Figure 1.1** was created to draw forbidden region contours for 8 Jacobi Constant ($C$) values for the Earth-Moon system. Move the slider at the bottom of **Figure 1.1** to view the different contour plots. 
+Using this method, interactive **Figure 1.8** was created to draw forbidden region contours for 8 Jacobi Constant ($C$) values for the Earth-Moon system. Move the slider at the bottom of **Figure 1.8** to view the different contour plots. 
 
 
 ```{code-cell} ipython3
@@ -175,12 +175,12 @@ glue("fig1",fig1)
 ```{glue:figure} fig1
 :align: center
 :name: forbidden_region_interactive
-**Figure 1.1.** Interactive Forbbiden Region Contour Plots
+**Figure 1.8.** Interactive Forbbiden Region Contour Plots
 ```
 
-**Figure 1.1** is initialized with slider set to $C = 3.5$ for reference. As the Jacobi Constant for the Earth-Moon System decreases towards 3.0 notice how the forbidden region gets smaller in size. 
+**Figure 1.8** is initialized with slider set to $C = 3.5$ for reference. As the Jacobi Constant for the Earth-Moon System decreases towards 3.0 notice how the forbidden region gets smaller in size. 
 
-For $C = 3.18827$ the forbidden region around the Moon comes to a singularity at Lagrange Point 1. As shown with more detail in **Figure 1.2** below.
+For $C = 3.18827$ the forbidden region around the Moon comes to a singularity at Lagrange Point 1. As shown with more detail in **Figure 1.9** below.
 
 ```{code-cell} ipython3
 :tags: ["remove-input"]
@@ -193,7 +193,7 @@ glue("fig2",fig2)
 ```{glue:figure} fig2
 :align: center
 :name: L1_forbbiden_region
-**Figure 1.2.** Singularity of the Jacobi Constant at L1 
+**Figure 1.9.** Singularity of the Jacobi Constant at L1 
 ```
 
 Now for $C \lt 3.18827$ a direct path from the Earth to the Moon begins to appear (Low Energy Transfer). At a high level, Mission Design Engineers aim to change a spacecraft's velocity just enough so that a trajectory exists between two primary bodies using very small energy. For example, here are some more references for how this is used on the Earth-Moon system for [Low Energy Transfer](http://www.gg.caltech.edu/~mwl/publications/papers/lowEnergy.pdf) and [Free-Return Trajectory](https://en.wikipedia.org/wiki/Free-return_trajectory) as means of sending spacecraft to the Moon. 
@@ -238,12 +238,12 @@ Use the same methods from [Python Example](cr3bp.md#python-example) for generati
 ```{figure} ./images/moon_region_trajectory.gif
 :name: fig:moon_region_trajectory
 :width: 100%
-**Figure 1.3** Animation of Trajectory Towards the Moon  
+**Figure 1.10** Animation of Trajectory Towards the Moon  
 ```
 
 The animation shows the Jacobi Constant starting at a value of 3.190 and ending with a constant of 3.176. For a fixed spacecraft position {eq}`jc_traj_initial_position` and impulse angle {eq}`jc_traj_initial_theta` as $C$ decreases the magnitude of $\Delta V$ required to maintain the Zero-Velocity Surface {eq}`solve_zvc` increases from 1.015956 to 1.022823. If the mission requirements is to design a trajectory towards the Moon region of space, than we can analyze the minimum $\Delta V$ required until the L1 region opens up but notice how the orbit shape around the Moon also changes with increased velocity. At some point the increase to the initial velocity sets the spacecraft up to return towards L1 and given a $TOF\gt 2.2\pi$ the spacecraft can return towards the primary body. 
 
-As Jacobi Constant $C$ continues to decrease in **Figure 1.2** the region in space between both Lagrange Point 2 and Lagrange Point 3 begin to open. This is shown in **Figure 1.2** by toggling slider between $C = 3.180$ and $C = 3.013$. As $C$ gets closer to 3.0 the forbidden regions disappear to a singularity corresponding to the location of Lagrange Point 4 (L4) and Lagrange Point 5 (L5). For the Earth-Moon System the minimum Jacobi Constant is approximately **2.988043**. This can be shown by hovering your cursor around L4 and L5 on interactive **Figure 1.2**
+As Jacobi Constant $C$ continues to decrease in **Figure 1.9** the region in space between both Lagrange Point 2 and Lagrange Point 3 begin to open. This is shown in **Figure 1.9** by toggling slider between $C = 3.180$ and $C = 3.013$. As $C$ gets closer to 3.0 the forbidden regions disappear to a singularity corresponding to the location of Lagrange Point 4 (L4) and Lagrange Point 5 (L5). For the Earth-Moon System the minimum Jacobi Constant is approximately **2.988043**. This can be shown by hovering your cursor around L4 and L5 on interactive **Figure 1.9**
 
 Lastly, the same analysis can be done to demonstrate how the forbidden regions change in 3-dimenionsal space along the Potential Surfaces {eq}`cr3bp_V_norm` introduced in section [Non-Dimensional Circular Restricted Three-Body Problem](cr3bp.md#non-dimensional-circular-restricted-three-body-problem)
 
@@ -251,7 +251,7 @@ Lastly, the same analysis can be done to demonstrate how the forbidden regions c
 ```{figure} ./images/zvc_cross_section.gif
 :name: fig:zvc_cross_section
 :width: 100%
-**Figure 1.4** Animation of Zero-Velocity Curves for the Earth-Moon System 
+**Figure 1.11** Animation of Zero-Velocity Curves for the Earth-Moon System 
 ```
 
 TODO: Next section can be Jacobian Integral in inertial frame and then lead to Tisserand's Criterion
