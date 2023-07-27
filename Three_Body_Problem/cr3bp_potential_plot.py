@@ -12,7 +12,7 @@ import plotly.graph_objects as go
 
 # Dimensional
 # --------------------------------------------------------------
-def force_potential():
+def force_potential(show_figure=False):
 
     # Newtonian constant of gravitation
     # https://ssd.jpl.nasa.gov/astro_par.html 
@@ -36,8 +36,8 @@ def force_potential():
     # ----------------------------------------------------------
     min_range = -5e5
     max_range =  5e5
-    x = np.linspace(min_range, max_range, 150)
-    y = np.linspace(min_range, max_range, 150)
+    x = np.linspace(min_range, max_range, 100)
+    y = np.linspace(min_range, max_range, 100)
     X, Y = np.meshgrid(x, y)
 
     V = -1*((n**2)*(X**2+Y**2) +\
@@ -115,12 +115,20 @@ def force_potential():
                             showarrow=False,font=dict(size=9),
                             text="*Bodies Not to Scale",
                             xref="paper",yref="paper"))
+    fig.add_annotation(dict(x= 0,y= -0.16, xanchor='left',  
+                            showarrow=False,font=dict(size=9),
+                            text="(C) thatguyeddieo.github.io/Astrodynamics",
+                            xref="paper",yref="paper")
+                            )
+
+    if show_figure:
+        fig.show()
 
     return fig
 
 # Non-Dimensional
 # --------------------------------------------------------------
-def non_dim_force_potential():
+def non_dim_force_potential(show_figure=False):
 
     # Mass Ratio
     # ----------------------------------------------------------
@@ -130,8 +138,8 @@ def non_dim_force_potential():
     # ----------------------------------------------------------
     min_range = -1.5
     max_range =  1.5
-    x = np.linspace(min_range, max_range, 200)
-    y = np.linspace(min_range, max_range, 200)
+    x = np.linspace(min_range, max_range, 150)
+    y = np.linspace(min_range, max_range, 150)
     X, Y = np.meshgrid(x, y)
 
     V = -1*(0.5*(X**2+Y**2) +\
@@ -140,8 +148,6 @@ def non_dim_force_potential():
 
     # Plot Props
     # ----------------------------------------------------------
-    z_axis_min = -3.0
-    z_axis_max = -1.1
 
     # Cut singularity for better looking plot
     potent_min = -3.5
@@ -179,7 +185,10 @@ def non_dim_force_potential():
     fig.add_trace(second_body)
     
     # Set Viewing Angle
-    camera = dict(eye=dict(x=1.1, y=-0.7, z=0.9),
+    zoom_control = 1.3
+    camera = dict(eye=dict(x= 1.1*zoom_control, 
+                           y=-0.7*zoom_control, 
+                           z= 0.9*zoom_control),
                   center=dict(z=-0.1))
     # Update Figure
     fig.update_layout(title={'text': title,
@@ -205,5 +214,12 @@ def non_dim_force_potential():
                             showarrow=False,font=dict(size=9),
                             text="*Bodies Not to Scale",
                             xref="paper",yref="paper"))
-
+    fig.add_annotation(dict(x= 0,y= -0.16, xanchor='left',  
+                            showarrow=False,font=dict(size=9),
+                            text="(C) thatguyeddieo.github.io/Astrodynamics",
+                            xref="paper",yref="paper")
+                            )
+    if show_figure:
+        fig.show()
+        
     return fig
