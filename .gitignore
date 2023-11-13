@@ -1,5 +1,6 @@
 # developer workspace scripts and directories
 workspace/
+dev_script_*
 dev_plot_*
 
 # Byte-compiled / optimized / DLL files
