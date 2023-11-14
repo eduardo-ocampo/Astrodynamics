@@ -1,0 +1,35 @@
+
+TODO Remove This 
+### Case 1
+
+Consider the case which the river has no current.
+
+:::{math}
+:label: zerm_case1_current
+U\left(x,y\right) = 0
+:::
+
+The dynamics is simply driven by the boat {eq}`zermo_dynamics` becomes:
+
+:::{math}
+:label: zerm_case1_boat
+\begin{align*}
+\dot{x} &= V\cos{\delta} \\
+\dot{y} &= V\sin{\delta} \\
+\delta &= constant
+\end{align*}
+:::
+
+For a fixed time $t_f$ the the final distance in the x-direction (X) is defined as:
+
+:::{math}
+X = V \cos{\delta}t_f
+:::
+
+So that the optimal control law will be:
+
+:::{math}   
+\cos{\delta} = \frac{X}{V t_f}
+:::
+
+If you were to draw this, all the boat is doing is moving at a constant bearing if you were to maximize $y\left(t_f\right)$ you'll want to move at 45 degree angle. 

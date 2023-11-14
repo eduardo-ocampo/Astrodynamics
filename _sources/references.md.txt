@@ -1,0 +1,15 @@
+# References
+
+## Local Dynamics Section 
+
+- [MIT OpenCourseWare, The State Transition Matrix](https://ocw.mit.edu/courses/16-346-astrodynamics-fall-2008/resources/lec_19/)
+
+- [How to best think of the State Transition Matrix, and how to use it to find periodic Halo orbits?](https://space.stackexchange.com/questions/20590/how-to-best-think-of-the-state-transition-matrix-and-how-to-use-it-to-find-peri#:~:text=The%20State%20Transition%20Matrix%20(STM,over%20short%20period%20of%20times)
+
+- Low-Thrust Variable-Specific-Impulse Transfers and Guidance to Unstable Periodic Orbits. Juan Senent, Cesar Ocampo, and Antonio Capella; Journal of Guidance, Control, and Dynamics, 28 (2) March–April 2005
+
+
+# COE Reference
+
+https://www.faa.gov/about/office_org/headquarters_offices/avs/offices/aam/cami/library/online_libraries/aerospace_medicine/tutorial/media/iii.4.1.4_describing_orbits.pdf
+

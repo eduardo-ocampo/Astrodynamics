@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>Local Dynamics</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/css/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Classical Orbit Elements" href="classical_orbit_elements.html" />
+  <link rel="prev" title="The Two-Body Problem" href="two_body_problem.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Workspace</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link  router-link-active">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link  router-link-active">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Introduction</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../intro.html" class="reference internal ">Welcome</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../nomenclature.html" class="reference internal ">Nomenclature</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Classical Orbital Elements</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 "><a href="two_body_problem.html" class="reference internal ">The Two-Body Problem</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Local Dynamics</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#introduction" class="reference internal">Introduction</a></li>
+                
+                  <li class="toctree-l2"><a href="#first-order-dynamics-and-the-state-transition-matrix" class="reference internal">First-Order Dynamics and The State Transition Matrix</a></li>
+                
+                  <li class="toctree-l2"><a href="#planar-two-body-problem-example" class="reference internal">Planar Two-Body Problem Example</a></li>
+                
+                  <li class="toctree-l2"><a href="#python-example" class="reference internal">Python Example</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="classical_orbit_elements.html" class="reference internal ">Classical Orbit Elements</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="integrals_of_motion.html" class="reference internal ">Integrals of Motion</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="the_trajectory_equation.html" class="reference internal ">The Trajectory Equation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="python_examples.html" class="reference internal ">Calculating Orbit Elements with Python</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>Local Dynamics</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="two_body_problem.html"
+       title="previous chapter">← The Two-Body Problem</a>
+  </li>
+  <li class="next">
+    <a href="classical_orbit_elements.html"
+       title="next chapter">Classical Orbit Elements →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="local-dynamics">
+<h1>Local Dynamics<a class="headerlink" href="#local-dynamics" title="Permalink to this headline">¶</a></h1>
+<p>Consider a spacecraft at initial state <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> undergoing some deviation <span class="math notranslate nohighlight">\(\delta \mathbf{x}\)</span> at time <span class="math notranslate nohighlight">\(t_0\)</span>. As shown in <a class="reference internal" href="#local-dynamics-initial"><span class="std std-ref">Figure 1.5</span></a> below. Assume we are interested in knowing how to determine the state history of the deviation vector <span class="math notranslate nohighlight">\(\delta \mathbf{x}(t)\)</span></p>
+<figure class="align-default" id="local-dynamics-initial">
+<a class="reference internal image-reference" href="../_images/local_dynamics_initial.png"><img alt="../_images/local_dynamics_initial.png" src="../_images/local_dynamics_initial.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure 1.5</strong> Initial State Deviation</span><a class="headerlink" href="#local-dynamics-initial" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Up to now, the strategy for handling this type of problem involving numerically integrating a trajectory given an initial condition vector (see <a class="reference internal" href="two_body_problem.html#solving-the-two-body-problem"><span class="std std-doc">Solving The Two-Body Problem</span></a>) up to a final time <span class="math notranslate nohighlight">\(t_f\)</span>. With that approach, one can determine the deviation state <span class="math notranslate nohighlight">\(\delta \mathbf{x}\)</span> by computing the difference between the integrated deviated trajectory <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> with the nominal trajectory <span class="math notranslate nohighlight">\(\mathbf{x}_n\)</span></p>
+<div class="math notranslate nohighlight" id="equation-ld-problem">
+<span class="eqno">(1)<a class="headerlink" href="#equation-ld-problem" title="Permalink to this equation">¶</a></span>\[\delta \mathbf{x}\left(t\right)  = \mathbf{x}\left(t\right) - \mathbf{x}_n\left(t \right) \]</div>
+<p>Given the following initial state vectors</p>
+<div class="math notranslate nohighlight" id="equation-nominal-state-vector">
+<span class="eqno">(2)<a class="headerlink" href="#equation-nominal-state-vector" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{{x}_{n,0}} = \begin{bmatrix} 
+    x_0       \\ y_0       \\ z_0 \\
+    \dot{x_0} \\ \dot{y_0} \\ \dot{z_0}
+\end{bmatrix} \end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{{x}_{0}} = \begin{bmatrix} 
+    x_0 + \delta{x_0}      \\ y_0 + \delta{y_0}       \\ z_0 + \delta{z_0} \\
+    \dot{x_0} + \delta{\dot{x_0}} \\ \dot{y_0} + \delta{\dot{x_0}} \\ \dot{z_0} + \delta{\dot{x_0}}
+\end{bmatrix}\end{split}\]</div>
+<p>Although this method is a valid approach, this section deals with getting an approximation solution for the derviation state without directly intergrating both trajectory states <a class="reference internal" href="#equation-ld-problem">(1)</a> by introductioning what is know is Astrodynamics as the <strong>State Transiton Matrix</strong>.</p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>State Transition Matrix</strong> (STM) is a linearization of a dynamical system. It can be used as a  simplify method for progating system dynamics over a given time.</p>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> be the state of the sytstem. Begin by generalizing the equations of motion as:</p>
+<div class="math notranslate nohighlight" id="equation-general-eoms">
+<span class="eqno">(3)<a class="headerlink" href="#equation-general-eoms" title="Permalink to this equation">¶</a></span>\[\mathbf{\dot{x}}\left(t\right) = \mathbf{g}\left( t;\mathbf{x}_0 \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{g}\)</span> is some general state function which is a function of time based on  initiail state vector <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span>.</p>
+<p>For example, for the <span class="xref myst">Two-Body Problem</span> <span class="math notranslate nohighlight">\(\mathbf{g}\)</span> is</p>
+<div class="math notranslate nohighlight" id="equation-classical-orbital-elements-local-dynamics-0">
+<span class="eqno">(4)<a class="headerlink" href="#equation-classical-orbital-elements-local-dynamics-0" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{g} = 
+\begin{bmatrix} 
+\mathbf{\dot{r}} \\
+-\frac{\mu}{r^3}\mathbf{r}
+\end{bmatrix} \end{split}\]</div>
+<p>Once we have <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> we can propagate forwards or backwards in time <span class="math notranslate nohighlight">\(t_f\)</span>.</p>
+<p>Now consider a small deviation in <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>, how would its equations of motion change as a function of time? We can take the difference:</p>
+<div class="math notranslate nohighlight" id="equation-ld-deviated-x">
+<span class="eqno">(5)<a class="headerlink" href="#equation-ld-deviated-x" title="Permalink to this equation">¶</a></span>\[\delta\mathbf{\dot{x}} = \mathbf{g}\left(t;\mathbf{x}_0+\delta\dot{x}_0\right) - \mathbf{g}\left(t;\mathbf{x}_0\right)\]</div>
+<p>where it is assumed that</p>
+<div class="math notranslate nohighlight">
+\[||\delta{\mathbf{x}}|| \ll ||\mathbf{x}||\]</div>
+<p>Often the deviation vector is thought of as a sort of localized effect. Local in the sense that it is relative to the nominal trajectory based on <span class="math notranslate nohighlight">\(\mathbf{x}_0\)</span> as shown in <a class="reference internal" href="#local-dynamics-propagation"><span class="std std-ref">Figure 1.6</span></a>:</p>
+<figure class="align-default" id="local-dynamics-propagation">
+<a class="reference internal image-reference" href="../_images/local_dynamics_propagation.png"><img alt="../_images/local_dynamics_propagation.png" src="../_images/local_dynamics_propagation.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure 1.6</strong> Propagted Initial State Deviation</span><a class="headerlink" href="#local-dynamics-propagation" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Let’s attempt to solve Equation <a class="reference internal" href="#equation-ld-deviated-x">(5)</a> using <a class="reference external" href="https://mathworld.wolfram.com/TaylorSeries.html">Taylor Series Expansion</a>. Suppose we have an infinitely differentiable, real function <span class="math notranslate nohighlight">\(\mathbf{g}\left({\mathbf{x}}\right)\)</span> with <span class="math notranslate nohighlight">\(\mathbf{g}\)</span> , <span class="math notranslate nohighlight">\(\mathbf{x} \in \mathbb{R}^n\)</span> where <span class="math notranslate nohighlight">\(n\)</span> comes from the state being nth-dimensional. The Taylor series expansion about some  point <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> = <span class="math notranslate nohighlight">\(\mathbf{a}\)</span> is defined below for the <span class="math notranslate nohighlight">\(i^{th}\)</span> component of <span class="math notranslate nohighlight">\(\mathbf{g}\left(\mathbf{x} \right)\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-gi-taylor">
+<span class="eqno">(6)<a class="headerlink" href="#equation-gi-taylor" title="Permalink to this equation">¶</a></span>\[g_i\left( \mathbf{x} \right) = \sum_{n=0}^{\infty} \frac{1}{n!}\left[\left( \mathbf{x} - \mathbf{a}\right)\cdot \nabla_a  \right]^n g_i\left(\mathbf{a} \right)\]</div>
+<p>where <span class="math notranslate nohighlight">\({\nabla}_a\)</span> is a gradient operator of n-dimensional.</p>
+<p>Re-ordering gives:</p>
+<div class="math notranslate nohighlight" id="equation-gix-gia-taylor">
+<span class="eqno">(7)<a class="headerlink" href="#equation-gix-gia-taylor" title="Permalink to this equation">¶</a></span>\[g_i\left( \mathbf{x} \right) - g_i\left( \mathbf{a} \right) =  \sum_{n=1}^{\infty} \frac{1}{n!}\left[\left( \mathbf{x} - \mathbf{a}\right)\cdot \nabla_a  \right]^n g_i\left(\mathbf{a} \right)\]</div>
+<p>Now lets say instead of truncating the expansion <a class="reference internal" href="#equation-gi-taylor">(6)</a> and <a class="reference internal" href="#equation-gix-gia-taylor">(7)</a> at infinity we apply the <span class="math notranslate nohighlight">\(M^{th}\)</span>-order Taylor expansion. The equations of motion can be written for the <span class="math notranslate nohighlight">\(i^{th}\)</span> component of <span class="math notranslate nohighlight">\(\delta\mathbf{\dot{\mathbf{x}}}\)</span> as:</p>
+<div class="math notranslate nohighlight" id="equation-dxi-taylor-expan">
+<span class="eqno">(8)<a class="headerlink" href="#equation-dxi-taylor-expan" title="Permalink to this equation">¶</a></span>\[\delta\mathbf{\dot{\mathbf{x}}_i} = \sum_{p=1}^{M}\frac{1}{p!} g_{i,\gamma_1,\dots\gamma_p} \delta x^{\gamma_1} \dots \delta x^{\gamma_p}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\gamma_j \in \left\{1,\dots,N \right\}\)</span> and the subscript <span class="math notranslate nohighlight">\(\gamma_j\)</span> represents the <span class="math notranslate nohighlight">\(\gamma^{th}_j\)</span> component of the state vectors <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>. In this form the term <span class="math notranslate nohighlight">\(g_{i,\gamma_1,\dots\gamma_p}\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[g_{i,\gamma_1,\dots \gamma_p} = \frac{\partial^p g_i\left( t,\mathbf{x} \right)}{\partial x_{\gamma_1} \dots \delta x_{\gamma_p}}\]</div>
+</section>
+<section id="first-order-dynamics-and-the-state-transition-matrix">
+<h2>First-Order Dynamics and The State Transition Matrix<a class="headerlink" href="#first-order-dynamics-and-the-state-transition-matrix" title="Permalink to this headline">¶</a></h2>
+<p>For a typical Astrodynamics problem, <span class="math notranslate nohighlight">\(M = 1\)</span> is often considered for solving the equations of motion when evaluating Equation <a class="reference internal" href="#equation-dxi-taylor-expan">(8)</a>. Consider the equations of motion are given:</p>
+<div class="math notranslate nohighlight" id="equation-classical-orbital-elements-local-dynamics-1">
+<span class="eqno">(9)<a class="headerlink" href="#equation-classical-orbital-elements-local-dynamics-1" title="Permalink to this equation">¶</a></span>\[\mathbf{\dot{x}} = \mathbf{g}\left( \mathbf{x} \right)\]</div>
+<p>With <span class="math notranslate nohighlight">\(\phi\)</span> as the solution</p>
+<div class="math notranslate nohighlight" id="equation-x-phi-solution">
+<span class="eqno">(10)<a class="headerlink" href="#equation-x-phi-solution" title="Permalink to this equation">¶</a></span>\[\mathbf{x}\left( t \right) = \phi \left(t;\mathbf{x}_0,t_0 \right)\]</div>
+<p>Taking the derivative of the solution with respect to the initial states gives rise to the State Transition Matrix (<span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span>) which maps from current time to some different time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-stm-def">
+<span class="eqno">(11)<a class="headerlink" href="#equation-stm-def" title="Permalink to this equation">¶</a></span>\[\mathbf{\Phi}\left( t,t_0 \right) = \frac{\partial\phi}{\partial\mathbf{x}_0}\]</div>
+<p>or using Expression <a class="reference internal" href="#equation-x-phi-solution">(10)</a> this can also be thought as:</p>
+<div class="math notranslate nohighlight" id="equation-stm-general">
+<span class="eqno">(12)<a class="headerlink" href="#equation-stm-general" title="Permalink to this equation">¶</a></span>\[\mathbf{\Phi}\left( t,t_0 \right) = \frac{\partial\mathbf{x}}{\partial\mathbf{x}_0}\]</div>
+<p>such that</p>
+<div class="math notranslate nohighlight" id="equation-classical-orbital-elements-local-dynamics-2">
+<span class="eqno">(13)<a class="headerlink" href="#equation-classical-orbital-elements-local-dynamics-2" title="Permalink to this equation">¶</a></span>\[\frac{d \mathbf{\Phi}}{dt} = \frac{\partial\mathbf{g}\left(t,\mathbf{x} \right)}{\partial\mathbf{x}} \mathbf{\Phi}\]</div>
+<p>By using the definition of the STM in the form of <a class="reference internal" href="#equation-stm-general">(12)</a> then the deviation vector to the first-order becomes a linear equation:</p>
+<div class="math notranslate nohighlight" id="equation-deviated-stm">
+<span class="eqno">(14)<a class="headerlink" href="#equation-deviated-stm" title="Permalink to this equation">¶</a></span>\[\delta\mathbf{x} =  \mathbf{\Phi}\left( t,t_0\right) \delta \mathbf{x}_0\]</div>
+<p>For the <span class="xref myst">Two-Body Problem</span> <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> is a symplectic 6x6 matrix with <span class="math notranslate nohighlight">\(det(\mathbf{\Phi}) = 1\)</span>. This mean we can also solve for <span class="math notranslate nohighlight">\(\delta\mathbf{x}_0\)</span> and are allowed to easily change time from <span class="math notranslate nohighlight">\(t\)</span> to <span class="math notranslate nohighlight">\(t_0\)</span> in either direction:</p>
+<div class="math notranslate nohighlight" id="equation-devivated-stm-forward-backward">
+<span class="eqno">(15)<a class="headerlink" href="#equation-devivated-stm-forward-backward" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{align*}
+\delta\mathbf{x}_0 &amp;= \mathbf{\Phi}^{-1}\left(t,t_0 \right) \delta\mathbf{x} \\
+\delta\mathbf{x}_0 &amp;= \mathbf{\Phi}\left(t_0,t\right) \delta\mathbf{x}
+\end{align*}\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> tells us is how to map from the initial state <span class="math notranslate nohighlight">\(t_0\)</span> to some different time (forwards or backwards.) thus Expression <a class="reference internal" href="#equation-deviated-stm">(14)</a> also maps the deviation vector forwards or backwards as shown in Expression <a class="reference internal" href="#equation-devivated-stm-forward-backward">(15)</a> and illustrated in <a class="reference internal" href="#local-dynamics-stm"><span class="std std-ref">Figure 1.7</span></a>.</p>
+<figure class="align-default" id="local-dynamics-stm">
+<a class="reference internal image-reference" href="../_images/local_dynamics_stm.png"><img alt="../_images/local_dynamics_stm.png" src="../_images/local_dynamics_stm.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure 1.7</strong> Forward Propagation and the STM</span><a class="headerlink" href="#local-dynamics-stm" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Now determine the time derivative of our deviation vector <span class="math notranslate nohighlight">\(\delta \mathbf{\dot{x}}\)</span> by reducing the <span class="math notranslate nohighlight">\(M^{th}\)</span>-order Taylor expansion <a class="reference internal" href="#equation-dxi-taylor-expan">(8)</a>. For our case of <span class="math notranslate nohighlight">\(\mathbf{\dot{x}} = \mathbf{g}\left( \mathbf{x} \right)\)</span> and letting <span class="math notranslate nohighlight">\(M = 1\)</span> reduces to:</p>
+<div class="math notranslate nohighlight" id="equation-classical-orbital-elements-local-dynamics-3">
+<span class="eqno">(16)<a class="headerlink" href="#equation-classical-orbital-elements-local-dynamics-3" title="Permalink to this equation">¶</a></span>\[\delta \mathbf{\dot{x}}\left( t \right) = \frac{\partial{\dot{\mathbf{x}}}}{\partial\mathbf{x}} \delta{\mathbf{x}} \]</div>
+<p>or by substituting <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> <a class="reference internal" href="#equation-stm-general">(12)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-classical-orbital-elements-local-dynamics-4">
+<span class="eqno">(17)<a class="headerlink" href="#equation-classical-orbital-elements-local-dynamics-4" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{align*}
+\delta \mathbf{\dot{x}}\left( t \right) &amp;= \frac{\partial{\dot{\mathbf{x}}}}{\partial\mathbf{x}} \frac{\partial\mathbf{x}}{\partial\mathbf{x}_0} \delta\mathbf{x}_0 \\
+\delta \mathbf{\dot{x}}\left( t \right) &amp;= A \mathbf{\Phi} \delta{\mathbf{x}_0}
+\end{align*}\end{split}\]</div>
+<p>Resulting in the time derivative of <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> as:</p>
+<div class="math notranslate nohighlight" id="equation-phi-a-dt">
+<span class="eqno">(18)<a class="headerlink" href="#equation-phi-a-dt" title="Permalink to this equation">¶</a></span>\[\mathbf{\dot{\Phi}} = A \mathbf{\Phi}\]</div>
+<p>The use of the state transition matrix to obtain the deviation vector <span class="math notranslate nohighlight">\(\delta\mathbf{x}\)</span> <a class="reference internal" href="#equation-deviated-stm">(14)</a> for some time <span class="math notranslate nohighlight">\(t_f\)</span> is semi-analytic because the method still requires integration of <span class="math notranslate nohighlight">\(\mathbf{\phi}\)</span>.
+However, the advantage for using the linear analysis governed by the STM is that it is much faster to use than directly integration the trajectory governed by nominal trajectory.</p>
+<p>For example, consider solving the deviation vector for the Two-Body Problem. Integrating the nominal and deviation trajectory directly requires solving 6 equations of motions for each state or 12 equations altogether. Whereas the STM method requires solving 36 equations for <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> and 6 equations for th nominal trajectory so 42 equations altogether. For this scenario solving the trajectory directly is faster. However, suppose you need to do this for 100 times. Solving directly requires one to integrate a total of 1,200 equations whereas solving 100 times using the STM linear approximation require only solving for <span class="math notranslate nohighlight">\(\mathbf{\Phi}\left(t,t_0 \right)\)</span> once or solving for 42 equations and is much faster to use. The penalty paid for speed is lost in accuracy. The STM method is an approximation and is best used to for short periods of time. Solving the equations directly is more accurate for longer time spans. TODO Point to example.</p>
+<p>TODO: Point to example?</p>
+</section>
+<section id="planar-two-body-problem-example">
+<h2>Planar Two-Body Problem Example<a class="headerlink" href="#planar-two-body-problem-example" title="Permalink to this headline">¶</a></h2>
+<p>We can integrate the State Transition Matrix together with the Two-Body Problem equations of motion.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\mathbf{\dot{x}} = \mathbf{g}\left(\mathbf{x}\right) &amp;= 
+\begin{bmatrix} 
+\mathbf{\dot{r}} \\
+-\frac{\mu}{r^3}\mathbf{r}
+\end{bmatrix}  \\
+\mathbf{\dot{\Phi}} &amp;= \frac{\partial\mathbf{g}}{\partial\mathbf{x}}\mathbf{\Phi}
+\end{align*}\end{split}\]</div>
+<p>Given the following initial state:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{x}_0 = 
+\begin{bmatrix}
+\mathbf{r}_0 \\
+\mathbf{v}_0
+\end{bmatrix}\end{split}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\Phi}_0 = \mathbf{I}_{4x4}\]</div>
+<p>Then <span class="math notranslate nohighlight">\(A\)</span> from the linearized equations formulated <a class="reference internal" href="#equation-phi-a-dt">(18)</a> becomes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \frac{\partial\mathbf{\dot{x}}}{\partial\mathbf{x}} = 
+\begin{bmatrix}
+\frac{\partial\mathbf{\dot{r}}}{\partial{\mathbf{r}}} &amp; \frac{\partial\mathbf{\dot{r}}}{\partial{\mathbf{v}}} \\
+\frac{\partial\mathbf{\dot{v}}}{\partial{\mathbf{r}}} &amp; \frac{\partial\mathbf{\dot{v}}}{\partial{\mathbf{v}}}
+\end{bmatrix}\end{split}\]</div>
+<p>The only partial that is non-zero or <span class="math notranslate nohighlight">\(I\)</span> in this case is <span class="math notranslate nohighlight">\(\frac{\partial\mathbf{\dot{v}}}{\partial{\mathbf{r}}}\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \frac{\partial\mathbf{\dot{x}}}{\partial\mathbf{x}} = 
+\begin{bmatrix}
+0 &amp; I \\
+\frac{\partial\mathbf{\dot{v}}}{\partial{\mathbf{r}}} &amp; 0
+\end{bmatrix}\end{split}\]</div>
+<p>Evalute <span class="math notranslate nohighlight">\(\frac{\partial\mathbf{\dot{v}}}{\partial{\mathbf{r}}}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{\partial\mathbf{\dot{v}}}{\partial{\mathbf{r}}} =  \frac{\partial}{\partial\mathbf{r}}\left[ -\frac{\mu}{r^3}\mathbf{r} \right] =
+\begin{bmatrix}
+-\frac{\mu}{r^3} + \frac{3 \mu x^2}{r^5} &amp; \frac{3\mu x y }{r^5} \\
+\frac{3\mu x y }{r^5}  &amp; -\frac{\mu}{r^3} + \frac{3\mu y^2}{r^5}
+\end{bmatrix}\end{split}\]</div>
+<p>so that <span class="math notranslate nohighlight">\(A\)</span> is now:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}A =
+\begin{bmatrix}
+0 &amp; 0  &amp; 1 &amp; 0  \\
+0 &amp; 0  &amp; 0 &amp; 1  \\
+-\frac{\mu}{r^3} + \frac{3 \mu x^2}{r^5} &amp; \frac{3\mu x y }{r^5} &amp; 0 &amp; 0  \\
+\frac{3\mu x y }{r^5}  &amp; -\frac{\mu}{r^3} + \frac{3\mu y^2}{r^5} &amp; 0 &amp; 0 
+\end{bmatrix}
+\end{split}\]</div>
+<p>Once we numerically solved for <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> up to <span class="math notranslate nohighlight">\(t_f\)</span> we can then easilty progagte back and forth in time by simply mulitplyhing by <span class="math notranslate nohighlight">\(\mathbf{\Phi}\left( t_i,t_o \right)\)</span></p>
+<figure class="align-default" id="local-dynamics-stm-propagate">
+<a class="reference internal image-reference" href="../_images/local_dynamics_stm_propagate.png"><img alt="../_images/local_dynamics_stm_propagate.png" src="../_images/local_dynamics_stm_propagate.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure X.X</strong> TITLE</span><a class="headerlink" href="#local-dynamics-stm-propagate" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>From <span class="math notranslate nohighlight">\(t_0\rightarrow t_i\)</span> and <span class="math notranslate nohighlight">\(t_0 \rightarrow t_f\)</span> we can solve for <span class="math notranslate nohighlight">\(t_i \rightarrow t_f\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left.\begin{aligned}
+\delta \mathbf{x}_i = \mathbf{\Phi}\left( t_i,t_o \right) \delta \mathbf{x}_0 \\
+\delta \mathbf{x}_f = \mathbf{\Phi}\left( t_f,t_o \right) \delta \mathbf{x}_0 
+\end{aligned}\right\}
+\delta \mathbf{x}_f = \mathbf{\Phi}\left( t_f,t_i \right) \delta \mathbf{x}_i\end{split}\]</div>
+<p>such that:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+\mathbf{\Phi}\left(t_f,t_i \right) &amp;= \mathbf{\Phi}\left(t_f,t_0 \right) \mathbf{\Phi}^{-1}\left(t_i,t_0 \right) \\
+&amp;= \mathbf{\Phi}\left(t_f,t_0 \right) \mathbf{\Phi}\left(t_0,t_i \right) \\
+\end{align*}\end{split}\]</div>
+<p>This derivation is important for mapping various times between two times and only numerically solving for <span class="math notranslate nohighlight">\(\mathbf{\Phi}\)</span> once.</p>
+</section>
+<section id="python-example">
+<h2>Python Example<a class="headerlink" href="#python-example" title="Permalink to this headline">¶</a></h2>
+<p>Introduce problem statement</p>
+<p><strong>Initial Conditions</strong></p>
+<div class="math notranslate nohighlight" id="equation-localdynamics-example-ivp-r">
+<span class="eqno">(19)<a class="headerlink" href="#equation-localdynamics-example-ivp-r" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{r}(t_0) = 
+\begin{bmatrix}
+8000 \\
+200  \\
+0
+\end{bmatrix} km\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-localdynamics-example-ivp-v">
+<span class="eqno">(20)<a class="headerlink" href="#equation-localdynamics-example-ivp-v" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{v}(t_0) = 
+\begin{bmatrix}
+0 \\
+8 \\
+0
+\end{bmatrix} \frac{km}{sec}\end{split}\]</div>
+<p><strong>Initial Devivation</strong></p>
+<div class="math notranslate nohighlight" id="equation-devivaiton-vec-r">
+<span class="eqno">(21)<a class="headerlink" href="#equation-devivaiton-vec-r" title="Permalink to this equation">¶</a></span>\[\begin{split}\delta\mathbf{r}(t_0) = 
+\begin{bmatrix}
+1 \\
+1  \\
+1
+\end{bmatrix} km\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-devivaiton-vec-v">
+<span class="eqno">(22)<a class="headerlink" href="#equation-devivaiton-vec-v" title="Permalink to this equation">¶</a></span>\[\begin{split}\delta\mathbf{v}(t_0) = 
+\begin{bmatrix}
+0 \\
+1 \\
+0
+\end{bmatrix} \frac{mm}{sec}\end{split}\]</div>
+<p>Talk about comparing two methods</p>
+<p>Method 1 is STM</p>
+<p>Method 2 is Nomial Trajectory + Deviated Trajectory</p>
+<p>Point to <span class="xref myst">Two-Body Problem Example</span></p>
+<p>Script Snippets to include</p>
+<p>Initial Devivation Vector</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># devivation vector</span>
+<span class="n">initial_dx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0e-6</span><span class="p">,</span><span class="mf">1e-6</span><span class="p">,</span><span class="mf">0e-6</span><span class="p">]</span>
+
+<span class="n">deviated_position</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">initial_pos</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">initial_dx</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="n">deviated_velocity</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">initial_vel</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">initial_dx</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>
+</pre></div>
+</div>
+<p>Since solving STM need initial phi, which is just identiy of size 36 (symtem of equations)</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">initial_phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">36</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Class module <code class="docutils literal notranslate"><span class="pre">two_problem</span></code> has class twoBody_STM</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sc_stm</span> <span class="o">=</span> <span class="n">twoBody_problem</span><span class="o">.</span><span class="n">twoBody_STM</span><span class="p">(</span><span class="n">initial_pos</span><span class="p">,</span><span class="n">initial_vel</span><span class="p">,</span><span class="n">initial_phi</span><span class="p">)</span> <span class="c1"># State Transition Matrix Methods</span>
+</pre></div>
+</div>
+<p>Run solver</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run scipy analysis for STM Method</span>
+<span class="c1"># --------------------------------------</span>
+<span class="n">sc_nominal</span><span class="o">.</span><span class="n">solve_twoBody_trajectory</span><span class="p">(</span><span class="n">saveAnalysis</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sc_deviated</span><span class="o">.</span><span class="n">solve_twoBody_trajectory</span><span class="p">(</span><span class="n">saveAnalysis</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">sc_stm</span><span class="o">.</span><span class="n">solve_twoBody_problem</span><span class="p">(</span><span class="n">saveAnalysis</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Calc stuff of interest</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get determinate of STM</span>
+<span class="n">sc_stm</span><span class="o">.</span><span class="n">stm_det_numerical</span> <span class="o">=</span> <span class="p">[</span><span class="n">determinant</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">p</span><span class="p">,(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">)))</span> 
+                        <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sc_stm</span><span class="o">.</span><span class="n">phis_numerical</span><span class="p">]</span>
+
+<span class="c1"># From results, determine Devivation Vector</span>
+<span class="n">dX_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">initial_dx</span><span class="p">])</span><span class="o">.</span><span class="n">T</span>
+<span class="n">sc_stm</span><span class="o">.</span><span class="n">dX_numerical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">p</span><span class="p">,(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">)),</span><span class="n">dX_0</span><span class="p">)</span> 
+                            <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">sc_stm</span><span class="o">.</span><span class="n">phis_numerical</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Plots</p>
+<figure class="align-center" id="local-dynamics-stm-solution">
+<a class="reference internal image-reference" href="../_images/local_dynamics_stm_solution.png"><img alt="../_images/local_dynamics_stm_solution.png" src="../_images/local_dynamics_stm_solution.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure X.X</strong> Title</span><a class="headerlink" href="#local-dynamics-stm-solution" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="local-dynamics-solution-diff">
+<a class="reference internal image-reference" href="../_images/local_dynamics_solution_diff.png"><img alt="../_images/local_dynamics_solution_diff.png" src="../_images/local_dynamics_solution_diff.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure X.X</strong> Title</span><a class="headerlink" href="#local-dynamics-solution-diff" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="local-dynamics-trajectory-diff">
+<a class="reference internal image-reference" href="../_images/local_dynamics_trajectory_diff.png"><img alt="../_images/local_dynamics_trajectory_diff.png" src="../_images/local_dynamics_trajectory_diff.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure X.X</strong> Title</span><a class="headerlink" href="#local-dynamics-trajectory-diff" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="two_body_problem.html"
+       title="previous chapter">← The Two-Body Problem</a>
+  </li>
+  <li class="next">
+    <a href="classical_orbit_elements.html"
+       title="next chapter">Classical Orbit Elements →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, Eddie.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

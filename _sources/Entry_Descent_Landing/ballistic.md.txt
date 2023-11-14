@@ -1,0 +1,415 @@
+# Atmospheric Entry
+
+TODO: Name this section: Hypersonic Entry!
+
+TODO: Add some sort of intro...
+
+TODO: Fix internal references links
+
+Allen and Eggers paper
+
+Reference:
+https://www.youtube.com/watch?v=JaK3u5brNKg
+https://spacecraft.ssl.umd.edu/academics/791S16/791S16L05.ballistic_entryx.pdf
+
+## Introduction
+
+```{figure} ./images/entry_fbd.png
+:name: entry_fbd
+:width: 100%
+**Figure X.X** TITLE
+```
+
+TODO: Drag figure similar to slide 71 
+NOTE: Difference from s as downrange and S as ref area
+
+For a spherical, non-rotating planet lets derive the equations of motion for entry using the free body diagram as depicted in Figure XXX:
+
+:::{math}
+:label: atmo_entry_eom
+\begin{align*}
+-D + mg\sin{\gamma} &= m\frac{dV}{dt} \\
+-L + mg\cos{\gamma} &= m\frac{V^2}{r} \cos{\gamma} - mV\frac{d\gamma}{dt}
+\end{align*}
+:::
+
+Where flight path angle $\gamma$ is considered to be negative below the local horizontal. 
+
+Recall the definition of Lift and Drag force:
+
+:::{math}
+\begin{align*}
+L &= \frac{1}{2} \rho V^2SC_L \\
+D &= \frac{1}{2} \rho V^2SC_D
+\end{align*}
+:::
+
+The equations of motion {eq}`atmo_entry_eom` can be integrated forward in time numerically given initial conditions for the entry phase of flight ($V_e$, $m_e$, $\gamma_e$ ...) along with a model for the planetary atmospheric density and lift/drag coefficient. An analytical solution exists given some assumptions. 
+
+### Assumptions
+
+#### 1. Gravitational Acceleration is Constant
+---
+
+For the purpose of atmospheric entry, we can assume variations in gravitational acceleration up to the entry interface is negligible.
+
+TODO: List table of gravity for various planets
+
+#### 2. Atmospheric Density Approximation
+---
+
+We will approximate atmospheric density to the first order as:
+
+:::{math}
+:label: atmospheric_density
+\rho = \rho_0 e^{-Ah}
+:::
+
+Which is derived from [Bernoulli's Equation](https://www.princeton.edu/~asmits/Bicycle_web/Bernoulli.html) as a way of representing Conservation of Energy in the fluid mechanics sense where $\rho_0$ is the surface density. This is important because it allows us to create an exponential model of the atmosphere for any planetary body. The scale height $H$ is just a way of showing how quickly the atmospheric density is decreasing as a function of altitude. In the equation of atmospheric density {eq}`atmospheric_density` $A$ is defined as $H^{-1}$. The scale heigh is calculated by looking at how the atmospheric pressure reduces by a factor of $e$. 
+
+:::{math}
+:label: atmospheric_pressure
+p = p_0 e^{-\frac{gmz}{kT}}
+:::
+
+:::{math}
+e^{1} \rightarrow H = \frac{kT}{mg}
+:::
+
+where $k$ is the [Boltzmann Constant](https://en.wikipedia.org/wiki/Boltzmann_constant), $T$ is the planetary surface temperate, $m$ is the mass of the primary atmospheric composition, and $g$ is the gravitational constant of that planet. A good place to find the planetary parameters for atmospheric parameters is [NASA
+s Planetary Fact Sheets](https://nssdc.gsfc.nasa.gov/planetary/planetfact.html)
+
+TODO: Provide scale heights of various planets
+https://nssdc.gsfc.nasa.gov/planetary/planetfact.html
+
+TODO: Give example of density as a function of scale height. ASTE 577 hw
+
+#### 3. Constant Controlling Parameters
+---
+
+There are four controlling parameters that are assumed to be constant during the atmospheric entry phase. Two that define the vehicle:
+
+> **1** Lift to Drag Ratio L/D
+
+> **2** [Ballistic Coefficient $\beta$](ballistic.md#ballistic-coefficient-(β)) 
+
+And two that describe the entry environment:
+
+> **3** Planetary radius ($R$)
+
+> **4** Atmospheric scale height $H$
+
+## Ballistic Entry 
+
+By definition, zero lift is assume for a Ballistic Atmospheric Entry ($L=0$). Zero lift can be achieved by slowly rolling the vehicle during entry to cancel out any forces normal to the velocity vector for an axially symmetric spacecraft. As shown in Figure XXX for the [Orion Spacecraft](https://ntrs.nasa.gov/api/citations/20110013203/downloads/20110013203.pdf) capable of spinning along its body axis.
+
+```{figure} ./images/Orion_Capsule_Figure.png
+:name: Orion_Capsule_Figure
+:width: 100%
+**Figure X.X** Orion Capsule Handling Qualities for Atmospheric Entry
+```
+
+
+### Ballistic Equations of Motion 
+
+If we assume this analysis for a hypersonic entry segment, then the drag force is much higher than the gravitational force ($D \gg mg$). Resulting in a negligible gravitational force. The equation of motion derived for atmospheric entry {eq}`atmo_entry_eom` thus simplifies to:
+
+:::{math}
+:label: ballistic_fma
+-D = m\frac{dV}{dt}
+:::
+
+Substitute the definition of drag force into reduced equation of motion {eq}`ballistic_fma` which contains relevant atmospheric parameter $\rho$:
+
+:::{math}
+:label: ballistic_eom
+-\frac{1}{2}\rho V^2SC_D = m\frac{dV}{dt}
+:::
+
+NOTE: Difference from s as downrange and S as ref area
+
+
+As shown in FIGURE XXX flight path angle $\gamma$ is the angle between the Local Horizontal and the Velocity vector. Be careful not to confuse this with the angle of attack $\alpha$ depicted in Figure XXX. Positive $\gamma$ corresponds to an angle above the Local Horizontal. For EDL missions we are most likely oriented below the local horizontal to which results in $\gamma$ because we are descending. Apollo did a cool thing where it did a “skip entry”. TODO: Add skip entry notes.
+
+### Ballistic Coefficient (β)
+
+The Ballistic Coefficient is defined as:
+
+:::{math}
+:label: ballistic_coefficient
+\beta = \frac{m}{Cd S}
+:::
+
+Where $S$ is the reference area typically based on heat shield maximum diameter. One thing to realize is that mass $m$ is changing as function of altitude. i.e. dropping components, removing portions of heat shield, or burning propellant.  Also drag coefficient $C_d$ can be change as a function of altitude as you go through different regimens of the atmosphere different drag coefficient at speeds, super vs hypersonic. However, for this analysis we assumed [vehicle ballistic coefficient is constant](#3.-constant-controlling-parameters).
+
+
+### Velocity vs. Altitude
+
+We can integrate ballistic equation of motion {eq}`ballistic_eom` to get velocity as a function of altitude. Introduce a change of terms to aid in integrating this differential equations by looking at the relationship between distance along the flight path ($r$) and time. 
+
+```{figure} ./images/entry_triangle.png
+:align: center
+:width: 30%
+:name: entry_triangle
+**Figure X.X** Flight Path, Downrange, and Altitude Relationship
+```
+
+Let's take some time to derive the velocity of the vehicle as a function of altitude (h). Note ref area ($S$), coeff drag ($C_D$) and entry mass ($m$) are vehicle parameters. The density $\rho$ changes as a function of altitude as well. Begin by making a change of variable. From Figure XXX ABOVE we can define the rate of change of altitude ($h$) and down-range ($s$).
+
+:::{math}  
+:label: ballistic_ds_dt
+\frac{ds}{dt} = V\cos{\gamma}
+:::
+
+:::{math}
+:label: ballistic_dh_dt
+\frac{dh}{dt} = V\sin{\gamma}
+:::
+
+Substitute $dt$ from equation {eq}`ballistic_dh_dt` into {eq}`ballistic_fma` to get:
+
+:::{math}
+-\frac{C_d \rho S}{2m} dh = \frac{dV}{V^2} V \sin{\gamma}
+:::
+
+Prepare to integrate by moving terms relevant to $dh$ and $dV$
+
+:::{math}
+\frac{dV}{V} = -\frac{C_d S }{2m\sin{\gamma}} \rho dh 
+:::
+
+Integrate knowing we are starting at the entry phase.
+
+:::{math}
+\int_{V_e}^V \frac{dV}{V} = -\frac{C_d S }{2m\sin{\gamma_e}} \int_{h_e}^h \rho dh 
+:::
+
+Now what we want to do is insert our exponential model of the atmospheric desnity to solve the integral. The model we developed earlier in [Atmospheric Density Approximation](#2.-atmospheric-density-approximation) with respect to scale height is:
+
+:::{math}   
+\rho = \rho_0 e^{ -Ah }
+:::
+
+
+:::{math}
+:label: ballistic_V_integral
+\int_{V_e}^V \frac{dV}{V} = -\frac{C_d S }{2m\sin{\gamma_e}} \int_{h_e}^h \rho_0 e^{ -Ah } dh 
+:::
+
+This is a straight forward integral to solve. It is worth noting that during the integration process $e^{Ah_e} = 0$. Solving integral {eq}`ballistic_V_integral` yields:
+
+:::{math}
+:label: ballistic_V_integral_solve
+ln \left( \frac{V}{V_e} \right) = \frac{C_d S \rho_0 e^{ -Ah }}{2Am\sin{\gamma_e}}
+:::
+
+At this it is write {eq}`ballistic_V_integral_solve` with respect to ballistic coefficient {eq}`ballistic_coefficient` to get a feeling of how vehicle property $\beta$ effects velocity.
+
+:::{math}
+:label: ballistic_V_vs_h
+V\left(h\right) = V_e exp \left[ \left(\frac{1}{2A}\right) \left(\frac{\rho_0}{\sin{\gamma_e}}\right) \left(\frac{1}{\beta}\right) e^{ -Ah } \right]
+:::
+
+or
+
+:::{math}
+:label: ballistic_V_vs_h_2
+V\left(h\right) = V_e exp \left[ C e^{ -Ah } \right]
+:::
+
+where $\rho_0$ is the surface density and C is:
+
+:::{math}
+C =  \left(\frac{1}{2A}\right) \left(\frac{\rho_0}{\sin{\gamma_e}}\right) \left(\frac{1}{\beta}\right)
+:::
+
+### Peak Deceleration and Height
+
+What we really care about is understanding engineering parameters during the ballistic entry that will help the design of our vehicle. A driving load case for our spacecraft design is peak deceleration and at what altitude does it occur. Acceleration is defined as $\frac{dV}{dt}$. Start by taking the time derivate of velocity function {eq}`ballistic_V_vs_h_2`
+
+:::{math}
+:label: 
+\frac{dV}{dt} = - V_e C A exp \left[ C e^{ -Ah } \right] e^{ -Ah } \frac{dh}{dt}
+:::
+
+
+solving with respect to $\frac{dh}{dt}$ {eq}`ballistic_dh_dt` results in acceleration as a function of time.
+
+:::{math}
+:label: ballistic_a_vs_h
+a\left( t \right) = - {V_e}^2 \sin{\left(\gamma_e\right)} C A exp\left[ 2C e^{ -Ah } \right] e^{ -Ah } 
+:::
+
+Now for the altitude of peak acceleration. From the first derivate test of {eq}`ballistic_a_vs_h` with respect to $dh$ we can determine at what altitude ($h_{crit}$) the vehicle will experience a local extremum and from there consider the local extrema as its maximum acceleration for $h_{crit}$.
+
+:::{math}
+:label:
+\frac{d}{dh}\left( a\left(t \right) \right)\biggr|_{h=h_{crit}} = 0
+:::
+
+you'll get that the altitude for maximum acceleration is:
+
+:::{math}
+:label: ballistic_hcrit
+h_{crit} = \left(\frac{1}{A}\right) ln \left[ \left(-\frac{1}{A}\right) \left(\frac{C_d S}{m_e}\right) \left(\frac{\rho_0}{\sin{\gamma_e}}\right) \right]
+:::
+
+By evaluating $h_{crit}$ into {eq}`ballistic_a_vs_h` it can be showed that the maximum acceleration for a vehicle undergoing a ballistic entry is:
+
+:::{math}
+:label: ballistic_peak_accel
+a(h_{crit}) = \frac{A {V_e}^2}{2e} \sin{\gamma_e}
+:::
+
+Here the maximum acceleration corresponds to the peak deceleration. Recall in [Introduction](##introduction) we assumed a negative flight path angle $\gamma$. It is useful sometimes useful to get a feeling for the peak deceleration normalized against Earth's gravitation acceleration ($g_E$). We will introduce a new engineering parameter $n_{max}$:
+
+:::{math}
+:label: ballistic_peak_decel
+n_{max} = -\frac{A {V_e}^2}{2e g_E} \sin{|\gamma_e|}
+:::
+
+
+## Example
+
+https://ntrs.nasa.gov/api/citations/20080013365/downloads/20080013365.pdf
+
+https://mars.nasa.gov/mer/mission/spacecraft.html
+
+As an example consider a [Mars Exploration Rover](https://mars.nasa.gov/mars2020/timeline/landing/entry-descent-landing/) Entry, Descent, and Landing (EDL) analysis. Assume the following entry vehicle parameters and conditions:
+
+Entry Vehicle:
+:::{math}
+\begin{align*}
+d &= 2.65 m \\
+m_e &= 820 kg \\
+C_d &= 1.60
+\end{align*}
+:::
+
+Entry Conditions
+
+:::{math}
+\begin{align*}
+V_e &= 5.40 \frac{km}{s} \\
+h_e &= 80 km \\
+\gamma_e &= 4.40^{\circ}
+\end{align*}
+:::
+
+Mars Atmosphere: 
+
+:::{math}
+\begin{align*}
+\rho_0 &= 0.057 \frac{kg}{m^3} \\
+A &=  7812 \text{km}
+\end{align*}
+:::
+
+Use Python module atmosphere.py LINK to create an atmospheric representation of Mars and load module ballisitic.py to create an entry vehicle object. 
+
+Begin by importing module atmosphere.py LINK and setting Mars as the planet to analysis:
+
+```python
+from atmosphere import planet
+atmo = planet(body="Mars")
+```
+
+Surface density ($\rho_0$) and scale height attributes are automatically set by the planet() Class but can be modified if needed. Now define the MER entry vehicle parameters given and initialize a vehicle() object:
+
+```python
+# Entry Conditions
+# -------------------------------------
+mass_entry = 820 # kg
+alt_entry = 80 # km
+vel_entry = 5.40 # km/s
+gamma_entry = -4.40 # degrees
+
+# Vehicle Definition
+# -------------------------------------
+diameter = 2.65 # meters
+cd = 1.60
+
+# Initialize Vehicle Class
+# -------------------------------------
+mer_entry = vehicle(diameter,cd,mass_entry=mass_entry)
+```
+
+Since we provided an entry mass to start with, a ballistic coefficient was calculated using Equation {eq}`ballistic_coefficient` and can be accessed through attributes:
+
+```python
+print(f"β = {mer_entry.beta} kg/m^2")
+```
+
+```
+β = 92.920650292171 kg/m^2
+```
+
+Let's first look at what altitude peak acceleration occurs for this entry condition. Evaluating Equations {eq}`ballistic_hcrit` and {eq}`ballistic_peak_accel` yields peak conditions:
+
+:::{math}
+h_{crit} = 32.299 km
+:::
+
+:::{math}
+\begin{align*}
+a_{peak} &= -52.6749 \frac{m}{s^2} \\
+ &= -5.369 g_{e}
+\end{align*}
+:::
+
+This gives an idea of when our peak load will occur which is more than halfway down to the surface. Depending on the mission requirements we might want to bring that up higher in altitude. To get an idea of how the velocity and deacceleration are changing with altitude plot them for altitude ranging from entry down to the planet’s surface. Built-in methods vel_al_alt() and accel_at_alt() evaluates Equations {eq}`ballistic_V_vs_h` and `ballistic_a_vs_h` respectively for a given altitude. Combining this with a list comprehension for altitude array ranging from 0km to 80km the following plots are generated:
+
+```{figure} ./images/mer_ballistic_entry.png
+:align: center
+:name: mer_ballistic
+**Figure X.X** Ballistic Entry Profile of Mars Exploration Rovers Mission
+```
+
+Note the acceleration is negative because the vehicle is decelerating in the atmosphere and the values for deceleration are normalized against Earth's gravity to get a sense of g load during flight. TODO talk about peak acceleration profile maybe lead into peak heating?
+
+Although this Figure represents the vehicle conditions up to the planet's surface (0km), keep in mind that as discussed in Energy Manager LINK the hypersonic phase is only one part of the Entry, Descent, Landing Profile. At lower altitudes Aerodynamic decelerations are deployed to help control landing or prepare the payload for the next phase. 
+
+Now let's consider a trade study. As engineers we can think about what advantages different vehicle design parameters or entry conditions may have on peak acceleration. Depending on the mission we might want to dissipate all the heat sooner. For example, by changing our entry conditions can we drive the peak deceleration to a higher altitude? This might have the advantage of more downrange to control the vehicle or give time to prepare the payload after peak loads have occurred. Another thought is what parameters might influence the overall magnitude of peak deceleration, and how can we reduce the peak load?
+
+### Entry Velocity Trade Study
+
+For the same MER example, consider a ballistic entry with four different entry velocities: 6, 5, 4, and 3 km/sec. Using the same method as Example plot Velocity and Acceleration as a function of altitude: 
+
+```{figure} ./images/mer_velocity_study.png
+:align: center
+:name: mer_velocity_study
+**Figure X.X** The Impact of Entry Velocity on Ballistic Entry Performance
+```
+
+Altitude of peak acceleration is not affected by changes in entry velocity. All four graphs have their peak deceleration occurring at 32.229 km. However, the faster a vehicle enters, for a given entry angle and $\beta$, the more serve the peak deceleration as shown in Figure XXX.
+
+### Ballistic Coefficient Trade Study
+
+Now consider the same vehicle entry conditions but change the vehicle mass properties by varying ballistic coefficient: 300, 150, 100 and 50 $\frac{kg}{m^2}$. Using the same methods as before plot Velocity and Acceleration as a function of altitude: 
+
+```{figure} ./images/mer_bc_study.png
+:align: center
+:name: mer_bc_study
+**Figure X.X** The Impact of Ballistic Coefficient on Ballistic Entry Performance
+```
+
+The results show that the magnitude of peak acceleration does not change as a function of ballistic coefficient. All four graphs share the same peak deceleration of -5.370 g's. For a given entry condition and entry angle, peak acceleration is expected to be the same. However, a more streamline vehicle (higher $\beta$) will experience the peak at a lower altitudes as shown in Figure XXX.
+
+### Entry Flight Path Angle Trade Study
+
+Finally, consider the same ballistic entry vehicle but four different entry flight path angles: -15.0, -10.0, -8.0 and -5.0 degrees. Using the same method as Example plot Velocity and Acceleration as a function of altitude: 
+
+```{figure} ./images/mer_fpa_study.png
+:align: center
+:name: mer_fpa_study
+**Figure X.X** The Impact of Entry Angle on Ballistic Entry Performance
+```
+
+As shown by Figure XXX the more steeply the vehicle begins a ballistic entry for a given entry velocity and $\beta$, the more serve the peak deceleration. While at the same time, a steeper $\gamma$ results in the altitude of peak deceleration to decrease. Entry flight path angle can play a very important role in optimizing the vehicle's performance as it drives both the altitude of magnitude of peak load! Below is the peak altitude for each trade study:
+
+| $\gamma_e$ (deg) | $h_{crit}$ (km) | Peak Decel. g's | 
+| :--------------: | :-------------: | :-------------: |
+|     -15.0        |       22.80     |   -18.114       |
+|     -10.0        |       25.92     |   -12.153       |
+|     -8.0         |       27.65     |   -9.740        |
+|     -5.0         |       31.30     |   -6.099        |

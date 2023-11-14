@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>Classical Orbital Elements</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/css/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Workspace</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Introduction</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../intro.html" class="reference internal ">Welcome</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../nomenclature.html" class="reference internal ">Nomenclature</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Classical Orbital Elements</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="two_body_problem.html" class="reference internal ">The Two-Body Problem</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="local_dynamics.html" class="reference internal ">Local Dynamics</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="classical_orbit_elements.html" class="reference internal ">Classical Orbit Elements</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="integrals_of_motion.html" class="reference internal ">Integrals of Motion</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="the_trajectory_equation.html" class="reference internal ">The Trajectory Equation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="python_examples.html" class="reference internal ">Calculating Orbit Elements with Python</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>Classical Orbital Elements</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="classical-orbital-elements">
+<h1>Classical Orbital Elements<a class="headerlink" href="#classical-orbital-elements" title="Permalink to this headline">¶</a></h1>
+<p>Some Text</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="two_body_problem.html">The Two-Body Problem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="two_body_problem.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_body_problem.html#the-relative-state-vector">The Relative State Vector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_body_problem.html#solving-the-two-body-problem">Solving The Two-Body Problem</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="local_dynamics.html">Local Dynamics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="local_dynamics.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_dynamics.html#first-order-dynamics-and-the-state-transition-matrix">First-Order Dynamics and The State Transition Matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_dynamics.html#planar-two-body-problem-example">Planar Two-Body Problem Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="local_dynamics.html#python-example">Python Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="classical_orbit_elements.html">Classical Orbit Elements</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="classical_orbit_elements.html#elements-defining-the-shape-and-size-of-the-orbit">Elements Defining The Shape and Size of The Orbit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classical_orbit_elements.html#semi-major-axis-a">Semi-Major Axis (<span class="math notranslate nohighlight">\(a\)</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classical_orbit_elements.html#eccentricity-e">Eccentricity (<span class="math notranslate nohighlight">\(e\)</span>)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classical_orbit_elements.html#elements-defining-the-orientation-of-the-orbital-plane-in-which-the-plane-is-embedded">Elements Defining the Orientation of the Orbital Plane in which the Plane is Embedded</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classical_orbit_elements.html#inclination">Inclination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classical_orbit_elements.html#longitude-of-the-ascending-node">Longitude of The Ascending Node</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classical_orbit_elements.html#elements-defining-orientaion-of-periasis">Elements Defining Orientaion of Periasis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="classical_orbit_elements.html#argument-of-periapsis">Argument of Periapsis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classical_orbit_elements.html#time-of-periapsis-passage">Time of Periapsis Passage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrals_of_motion.html">Integrals of Motion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="integrals_of_motion.html#conservation-of-angular-momentum">Conservation of Angular Momentum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrals_of_motion.html#magnitude-of-angular-momentum">1. Magnitude of Angular Momentum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrals_of_motion.html#inclination">2. Inclination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="integrals_of_motion.html#longitude-of-ascending-node">3. Longitude of Ascending Node</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrals_of_motion.html#conservation-of-energy">Conservation of Energy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrals_of_motion.html#specific-energy">4. Specific Energy (ε)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="integrals_of_motion.html#eccentricity-vector-e">Eccentricity Vector (e)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="integrals_of_motion.html#the-argument-of-periapsis-omega">5. The Argument of Periapsis (<span class="math notranslate nohighlight">\(\omega\)</span>)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="integrals_of_motion.html#keplers-law">Kepler’s Law</a></li>
+<li class="toctree-l1"><a class="reference internal" href="the_trajectory_equation.html">The Trajectory Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="python_examples.html">Calculating Orbit Elements with Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="python_examples.html#example">Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_examples.html#script-setup">Script Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_examples.html#output">Output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="python_examples.html#exposing-script-methods">Exposing Script Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#specific-energy">Specific Energy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#specific-anguluar-momentum">Specific Anguluar Momentum</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#eccentricity-vector">Eccentricity Vector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#inclination">Inclination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#ascending-node-vector">Ascending Node Vector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#longitude-of-ascending-node">Longitude of Ascending Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#argument-of-perigee">Argument of Perigee</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#semi-major-axis">Semi-major Axis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#true-anomaly">True Anomaly</a></li>
+<li class="toctree-l3"><a class="reference internal" href="python_examples.html#period">Period</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, Eddie.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

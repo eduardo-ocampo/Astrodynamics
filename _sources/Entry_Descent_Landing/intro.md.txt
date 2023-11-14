@@ -1,0 +1,83 @@
+<!-- # Introduction -->
+# Atmospheric Flight Mechanics
+
+## Introduction to Atmospheric Entry
+
+In the context of atmospheric flight mechanics, hypersonic entry refers to entering a planetary atmosphere with entry speeds ranging from 3 -50 km/s. 
+
+Vehicle entry speed ($V_e$) is a function of escape velocity whether that comes from orbital or hyperbolic entry. Some missions are done from an orbital entry meaning you first expend propellent to get into an orbit around the planet and then descent through the atmosphere. However, hyperbolic entry onto a planet’s surface is the most efficient approach as you can remove energy from the interaction of the atmosphere instead of using on board propellent. 
+
+Aerodynamics forces slow down the vehicle in addition to exposing vehicle to deceleration forces and aerodynamic heating. The goal of most missions is to safety place a payload on the planetary surface or setup the vehicle for the next phase of the descent. In some cases, like Jupiter you will not land because there is nowhere to land. Instead, the entry vehicle will collect data as it descent. Other missions like those going to Titan or Europa, which may harness life, aim to burn up in atmosphere. The goal of understanding atmospheric entry mechanics is to design a vehicle to survive the phases of the entry in a controllable and predictable manner and orientation the entry vehicle as desired. 
+
+When thinking about the energy per unit mass that is imparted during this phase of flight, it is always the same equation for any planetary entry mission: 
+
+:::{math}
+:label:
+\frac{E}{m} = \frac{1}{2}V^2_e + g_0 h
+:::
+
+where $g_0$ is the surface gravity, and $h$ is altitude.
+
+Table XXX shows different planetary mission and their energy cost: 
+
+| Mission     | Planet Atmo. | $V_e$ ($\frac{km}{s}$)  | Altitude ($km$) | E/M ($\frac{MJ}{kg}$) | 
+| :---------: | :----------: | :---------------------: | :-------------: | :-------------------: | 
+| Apollo      | Earth        | 11.2                    | 100             | **63.702**             |
+| MER*        | Mars         |  5.7                    | 100             | **16.618**             |
+| Galileo     | Jupiter      | 48.0                    |  50             | **1,153.296**          |
+
+ *[Mars Exploration Rovers](https://mars.nasa.gov/mer/)
+
+
+By looking at table XXX, you can see that the amount of energy imparted during the entry phase is huge! LINK Python Script used to calc. For reference this is much larger compared to the energy per mass of water boiling (2.3 MJ/kg) and energy required to vaporizes carbon (60.4 MJ/kg). Note that how much energy you need to dissipate is a function of how much entry velocity you come in with. Galileo was the most intense planetary entry mission from an entry velocity, thermal heating, and deceleration perspective of any mission to date. 
+
+One thing to add is that you can do an [aerocapture](https://en.wikipedia.org/wiki/Aerocapture), which uses the upper atmosphere to slow down. Such as intentionally skimming the top of the atmosphere so that you are dissipating a little bit of energy over a longer time and not subjected to extreme heating as a hypersonic entry. Usually this is done using solar panels or [aerobraking](https://mars.nasa.gov/odyssey/mission/timeline/mtaerobraking/) to generate smaller amounts of drag to slow down and get into an orbit while trying not to approach too steep and risk excessive heat limited govern by braking materials. This type of decelerating may not be appropriate for some planetary missions but worth keeping in mind.
+
+## Energy Management 
+
+INSERT entry Figure
+
+```{figure} ./images/mars_edl.jpeg
+:align: center
+:name: edl_mars
+**Figure X.X** Perseverance Rover's Entry, Descent and Landing Profile
+```
+
+[Image Ref](https://mars.nasa.gov/mars2020/timeline/landing/entry-descent-landing/)
+
+From an entry is energy management perspective, the hypersonic phase dissipates ~99.5% of the kinetic energy. Almost all of it is coming during from aerodynamic drag and is done using a rigid heat shield which is just a large flat blunt body. Aerodynamic decelerators are responsible for the vast majority of EDL energy dissipation whereas parachute descent is only ~0.5%, powered flight is ~0.02% which is a tiny portion of total energy. During the hypersonic entry phase, the entry vehicle experiences both peak heating and peak declaration and must be design to handle those extreme conditions. TODO LINK IF Writing about this later
+
+With that said, you will want to come up with a vehicle geometry that will experience the least amount of heat put into the vehicle. Back in 1950s, [Harvey Allen from NASA Ames](https://history.nasa.gov/SP-4302/ch2.8.htm) propose using a blunt or bluff body as a means of mitigating the majority of the heat coming from atmospheric entry by having a detached shock.  TODO: Link
+
+```{figure} ./images/shock_aero.jpeg
+:align: center
+:name: shock_aero
+**Figure X.X** Shadowgraph Shock Waves Produced by Blunt Bodies (left) and Slender Bodies (right).
+```
+
+If you have a blunt shape, the shock wave is completely detached from the vehicle. The majority of the energy is dissipated into the region just behind the detached shock and is not going into your vehicle. At peak heating only about 5% of the total energy is transferred to the vehicle. The advantage of a slender body is that it is more maneuverable with low drag, but it experiences serve heating. A blunt body is high in drag and not very maneuverable, but the tradeoff is less heating. After the hypersonic entry phase you can add in different techniques like retro propulsion or aerodynamics surface during supersonic or subsonic phase to target where you go, or do a lift entry and control lift vector to accurately maneuver. 
+
+For reference here is a primer on [The Study of Aerodynamic Heating at High Supersonic Speeds](https://ntrs.nasa.gov/api/citations/19930091020/downloads/19930091020.pdf) by Allen & Eggers which touches on Blunt Body Aerodynamics. 
+
+Blunt body aerodynamics deals with a relationship between the change in enthalpy ($\frac{dh}{dt}$) to the geometry of the vehicle (nose radius $R_n$), and the entry velocity.
+
+:::{math}
+:label:
+\frac{dh}{dt} \varpropto \sqrt{\frac{1}{R_n}}V^3_\infty
+:::
+
+This means the heat transfer is proportional to the entry velocity cubed, which can cause very large heating. However, this can be mitigated by changing the size of the nose radius, thus this is where the blunt shape comes from. The bigger $R_n$ grows the smaller enthalpy gets. We now have a way of geometrically adjusting what the max heating will be for a given set of entry conditions, which is easier to do because there is not much you can do about the entry conditions for a given atmosphere. In some cases, the size of the entry vehicle heat shield is limited by the launch vehicle fairing, but that is only the case of a rigid heat shield. [A new development approach](https://www.nasa.gov/missions/tech-demonstration/loftid/nasa-inflatable-heat-shield-finds-strength-in-flexibility/) is to have a deployable or inflatable decelerator so that you can increase the area to help get around the small area limitation and increase your drag.
+
+Historically many EDL missions have used some sort of sphere-cone geometry to them for that desire to have a blunt shape heat shield. Keep in mind the aft section will enable you to pack more payload but can affect the vehicle stability. Ultimately both the shape of the forward and aft body can affect vehicle stability. 
+
+INSERT Figure
+
+Extra: https://www.youtube.com/watch?v=bmaQG-wHsIs
+
+Some are 45 where you don’t get as much drag but are more stable. The 70 degree has higher drag but less control. So you always have a trade there. The aft section of the entry vehicle can pack more payload but can effect stability. Lower cg is more stable.
+
+Mars grams really good mars atmospheric density model
+
+
+https://www.nasa.gov/wp-content/uploads/2023/08/final-planetary-mission-entry-vehicles-quick-reference-guide-v4.1-.pdf
+

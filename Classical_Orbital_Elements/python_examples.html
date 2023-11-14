@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>Calculating Orbit Elements with Python</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/css/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="prev" title="The Trajectory Equation" href="the_trajectory_equation.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Workspace</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link  router-link-active">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link  router-link-active">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Introduction</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../intro.html" class="reference internal ">Welcome</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../nomenclature.html" class="reference internal ">Nomenclature</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Classical Orbital Elements</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 "><a href="two_body_problem.html" class="reference internal ">The Two-Body Problem</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="local_dynamics.html" class="reference internal ">Local Dynamics</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="classical_orbit_elements.html" class="reference internal ">Classical Orbit Elements</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="integrals_of_motion.html" class="reference internal ">Integrals of Motion</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="the_trajectory_equation.html" class="reference internal ">The Trajectory Equation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Calculating Orbit Elements with Python</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#example" class="reference internal">Example</a></li>
+                
+                  <li class="toctree-l2"><a href="#script-setup" class="reference internal">Script Setup</a></li>
+                
+                  <li class="toctree-l2"><a href="#output" class="reference internal">Output</a></li>
+                
+                  <li class="toctree-l2"><a href="#exposing-script-methods" class="reference internal">Exposing Script Methods</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>Calculating Orbit Elements with Python</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="the_trajectory_equation.html"
+       title="previous chapter">← The Trajectory Equation</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="calculating-orbit-elements-with-python">
+<h1>Calculating Orbit Elements with Python<a class="headerlink" href="#calculating-orbit-elements-with-python" title="Permalink to this headline">¶</a></h1>
+<p>TODO: Rerun this using new twoBody_problem.py scripts</p>
+<p>Consider the Two-Body Problem:</p>
+<div class="math notranslate nohighlight" id="equation-eq-two-body-eom">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-two-body-eom" title="Permalink to this equation">¶</a></span>\[\ddot{\mathbf{r}} = -\frac{\mu}{r^3}\mathbf{r}\]</div>
+<p>In this example we will compute the follow orbit properties:</p>
+<ol class="arabic simple">
+<li><p><span class="xref myst">Classical Orbit Elements</span></p></li>
+<li><p><span class="xref myst">Specific Energy</span></p></li>
+<li><p><span class="xref myst">Specific Angular Momentum</span></p></li>
+<li><p>Period</p></li>
+<li><p>True Anomaly</p></li>
+</ol>
+<section id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Let us assume we have the following information about a spacecraft’s position and velocity at some time <span class="math notranslate nohighlight">\(t_0\)</span> orbiting Earth (<span class="math notranslate nohighlight">\(\mu = 398,600 \frac{km^3}{sec^2}\)</span>).</p>
+<p>In the relative coorindate frame the position and velocity vectors are:</p>
+<div class="math notranslate nohighlight" id="equation-classical-orbital-elements-python-examples-0">
+<span class="eqno">(2)<a class="headerlink" href="#equation-classical-orbital-elements-python-examples-0" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{r}(t_0) = 
+\begin{bmatrix}
+5000 \\
+100  \\
+0
+\end{bmatrix} km\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-classical-orbital-elements-python-examples-1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-classical-orbital-elements-python-examples-1" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{v}(t_0) = 
+\begin{bmatrix}
+1 \\
+\sqrt{\frac{\mu}{x_0}} + 1  \\
+1
+\end{bmatrix} \frac{km}{sec}\end{split}\]</div>
+<p>Determine the spacecraft’s orbital properties using Python package <a class="reference external" href="https://github.com/thatguyeddieo/Astrodynamics-Workspace/blob/main/Classical_Orbital_Elements/twoBodyProblem.py">twoBodyProblem.py</a></p>
+<p>Begin by importing module <code class="docutils literal notranslate"><span class="pre">twoBodyProblem</span></code> and defining the postion and velocity vector. Instantiate class <code class="docutils literal notranslate"><span class="pre">orbitElements()</span></code> with the initial state vector. Calling method <code class="docutils literal notranslate"><span class="pre">orbitElements.getElements()</span></code> will calculate orbital properities for the state vector while <code class="docutils literal notranslate"><span class="pre">orbitElements.writeResults()</span></code> will write out the results. Package <code class="docutils literal notranslate"><span class="pre">twoBodyProblem.py</span></code> writes the calulated orbital properites results to orbitElements.txt and can be overwritten by reassigning attribute <code class="docutils literal notranslate"><span class="pre">resultsOut</span></code>.</p>
+</section>
+<section id="script-setup">
+<h2>Script Setup<a class="headerlink" href="#script-setup" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">twoBodyProblem</span> <span class="kn">import</span> <span class="n">orbitElements</span>
+
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">398600</span>
+
+<span class="c1"># Initial Position and Velocity Vectors</span>
+<span class="n">position</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># km</span>
+
+<span class="n">vy</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mu</span><span class="o">/</span><span class="n">position</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">velocity</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">vy</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># km/s</span>
+
+<span class="c1"># Instantiate orbitElements Class</span>
+<span class="n">orbitElements</span> <span class="o">=</span> <span class="n">orbitElements</span><span class="p">(</span><span class="n">position</span><span class="p">,</span><span class="n">velocity</span><span class="p">)</span>
+<span class="n">orbitElements</span><span class="o">.</span><span class="n">resultsOut</span> <span class="o">=</span> <span class="s2">&quot;Example.results&quot;</span>
+
+<span class="c1"># Calculate Orbital Elements and Save Results Out</span>
+<span class="n">orbitElements</span><span class="o">.</span><span class="n">getElements</span><span class="p">()</span>
+<span class="n">orbitElements</span><span class="o">.</span><span class="n">writeResults</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="output">
+<h2>Output<a class="headerlink" href="#output" title="Permalink to this headline">¶</a></h2>
+<p><strong>Example.results file contents</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Initial</span> <span class="n">State</span> <span class="n">Vectors</span><span class="p">:</span>
+<span class="o">----------------------------------------</span>
+<span class="n">Position</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5000</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="n">km</span>
+<span class="n">Velocity</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">9.928605714219886</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="n">km</span><span class="o">/</span><span class="n">sec</span>
+
+
+<span class="n">Computed</span> <span class="n">Results</span>
+<span class="n">Element</span>                            <span class="n">Value</span>          <span class="n">Units</span>
+<span class="o">-------------------------------------------------------</span>
+<span class="n">Position</span> <span class="n">Magnitude</span>                  <span class="mi">5001</span>             <span class="n">km</span>
+<span class="n">Velocity</span> <span class="n">Magnitude</span>                <span class="mf">10.029</span>         <span class="n">km</span><span class="o">/</span><span class="n">sec</span>
+<span class="n">Specific</span> <span class="n">Energy</span>                  <span class="o">-</span><span class="mf">29.415</span>     <span class="n">km</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">sec</span><span class="o">^</span><span class="mi">2</span>
+<span class="n">Specific</span> <span class="n">Angular</span> <span class="n">Momentum</span>          <span class="mi">49795</span>       <span class="n">km</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="n">sec</span>
+<span class="n">Eccentricity</span>                     <span class="mf">0.28615</span>               
+<span class="n">Inclination</span>                       <span class="mf">5.7641</span>        <span class="n">degrees</span>
+<span class="n">Long</span><span class="o">.</span> <span class="n">of</span> <span class="n">Ascend</span><span class="o">.</span> <span class="n">Node</span> <span class="p">(</span><span class="n">Ω</span><span class="p">)</span>         <span class="mf">1.1458</span>        <span class="n">degrees</span>
+<span class="n">Argument</span> <span class="n">of</span> <span class="n">Perigee</span> <span class="p">(</span><span class="n">ω</span><span class="p">)</span>           <span class="mf">328.46</span>        <span class="n">degrees</span>
+<span class="n">Semi</span><span class="o">-</span><span class="n">Major</span> <span class="n">Axis</span>                   <span class="mf">6775.3</span>             <span class="n">km</span>
+<span class="n">Mean</span> <span class="n">Motion</span>                    <span class="mf">0.0011321</span>        <span class="n">rad</span><span class="o">/</span><span class="n">sec</span>
+<span class="kc">True</span> <span class="n">Anomaly</span>                      <span class="mf">31.544</span>        <span class="n">degrees</span>
+<span class="n">Eccentric</span> <span class="n">Anomaly</span>                 <span class="mf">23.766</span>        <span class="n">degrees</span>
+<span class="n">Mean</span> <span class="n">Anomaly</span>                      <span class="mf">17.159</span>        <span class="n">degrees</span>
+<span class="n">Period</span>                            <span class="mf">1.5417</span>          <span class="n">hours</span>
+
+</pre></div>
+</div>
+</section>
+<section id="exposing-script-methods">
+<h2>Exposing Script Methods<a class="headerlink" href="#exposing-script-methods" title="Permalink to this headline">¶</a></h2>
+<p>All code blocks below are references to method <code class="docutils literal notranslate"><span class="pre">orbitElements.getElements()</span></code>.</p>
+<p>The state vector magnitudes are calulcated  using <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.linalg.norm.html">numpy.linalg.norm</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numpy.linalg</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">posVector</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">velVector</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The first two properities to compute are Specific Energy and Specific Angular Momentum.</p>
+<section id="specific-energy">
+<h3>Specific Energy<a class="headerlink" href="#specific-energy" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\varepsilon = \frac{v^2}{2} - \frac{\mu}{r}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Specific Energy</span>
+<span class="c1"># --------------------------------------------------------------------------------   </span>
+<span class="n">energy</span> <span class="o">=</span> <span class="n">v</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="o">/</span><span class="n">r</span> 
+<span class="bp">self</span><span class="o">.</span><span class="n">orbit_elements</span><span class="p">[</span><span class="s2">&quot;Energy&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">energy</span><span class="p">,</span> 
+                                 <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;km^2/sec^2&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="specific-anguluar-momentum">
+<h3>Specific Anguluar Momentum<a class="headerlink" href="#specific-anguluar-momentum" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathbf{h} = \mathbf{r} \times \mathbf{v}\]</div>
+<p>Utilizes <a class="reference external" href="https://numpy.org/">NumPy</a> packages to perfrom cross product.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Specific Angular Momentum Vector</span>
+<span class="c1"># --------------------------------------------------------------------------------  </span>
+<span class="n">ang_momentum</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">orbit_elements</span><span class="p">[</span><span class="s2">&quot;Angular Momentum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">norm</span><span class="p">(</span><span class="n">ang_momentum</span><span class="p">),</span> 
+                                           <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;km^2/sec&quot;</span><span class="p">}</span>
+
+</pre></div>
+</div>
+<p>Knowing the Angular Momentum the following elements came be determined.</p>
+</section>
+<section id="eccentricity-vector">
+<h3>Eccentricity Vector<a class="headerlink" href="#eccentricity-vector" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[\mathbf{e} = \frac{1}{\mu}\left(\mathbf{v}\times\mathbf{h}\right) - \frac{\mathbf{r}}{r}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Eccentricity Vector</span>
+<span class="c1"># --------------------------------------------------------------------------------   </span>
+<span class="n">eccentricity</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="p">,</span><span class="n">ang_momentum</span><span class="p">))</span><span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="o">/</span><span class="n">r</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">orbit_elements</span><span class="p">[</span><span class="s2">&quot;Eccentricity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">norm</span><span class="p">(</span><span class="n">eccentricity</span><span class="p">),</span> 
+                                       <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot; &quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="inclination">
+<h3>Inclination<a class="headerlink" href="#inclination" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[i = \cos^{-1}\left(\frac{\mathbf{\hat{z}}}{\mathbf{\hat{h}}}\right)\]</div>
+<p>Utilizes <a class="reference external" href="https://numpy.org/">NumPy</a> packages to perfrom inverser trigometric functions and dot product. np.arccos() returns the angle of the ray intersecting the unit circle at the given x-coordinate in radians (0, <span class="math notranslate nohighlight">\(\pi\)</span>).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Inclination</span>
+<span class="c1"># --------------------------------------------------------------------------------</span>
+<span class="n">incl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">ang_momentum</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span><span class="p">(</span><span class="n">ang_momentum</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">orbit_elements</span><span class="p">[</span><span class="s2">&quot;Inclination&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">incl</span><span class="p">),</span> 
+                                      <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;degrees&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="ascending-node-vector">
+<h3>Ascending Node Vector<a class="headerlink" href="#ascending-node-vector" title="Permalink to this headline">¶</a></h3>
+<p>The Ascending Node Vector is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\hat{n}} = \hat{\mathbf{z}} \times \hat{\mathbf{h}}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ascending Node Vector </span>
+<span class="c1"># --------------------------------------------------------------------------------   </span>
+<span class="n">node_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">ang_momentum</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="longitude-of-ascending-node">
+<h3>Longitude of Ascending Node<a class="headerlink" href="#longitude-of-ascending-node" title="Permalink to this headline">¶</a></h3>
+<p>In Astrodynamics the Longitude of Ascending Node is define to be betwewn 0<span class="math notranslate nohighlight">\(^{\circ}\)</span> and 360<span class="math notranslate nohighlight">\(^{\circ}\)</span>. To solve for the angle we must perform a quadrant check due to its trigometric definition. By looking at the y-component of the Node Vector (<span class="math notranslate nohighlight">\(\mathbf{\hat{n}_y}\)</span>).</p>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{\hat{n}_y} \geq 0^{\circ}\)</span> then <span class="math notranslate nohighlight">\(\mathbf{\Omega}\)</span> lies between I and II quadrants, otherwise if <span class="math notranslate nohighlight">\(\mathbf{\hat{n}_y} \leq 0^{\circ}\)</span> then <span class="math notranslate nohighlight">\(\mathbf{\Omega}\)</span> lies between III and IV quadrants,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{\Omega} = \begin{cases}
+\cos^{-1}\left(\frac{\mathbf{\hat{x}}}{\mathbf{\hat{n}}}\right) &amp; \mathbf{\hat{n}_y} \geq 0^{\circ} \\
+360^{\circ} - \cos^{-1}\left(\frac{\mathbf{\hat{x}}}{\mathbf{\hat{n}}}\right) &amp; \mathbf{\hat{n}_y} &lt; 0^{\circ}
+\end{cases}\end{split}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># Longitude of Ascending Node (Ω)</span>
+<span class="c1"># --------------------------------------------------------------------------------   </span>
+<span class="n">long_ascend_node</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],</span><span class="n">node_vec</span><span class="p">)</span><span class="o">/</span><span class="n">norm</span><span class="p">(</span><span class="n">node_vec</span><span class="p">))</span>
+
+<span class="k">if</span> <span class="n">node_vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="n">lan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">long_ascend_node</span><span class="p">))</span>
+<span class="k">elif</span> <span class="n">node_vec</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">0.0</span><span class="p">:</span>
+    <span class="n">lan</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">norm</span><span class="p">(</span><span class="n">long_ascend_node</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">orbit_elements</span><span class="p">[</span><span class="s2">&quot;Long. of Ascend. Node (Ω)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">lan</span><span class="p">,</span> 
+                    <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;degrees&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="argument-of-perigee">
+<h3>Argument of Perigee<a class="headerlink" href="#argument-of-perigee" title="Permalink to this headline">¶</a></h3>
+<p>The Argument of Periapsis is defined as the angled between the Node Vector (<span class="math notranslate nohighlight">\(\mathbf{n}\)</span>) and Eccentcity Vector (<span class="math notranslate nohighlight">\(\mathbf{e}\)</span>). It has a range of <span class="math notranslate nohighlight">\(0^\circ \lt \omega \lt 360^\circ\)</span> and points towards periapsis. To solve for the angle a quadrant check is required by looking at z-component of the Eccentrcity Vector.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{\omega} = \begin{cases}
+\cos^{-1}\left(\frac{\mathbf{n}\cdot\mathbf{e}}{|\mathbf{n}||\mathbf{e}|}\right) &amp; e_z \geq 0^{\circ} \\
+360^{\circ} - \cos^{-1}\left(\frac{\mathbf{n}\cdot\mathbf{e}}{|\mathbf{n}||\mathbf{e}|}\right) &amp; e_z &lt; 0^{\circ}
+\end{cases}\end{split}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Argument of Perigee (ω)</span>
+<span class="c1"># --------------------------------------------------------------------------------   </span>
+<span class="n">arg_peri</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">node_vec</span><span class="p">,</span><span class="n">eccentricity</span><span class="p">)</span> <span class="o">/</span> 
+                    <span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">eccentricity</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="n">node_vec</span><span class="p">)))</span>
+<span class="c1"># Check ecc_zcomp</span>
+<span class="k">if</span> <span class="n">eccentricity</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">arg_peri</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">arg_peri</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">orbit_elements</span><span class="p">[</span><span class="s2">&quot;Argument of Perigee (ω)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">arg_peri</span><span class="p">),</span> 
+                                                  <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;degrees&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="semi-major-axis">
+<h3>Semi-major Axis<a class="headerlink" href="#semi-major-axis" title="Permalink to this headline">¶</a></h3>
+<p>For a bound orbit, such as an elliptical orbit, looking at the specific energy equation at apsides the semi-major axis can be derivied:</p>
+<div class="math notranslate nohighlight">
+\[\varepsilon = -\frac{\mu}{2a}\]</div>
+<div class="math notranslate nohighlight">
+\[a = -\frac{\mu}{2\varepsilon}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Semi-major Axis</span>
+<span class="c1"># --------------------------------------------------------------------------------   </span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="bp">self</span><span class="o">.</span><span class="n">mu</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">energy</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">orbit_elements</span><span class="p">[</span><span class="s2">&quot;Semi-Major Axis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">a</span><span class="p">,</span> 
+                                          <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;km&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="true-anomaly">
+<h3>True Anomaly<a class="headerlink" href="#true-anomaly" title="Permalink to this headline">¶</a></h3>
+<p>The True Anomaly is defined as the angle between the line of apse (<span class="math notranslate nohighlight">\(\mathbf{e}\)</span>) and the position vector. It has a range of <span class="math notranslate nohighlight">\(0^\circ \lt \nu \lt 360^\circ\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\nu = \begin{cases}
+\cos^{-1}\left(\frac{\mathbf{e}\cdot\mathbf{r}}{|\mathbf{e}||\mathbf{r}|}\right) &amp; \mathbf{r}\cdot\mathbf{v} \geq 0^{\circ} \\
+360^{\circ} - \cos^{-1}\left(\frac{\mathbf{e}\cdot\mathbf{r}}{|\mathbf{e}||\mathbf{r}|}\right) &amp; \mathbf{r}\cdot\mathbf{v}  &lt; 0^{\circ}
+\end{cases}\end{split}\]</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># True Anomaly</span>
+<span class="c1"># -------------------------------------------------------------</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">eccentricity</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">)</span> <span class="o">/</span> 
+              <span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">eccentricity</span><span class="p">)</span><span class="o">*</span><span class="n">norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">positionMag</span><span class="p">)))</span>
+<span class="c1"># Check orientation of True Anomaly</span>
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">position</span><span class="p">,</span><span class="bp">self</span><span class="o">.</span><span class="n">velocity</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">-</span> <span class="n">f</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">orbit_elements</span><span class="p">[</span><span class="s2">&quot;True Anomaly&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">f</span><span class="p">),</span> 
+                                       <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;degrees&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="period">
+<h3>Period<a class="headerlink" href="#period" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Period</span>
+<span class="c1"># --------------------------------------------------------------------------------   </span>
+<span class="n">period</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="n">n</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">period</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">orbit_elements</span><span class="p">[</span><span class="s2">&quot;Period&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">period</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">3600</span><span class="p">),</span> 
+                                 <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="s2">&quot;hours&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="the_trajectory_equation.html"
+       title="previous chapter">← The Trajectory Equation</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, Eddie.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

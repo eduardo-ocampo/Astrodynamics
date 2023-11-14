@@ -1,0 +1,142 @@
+# Hill's Equations
+
+TODO: Provide some sort of intro
+
+Derivied the Hill's Equations by starting from the N-body problem and denote the spacecarft as $P_n$. By assuming $M_n \ll M_i$ then we have a generalize N-1 Problem as:
+
+:::{math}
+:label: general_n-1_eoms
+\mathbf{\ddot{r}}_{0N} = \frac{\partial U_N}{\partial\mathbf{r}_{0N}} + \frac{\partial}{\partial\mathbf{r}_{0N}}\sum_{j=1}^{N-1} R_{jN} 
+:::
+
+where
+
+:::{math}
+\begin{align*}
+U_n &= \frac{GM_0}{|| \mathbf{r}_{0N} ||} \\
+R_{jN} &= GM_j \left( \frac{1}{||\mathbf{r}_{Nj}||} - \frac{\mathbf{r}_{0N}\cdot\mathbf{r}_{0j}}{||\mathbf{r}_{0j}||^3} \right)
+\end{align*}
+:::
+
+Consider N = 2 for the Earth-Sun system and our spacecraft. Let $\mathbf{r} = \mathbf{r}_{0N}$ be the spacecraft position vector realtive to Earth and $||\mathbf{r}_k|| \gg ||\mathbf{r}||$. Where $P_0$ is Earth and $P_1$ is the Sun. Note that $U_0$ is also the gravitational potential of the Earth.
+
+ADD FIGURE as shown on slide 3
+
+Note the useful relationship resulting from Figure XXX
+
+:::{math}
+:label: hills_alpha
+\alpha = \frac{r}{r_k} \lt 1
+:::
+
+:::{math}
+:label: hills_cosS
+\cos S = \frac{\mathbf{r}\cdot\mathbf{r}_k}{r r_k}
+:::
+
+Simplifing Equation {eq}`general_n-1_eoms` with N = 2. Our new equatiohns of motion becomes:
+
+:::{math}
+:label: hills_n2_eoms
+\mathbf{\ddot{r}} = \frac{\partial}{\partial\mathbf{r}} \left( U_0 + \sum_{k=1}^{N-1} R_k \right)
+:::
+
+where
+
+:::{math}
+:label:
+\begin{align*}
+U_0 &= \frac{G M_0}{||\mathbf{r}||} = \frac{\mu_0}{r} \\
+R_k &= GM_k\left( \frac{1}{||\mathbf{r}-\mathbf{r}_k||} - \frac{\mathbf{r}\cdot\mathbf{r}_k}{r^3_k} \right)
+\end{align*}
+:::
+
+Let us approximate the perturbing force potentinal due to the Sun and reduce its dependecty to $\mathbf{r}$ assuming $r_k \gg r$.
+
+Rewrite the force potential due to the Sun as:
+
+:::{math}
+:label: rk_expand
+R_k = \frac{\mu_k}{r_k} \left[\frac{1}{\sqrt{1-2\frac{\mathbf{r}\cdot\mathbf{r}_k}{r^2_k}+\left( \frac{r}{r_k} \right)^2}} - \frac{\mathbf{r}\cdot\mathbf{r}_k}{r^2_k} \right]
+:::
+
+
+
+Recall the application of the [Legendre polynomials](https://en.wikipedia.org/wiki/Legendre_polynomials) and how it relates to $\alpha$ {eq}`hills_alpha` and $\cos S $ {eq}`hills_cosS`:
+
+:::{math}
+\frac{1}{\sqrt{1-2\alpha\cos{S}+\alpha^2}} = \sum_{i=0}^{\infty} P_i(\cos S) \cdot \alpha^i
+:::
+
+with the first few Legendre polynomails being
+
+:::{math}
+\begin{align*}
+P_0\left(\cos{S} \right) &= 1 \\
+P_1\left(\cos{S} \right) &= \cos{S} \\
+P_2\left(\cos{S} \right) &= \frac{1}{2}\left( 3\cos^2{S} -1 \right) 
+\end{align*}
+:::
+
+Apply the Legendre polynomials to Equations {eq}`rk_expand` and collect up to the degree i=2.
+
+:::{math}
+:label:
+R_k = \frac{\mu_k}{r_k} \left[\sum_{i=0}^\infty P_i(\cos S) \cdot \alpha^i - \frac{\mathbf{r}\cdot\mathbf{r}_k}{r r_k} \right] 
+:::
+
+:::{math}
+:label: rk_poly_applied
+R_k = \frac{\mu_k}{r_k} \left[ 1 + \cos{S}\cdot\alpha + \frac{1}{2}\left(3 \cos^2{S} -1 \right) \alpha^2 -\cos{S}\cdot\alpha \right]
+:::
+
+Note that the first term in the bracket expression in Equaiton {eq}`rk_poly_applied` vanishes when taking a partial derivative inside {eq}`hills_n2_eoms` and further terms cancel out. Such that the expression simplifies to:
+
+:::{math}
+:label: rk_simp
+R_k \approx \frac{\mu_k}{2 r^3_k} \left[ 3 \left( \mathbf{\hat{r}}_k \cdot \mathbf{r} \right)^2 - \mathbf{r}\cdot\mathbf{r} \right]
+:::
+
+Now consider a rotating refernce frame similar to what was described for the [Circular Restricted Three-Body Problem](cr3bp.md) Equation {eq}`r_ddot_i_to_rot_simp` but take $n$ as the mean motion of Earth with respect to the Sun ($n_E$) and account for the difference in equations of motion {eq}`hills_n2_eoms` and their extra terms.
+
+
+:::{math}
+:label: 
+\ddot{\mathbf{r}} + 2n_E\mathbf{\hat{z}}\times\dot{\mathbf{r}} + n^2_E\mathbf{\hat{z}} \times \left( \mathbf{\hat{z}} \times \mathbf{r}\right) = -\frac{\mu_E}{r^3}\mathbf{r} + \frac{\partial{R}}{\partial{\mathbf{r}}}
+:::
+
+in the rotating coordiante frame we get:
+
+:::{math}
+:label: hills_eom_raw
+\begin{align*}
+\ddot{x} - 2n_E \dot{y} &= -n^2_E x - \frac{\mu_E}{r^3}x + \frac{\partial R}{\partial x} \\
+\ddot{y} + 2n_E \dot{x} &= -n^2_E x - \frac{\mu_E}{r^3}y + \frac{\partial R}{\partial y} \\
+\ddot{z}                &= -n^2_E x - \frac{\mu_E}{r^3}z + \frac{\partial R}{\partial z}
+\end{align*}
+:::
+
+Evaluting the partials of $R$ in Equations {eq}`hills_eom_raw` gives rise to the dimensional form of the **Hill's Equations** of motions:
+
+:::{math}
+:label: hills_eom_dimen
+\begin{align*}
+\ddot{x} - 2n_E \dot{y} &= - \frac{\mu_E}{r^3}x + 3n^2_E x \\
+\ddot{y} + 2n_E \dot{x} &= - \frac{\mu_E}{r^3}y \\
+\ddot{z}                &= - \frac{\mu_E}{r^3}z - n^2_E z
+\end{align*}
+:::
+
+These equations can be non-dimensionalized by introducing a time scale {eq}`hills_time_scale` and length scale {eq}`hills_length_scale`:
+
+:::{math}
+:label: hills_time_scale
+\tau = n_E t
+:::
+
+:::{math}
+:label: hills_length_scale
+\mathbf{r}^* = \left(\frac{\mu_E}{n^2_E}\right)^{\frac{1}{3}}
+:::
+
+
