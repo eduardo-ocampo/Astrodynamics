@@ -1,13 +1,5 @@
-# An Intro
-# Some Title
+# Welcome
 
-Hello World, This is an example of using md for pages
+Hello World! This is still a work in progress! Come by later for a fully released version of my Astrodynamics page.
 
-- Let's see how python code looks like
-
-```python 
-
-x = [1,2,3]
-d = {"1":a, "2":b, "3":c}
-
-```
+- Eduardo O
