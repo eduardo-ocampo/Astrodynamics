@@ -1,23 +1,14 @@
 # Local Dynamics
 
-https://ocw.mit.edu/courses/16-346-astrodynamics-fall-2008/resources/lec_19/
-
-https://space.stackexchange.com/questions/20590/how-to-best-think-of-the-state-transition-matrix-and-how-to-use-it-to-find-peri#:~:text=The%20State%20Transition%20Matrix%20(STM,over%20short%20period%20of%20times.
-
-Juan Senent, Cesar Ocampo, and Antonio Capella; Low-Thrust Variable-Specific-Impulse Transfers and Guidance to Unstable Periodic Orbits. Journal of Guidance, Control, and Dynamics, 28 (2) March–April 2005:
-
-TODO: fix (t) to \left( t \right) in LaTex
-TODO: Figure out where to place this. Thinking part of two-body section
-
-Consider a spacecraft at initial state $\mathbf{x}_0$ undergoing some deviation $\delta \mathbf{x}$ at time $t_0$. As shown in [Figure 1](local_dynamics_initial) below. Assume we are interested in knowing how to determine the state history of the deviation vector $\delta \mathbf{x}(t)$
+Consider a spacecraft at initial state $\mathbf{x}_0$ undergoing some deviation $\delta \mathbf{x}$ at time $t_0$. As shown in [Figure 1.5](local_dynamics_initial) below. Assume we are interested in knowing how to determine the state history of the deviation vector $\delta \mathbf{x}(t)$
 
 ```{figure} ./images/local_dynamics_initial.png
 :name: local_dynamics_initial
 :width: 100%
-**Figure X.X** TITLE
+**Figure 1.5** Initial State Deviation
 ```
 
-Up to now, the strategy for handling this type of problem involving numerically integrating a trajectory given an initial condition vector (see [Solving The Two-Body Problem](/Two_Body_Problem.md#solving-the-two-body-problem)) up to a final time $t_f$. With that approach, one can determine the deviation state $\delta \mathbf{x}$ by computing the difference between the integrated deviated trajectory $\mathbf{x}$ with the nominal trajectory $\mathbf{x}_n$ 
+Up to now, the strategy for handling this type of problem involving numerically integrating a trajectory given an initial condition vector (see [Solving The Two-Body Problem](two_body_problem.md#solving-the-two-body-problem)) up to a final time $t_f$. With that approach, one can determine the deviation state $\delta \mathbf{x}$ by computing the difference between the integrated deviated trajectory $\mathbf{x}$ with the nominal trajectory $\mathbf{x}_n$ 
 
 :::{math}
 :label: ld_problem
@@ -46,7 +37,7 @@ Although this method is a valid approach, this section deals with getting an app
 
 ## Introduction
 
-The State Transition Matrix (STM) is a linearization of a dynamical system. It can be used as a  simplify method for progating system dynamics over a given time. 
+The **State Transition Matrix** (STM) is a linearization of a dynamical system. It can be used as a  simplify method for progating system dynamics over a given time. 
 
 Let $\mathbf{x}$ be the state of the sytstem. Begin by generalizing the equations of motion as:
 
@@ -86,13 +77,13 @@ where it is assumed that
 ||\delta{\mathbf{x}}|| \ll ||\mathbf{x}||
 :::
 
-Often the deviation vector is thought of as a sort of localized effect. Local in the sense that it is relative to the nominal trajectory based on $\mathbf{x}_0$ as shown in [Figure X.X](local_dynamics_propagation):
+Often the deviation vector is thought of as a sort of localized effect. Local in the sense that it is relative to the nominal trajectory based on $\mathbf{x}_0$ as shown in [Figure 1.6](local_dynamics_propagation):
 
 
 ```{figure} ./images/local_dynamics_propagation.png
 :name: local_dynamics_propagation
 :width: 100%
-**Figure X.X** TITLE
+**Figure 1.6** Propagted Initial State Deviation
 ```
 
 Let's attempt to solve Equation {eq}`ld_deviated_x` using [Taylor Series Expansion](https://mathworld.wolfram.com/TaylorSeries.html). Suppose we have an infinitely differentiable, real function $\mathbf{g}\left({\mathbf{x}}\right)$ with $\mathbf{g}$ , $\mathbf{x} \in \mathbb{R}^n$ where $n$ comes from the state being nth-dimensional. The Taylor series expansion about some  point $\mathbf{x}$ = $\mathbf{a}$ is defined below for the $i^{th}$ component of $\mathbf{g}\left(\mathbf{x} \right)$:
@@ -182,12 +173,12 @@ For the [Two-Body Problem](ref) $\mathbf{\Phi}$ is a symplectic 6x6 matrix with 
 \end{align*}
 :::
 
-$\mathbf{\Phi}$ tells us is how to map from the initial state $t_0$ to some different time (forwards or backwards.) thus Expression {eq}`deviated_stm` also maps the deviation vector forwards or backwards as shown in Expression {eq}`devivated_stm_forward_backward` and illustrated in [Figure X.X](local_dynamics_stm).
+$\mathbf{\Phi}$ tells us is how to map from the initial state $t_0$ to some different time (forwards or backwards.) thus Expression {eq}`deviated_stm` also maps the deviation vector forwards or backwards as shown in Expression {eq}`devivated_stm_forward_backward` and illustrated in [Figure 1.7](local_dynamics_stm).
 
 ```{figure} ./images/local_dynamics_stm.png
 :name: local_dynamics_stm
 :width: 100%
-**Figure X.X** TITLE
+**Figure 1.7** Forward Propagation and the STM 
 ```
 
 Now determine the time derivative of our deviation vector $\delta \mathbf{\dot{x}}$ by reducing the $M^{th}$-order Taylor expansion {eq}`dxi_taylor_expan`. For our case of $\mathbf{\dot{x}} = \mathbf{g}\left( \mathbf{x} \right)$ and letting $M = 1$ reduces to:

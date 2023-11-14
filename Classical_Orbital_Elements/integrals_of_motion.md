@@ -197,7 +197,7 @@ If $\mathbf{\hat{n}_y} \geq 0^{\circ}$ then $\mathbf{\Omega}$ lies between I and
 
 
 
-## Conservation of Energy (ε)
+## Conservation of Energy
 
 The specific energy ($\varepsilon$) of the Two-Body system is defined as:
 
@@ -206,7 +206,7 @@ The specific energy ($\varepsilon$) of the Two-Body system is defined as:
 \varepsilon = \frac{v^2}{2} - \frac{\mu}{r}
 :::
 
-### 4. Specific Energy
+### 4. Specific Energy (ε)
 
 To show that the energy is an integral of motion, start by taking a dot product of our Equations of Motion for the Two-Body Problem with respect to velocity.
 

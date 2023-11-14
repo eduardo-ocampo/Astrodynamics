@@ -136,7 +136,7 @@ Using the Equations of Motions for the Two-Body problem {eq}`Two_Body_EOM`, expa
 
 **Numerical Setup**
 
-Begin by importing module twoBody_problem (TODO: LINK) and defining the initial state vector {eq}`twoBody_example_ivp` 
+Begin by importing module [twoBody_problem](https://github.com/thatguyeddieo/Astrodynamics/blob/main/Classical_Orbital_Elements/twoBody_problem.py) and defining the initial state vector {eq}`twoBody_example_ivp` 
 
 ```python
 import numpy as np
@@ -224,7 +224,7 @@ To illustrate the numerical results, the satellite's trajectory is projected on 
 **Figure 1.2** Satellite Trajectory Projected on 2D Planes
 ```
 
-It is good practice to spot check the results by checking if **Specific Energy** TODO LINK ($\varepsilon$) and **Specific Angular Momentum** ($h$) are conserved. [Figure 1.3](twoBody_plotEnergyAngMoment) plots both $\varepsilon$ & $h$ as a function of time. As we expect the characteristic parameters are conserved. The slight increase over time is due to computation limitation but take note of the y-axis range. 
+It is good practice to spot check the results by checking if [Specific Energy](integrals_of_motion.md#conservation-of-energy) ($\varepsilon$) and [Specific Angular Momentum](integrals_of_motion.md#conservation-of-angular-momentum) ($h$) are conserved. [Figure 1.3](twoBody_plotEnergyAngMoment) plots both $\varepsilon$ & $h$ as a function of time. As we expect the characteristic parameters are conserved. The slight increase over time is due to computation limitation but take note of the y-axis range. 
 
 
 ```{figure} ./images/twoBody_plotEnergyAngMoment.png
