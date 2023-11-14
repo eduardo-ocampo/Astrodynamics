@@ -1,5 +1,7 @@
 # Calculating Orbit Elements with Python
 
+TODO: Rerun this using new twoBody_problem.py scripts
+
 Consider the Two-Body Problem:
 
 :::{math}
@@ -19,7 +21,7 @@ In this example we will compute the follow orbit properties:
 
 Let us assume we have the following information about a spacecraft's position and velocity at some time $t_0$ orbiting Earth ($\mu = 398,600 \frac{km^3}{sec^2}$). 
 
-In the inertial coorindate frame the position and velocity vectors are:
+In the relative coorindate frame the position and velocity vectors are:
 
 :::{math}
 :label:

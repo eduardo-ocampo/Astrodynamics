@@ -1,3 +1,11 @@
+""" --------------------------------------------------------------------------
+            Example of Calculating and Plotting Eccentricity for the 
+            Two Body Problem
+
+            Copyright (c) Eduardo Ocampo, All Rights Reserved               
+            https://www.github.com/thatguyeddieo                            
+-------------------------------------------------------------------------- """
+
 import numpy as np
 import plotly.graph_objects as go
 

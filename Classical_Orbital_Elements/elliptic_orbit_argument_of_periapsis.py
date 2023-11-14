@@ -1,3 +1,11 @@
+""" --------------------------------------------------------------------------
+            Example of Calculating and Plotting Orbit Argument of Periapsis (ω)
+            for the Two Body Problem
+
+            Copyright (c) Eduardo Ocampo, All Rights Reserved               
+            https://www.github.com/thatguyeddieo                            
+-------------------------------------------------------------------------- """
+
 import numpy as np
 from numpy.linalg import norm
 import plotly.graph_objects as go

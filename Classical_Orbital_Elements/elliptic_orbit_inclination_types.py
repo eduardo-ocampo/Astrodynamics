@@ -153,3 +153,5 @@ def plot():
 
 
     return fig
+
+plot()

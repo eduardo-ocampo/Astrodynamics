@@ -78,7 +78,7 @@ Thus
 \frac{d}{dt}\left({\mathbf{h}}\right) = 0
 :::
 
-Since our Angular Momentum Vector ($\mathbf{h}$) is a 3x1 vector, this gives us 3 integrals of motions to work with. $\mathbf{h}$ can be represented using two angles and its magnitude. 
+Since our Angular Momentum Vector ($\mathbf{h}$) is a 3x1 vector, this gives us 3 integrals of motions to work with. $\mathbf{h}$ can be represented using two angles ($i$, $\Omega$) and a magnitude ($h$). 
 
 Thus the first 3 Integrals of Motion are: 
 

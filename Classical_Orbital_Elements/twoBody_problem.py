@@ -1,40 +1,59 @@
+""" --------------------------------------------------------------------------
+            Two-Body Problem: Numerical Trajectory Analysis & Functions for
+                              Computing the Classical Orbit Elements 
+                                                                        
+            Copyright (c) Eduardo Ocampo, All Rights Reserved               
+            https://www.github.com/thatguyeddieo                            
+-------------------------------------------------------------------------- """
+
 import math
+import pickle
 import numpy as np
 from numpy.linalg import norm
+from scipy.integrate import solve_ivp
 
-class orbitElements(object):
+class twoBody(object):
 
-    def __init__(self,posVector,velVector):
+    def __init__(self,pos_vector:"km", vel_vector:"km/sec"):
+
         # Set Gravitational Constant
         # --------------------------------------------------------------------------------   
         # Default Set to Earth
-        self.mu = 398600 # km^3/sec^2
+        self.mu = 3.986004418E+05 # km^3/sec^2
 
         # Set Position and Velocity Vector
         # --------------------------------------------------------------------------------   
         # Assumed input is in SI units (km, sec)    
-        self.position = posVector
-        self.velocity = velVector
+        self.position = pos_vector
+        self.velocity = vel_vector
 
-        self.positionMag = norm(posVector)
-        self.velocityMag = norm(velVector)
+        self.positionMag = norm(pos_vector)
+        self.velocityMag = norm(vel_vector)
 
         # Initialize Orbit Element Dictionary
         # --------------------------------------------------------------------------------           
-        self.orbit_elements = {"Position Magnitude":{"value": norm(posVector),
+        self.orbit_elements = {"Position Magnitude":{"value": norm(pos_vector),
                                                      "units": "km"},
-                               "Velocity Magnitude":{"value": norm(velVector),
+                               "Velocity Magnitude":{"value": norm(vel_vector),
                                                      "units": "km/sec"}}
+
+        # Numerical Analysis Setup
+        # --------------------------------------------------------------------------------
+        self.initialValueProblem = pos_vector + vel_vector
+        # Default tolerance values
+        self.absTol = 1e-10
+        self.relTol = 1e-10
 
         # Set File Names
         # --------------------------------------------------------------------------------   
         self.resultsOut = "orbitElements.txt"
+        self.num_sol_picklefile = "twoBody_trajectory.pickle"        
 
         # Meta Data
         # --------------------------------------------------------------------------------   
         self.linebreak = "-"*70
 
-    def getElements(self):
+    def get_state_elements(self) -> None:
 
         v = self.velocityMag
         r = self.positionMag
@@ -135,21 +154,82 @@ class orbitElements(object):
         # Mean Anomaly
         # --------------------------------------------------------------------------------   
         mean_anomaly = ecc_anomaly - norm(eccentricity)*np.sin(ecc_anomaly)
-        print(mean_anomaly)
         self.orbit_elements["Mean Anomaly"] = {"value": np.degrees(mean_anomaly), 
                                                "units": "degrees"}
 
         # Period
         # --------------------------------------------------------------------------------   
         period = 2*np.pi / n
-        print(period)
         self.orbit_elements["Period"] = {"value": (period)/(3600), 
                                          "units": "hours"}
+ 
+    def get_energy_history(self) -> list:
+        """
+        Gets Specific Energy using numerical solution
+        """
 
+        time_indx = range(len(self.time))
 
-        return
+        # Specific Energy as Array
+        # -------------------------------------------------------------------------------- 
+        # Vis-Viva Equation
+        energy = [norm(self.vel_Numerical[t])**2/2 - self.mu/norm(self.pos_Numerical[t]) 
+                  for t in time_indx]
+            
+        return energy
 
-    def writeResults(self):
+    def get_angular_momentum_history(self) -> list:
+        """
+        Gets Angular Momentum using numerical solution
+        """
+
+        time_indx = range(len(self.time))
+
+        # Specific Angular Momentum as Array
+        # --------------------------------------------------------------------------------   
+        ang_momentum = [np.cross(self.pos_Numerical[t],self.vel_Numerical[t]) 
+                        for t in time_indx]
+    
+        return ang_momentum
+
+    def differential_equations(self,t,state:list) -> np.ndarray:
+
+        pos = state[0:3]
+        vel = state[3:]
+
+        # Compute Differential Equation Constants   
+        constant = -self.mu/(norm(pos)**3)
+
+        # Differential Equations
+        accel = np.dot(constant,pos)
+
+        # Return d/dt vector of
+        # [x, y, z, vx, vy, vx]
+        return np.concatenate((vel,accel))
+
+    def solve_twoBody_trajectory(self,saveAnalysis=False) -> None:
+        # Here it is important that ivp has the following setup
+        # [x, y, z, vx, vy, vx]
+        ivp = self.initialValueProblem
+
+        self.num_sol = solve_ivp(self.differential_equations,[self.time[0],self.time[-1]],
+                                 ivp,t_eval=self.time,rtol=self.relTol,atol=self.absTol)
+
+        # Extract Position and Velocity Results
+        self.pos_Numerical = self.num_sol.y[:3,:].T
+        self.vel_Numerical = self.num_sol.y[3::,:].T
+
+        # Check if solver reached interval end or a termintion event occured 
+        print("Solver Success:  ", self.num_sol.success)
+        if not self.num_sol.success:
+            print("Solver termination status:  ", self.num_sol.status)
+
+        # Allow user to save numerical anlaysis
+        if saveAnalysis:
+            with open(self.num_sol_picklefile, 'wb') as handle:
+                pickle.dump(self, handle)
+
+    def write_state_results(self):
         
         elements = self.orbit_elements
         
@@ -183,4 +263,104 @@ class orbitElements(object):
 
         print("Saved Calculated Orbit Elements to File: ",self.resultsOut)
 
-        return
+class twoBodySTM(object):
+    
+    def __init__(self,pos_vector:"km",vel_vector:"km/s",initialPhis):
+
+        # Set File Names
+        # --------------------------------------------------------------------------------   
+        self.num_sol_picklefile = "twoBody_STM.pickle"        
+
+        # Set Gravitational Constant
+        # --------------------------------------------------------------------------------   
+        self.mu = 398600 # km^3/sec^2
+
+        # Set Position and Velocity Vector
+        # --------------------------------------------------------------------------------   
+        # Assumed input is in SI units (km, sec)    
+        self.initial_position = pos_vector
+        self.initial_velocity = vel_vector
+
+        # Set State Transition Matrix
+        # --------------------------------------------------------------------------------   
+        # Reshape for planar case
+        # if initialPhis.ndim > 1:
+            # initialPhis = initialPhis.reshape(16)
+        self.initial_phis = initialPhis
+
+        self.initial_positionMag = norm(pos_vector)
+        self.initial_velocityMag = norm(vel_vector)
+
+        # Numerical Analysis Setup
+        # --------------------------------------------------------------------------------
+        self.initial_value_problem = pos_vector + vel_vector + list(initialPhis)
+        # Default tolerance values
+        self.absTol = 1e-12
+        self.relTol = 1e-12
+
+    def differential_equations_STM(self,t,state:list) -> np.ndarray:
+
+        x,y,z, vx,vy,vz, *phi = state
+        pos = [x,y,z]
+
+        # State Transition Matrix, for 3 Dimensions
+        phi_matrix = np.reshape(phi,(6,6))
+
+        # Compute Differential Equation Constants:
+        # Distance between Two Bodies
+        r = math.sqrt(x**2 + y**2 + z**2)
+
+        # Compute Differential Equation Constants   
+        constant = -self.mu/(norm(pos)**3)
+
+        # Differential Equations
+        accel = np.dot(constant,pos)
+
+        # Jacobian Partials
+        axx = -(self.mu/r**3) + (3*self.mu*x*x)/r**5
+        ayy = -(self.mu/r**3) + (3*self.mu*y*y)/r**5
+        azz = -(self.mu/r**3) + (3*self.mu*z*z)/r**5
+
+        axy = 3*self.mu*x*y/r**5
+        axz = 3*self.mu*x*z/r**5
+        ayz = 3*self.mu*y*z/r**5
+
+        # Jacobian in Matrix form for 3 Dimensional
+        # Note axy = ayx, axz = azx, ayz = azy
+        a = np.array([[   0,   0,   0,   1,   0,   0],
+                      [   0,   0,   0,   0,   1,   0],
+                      [   0,   0,   0,   0,   0,   1],
+                      [ axx, axy, axz,   0,   0,   0],
+                      [ axy, ayy, ayz,   0,   0,   0],
+                      [ axz, ayz, azz,   0,   0,   0]])
+
+        # STM Differentail Equations
+        phi_dot = a@phi_matrix
+        
+        return np.concatenate(([vx,vy,vz],accel,np.reshape(phi_dot, 36)))
+
+    def solve_twoBody_problem(self,saveAnalysis=False) -> None:
+
+        # Here it is important that ivp has the following setup
+        # [x, y, z, vx, vy, vx, phi11, phi12, phi13, phi21, ...]
+        ivp = self.initial_value_problem
+        
+        self.num_sol = solve_ivp(self.differential_equations_STM,
+                                    [self.time[0],self.time[-1]],ivp,
+                                    t_eval=self.time,
+                                    rtol=self.relTol,atol=self.absTol)
+
+        # Check if solver reached interval end or a termintion event occured 
+        print("Solver Success:  ", self.num_sol.success)
+        if not self.num_sol.success:
+            print("Solver termination status:  ", self.num_sol.status)
+
+        # Extract Position, Velocity, and STM Results
+        self.position_numerical = self.num_sol.y[:3,:].T
+        self.velocity_numerical = self.num_sol.y[3:6,:].T
+        self.phis_numerical = self.num_sol.y[6:,:].T
+
+        # Allow user to save numerical anlaysis
+        if saveAnalysis:
+            with open(self.num_sol_picklefile, 'wb') as handle:
+                pickle.dump(self, handle)    
