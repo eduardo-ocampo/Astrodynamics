@@ -488,4 +488,4 @@ Plotting the results shows the spacecraft’s trajectory for a non-dimensional t
 ```
 
 
-TODO: Add a more exciting CR3BP trajectory example
+TODO: Add a more exciting CR3BP trajectory example, also add figure/plot of trajectory in inertial frame

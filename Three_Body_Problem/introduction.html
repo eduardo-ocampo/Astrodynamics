@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+      <title>Introduction</title>
+    
+      <link rel="stylesheet" href="../_static/pygments.css">
+      <link rel="stylesheet" href="../_static/theme.css">
+      <link rel="stylesheet" href="../_static/sphinx_press_theme.css">
+          <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/css/theme.css " type="text/css" />
+          <link rel="stylesheet" href="../_static/mystnb.css" type="text/css" />
+          <link rel="stylesheet" href="../_static/togglebutton.css" type="text/css" />
+      
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+
+      <!-- sphinx script_files -->
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>let toggleHintShow = 'Click to show';</script>
+        <script>let toggleHintHide = 'Click to hide';</script>
+        <script>let toggleOpenOnPrint = 'true';</script>
+        <script src="../_static/togglebutton.js"></script>
+        <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+
+      
+      <script src="../_static/theme-vendors.js"></script>
+      <script src="../_static/theme.js" defer></script>
+    
+  <link rel="index" title="Index" href="../genindex.html" />
+  <link rel="search" title="Search" href="../search.html" />
+  <link rel="next" title="Circular Restricted Three-Body Problem" href="cr3bp.html" />
+  <link rel="prev" title="Calculating Orbit Elements with Python" href="../Classical_Orbital_Elements/python_examples.html" /> 
+  </head>
+
+  <body>
+    <div id="app" class="theme-container" :class="pageClasses"><navbar @toggle-sidebar="toggleSidebar">
+  <router-link to="../index.html" class="home-link">
+    
+      <span class="site-name">Workspace</span>
+    
+  </router-link>
+
+  <div class="links">
+    <navlinks class="can-hide">
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link  router-link-active">
+         Three Body Problem
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Reference
+      </a>
+    </div>
+  
+
+
+
+    </navlinks>
+  </div>
+</navbar>
+
+      
+      <div class="sidebar-mask" @click="toggleSidebar(false)">
+      </div>
+        <sidebar @toggle-sidebar="toggleSidebar">
+          
+          <navlinks>
+            
+
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Introduction
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Classical Orbital Elements
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link  router-link-active">
+         Three Body Problem
+      </a>
+    </div>
+  
+    <div class="nav-item">
+      <a href="../index.html#astrodynamics"
+         class="nav-link ">
+         Reference
+      </a>
+    </div>
+  
+
+
+
+            
+          </navlinks><div id="searchbox" class="searchbox" role="search">
+  <div class="caption"><span class="caption-text">Quick search</span>
+    <div class="searchformwrapper">
+      <form class="search" action="../search.html" method="get">
+        <input type="text" name="q" />
+        <input type="submit" value="Search" />
+        <input type="hidden" name="check_keywords" value="yes" />
+        <input type="hidden" name="area" value="default" />
+      </form>
+    </div>
+  </div>
+</div><div class="sidebar-links" role="navigation" aria-label="main navigation">
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Introduction</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../intro.html" class="reference internal ">Welcome</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../nomenclature.html" class="reference internal ">Nomenclature</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Classical Orbital Elements</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/two_body_problem.html" class="reference internal ">The Two-Body Problem</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/local_dynamics.html" class="reference internal ">Local Dynamics</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/classical_orbit_elements.html" class="reference internal ">Classical Orbit Elements</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/integrals_of_motion.html" class="reference internal ">Integrals of Motion</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/the_trajectory_equation.html" class="reference internal ">The Trajectory Equation</a>
+
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="../Classical_Orbital_Elements/python_examples.html" class="reference internal ">Calculating Orbit Elements with Python</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Three Body Problem</a></span>
+      </p>
+      <ul class="current">
+        
+          <li class="toctree-l1 current"><a href="#" class="reference internal current">Introduction</a>
+
+            
+              <ul>
+                
+                  <li class="toctree-l2"><a href="#introduction" class="reference internal">Introduction</a></li>
+                
+                  <li class="toctree-l2"><a href="#jacobian-coordinate-frame" class="reference internal">Jacobian Coordinate Frame</a></li>
+                
+              </ul>
+            
+          </li>
+
+        
+          <li class="toctree-l1 "><a href="cr3bp.html" class="reference internal ">Circular Restricted Three-Body Problem</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+    <div class="sidebar-group">
+      <p class="caption">
+        <span class="caption-text"><a href="../index.html#astrodynamics">Reference</a></span>
+      </p>
+      <ul class="">
+        
+          <li class="toctree-l1 "><a href="../Sphinx_Reference.html" class="reference internal ">Sphinx Reference</a>
+
+            
+          </li>
+
+        
+      </ul>
+    </div>
+  
+</div>
+        </sidebar>
+
+      <page>
+          <div class="body-header" role="navigation" aria-label="navigation">
+  
+  <ul class="breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    
+    <li>Introduction</li>
+  </ul>
+  
+
+  <ul class="page-nav">
+  <li class="prev">
+    <a href="../Classical_Orbital_Elements/python_examples.html"
+       title="previous chapter">← Calculating Orbit Elements with Python</a>
+  </li>
+  <li class="next">
+    <a href="cr3bp.html"
+       title="next chapter">Circular Restricted Three-Body Problem →</a>
+  </li>
+</ul>
+  
+</div>
+<hr>
+          <div class="content" role="main">
+            
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The Three-Body Problem is nothing more than the <a class="reference internal" href="../Classical_Orbital_Elements/two_body_problem.html"><span class="doc std std-doc">Two-Body Problem</span></a> with one more body added to the system. Consider a system with three finite masses and some origin in the inertial frame of reference:</p>
+<figure class="align-default" id="fig-three-body-problem-figure">
+<a class="reference internal image-reference" href="../_images/three-body_image.png"><img alt="../_images/three-body_image.png" src="../_images/three-body_image.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure 1.1</strong> Three-Body Problem.</span><a class="headerlink" href="#fig-three-body-problem-figure" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Where the masses are non-zero: <span class="math notranslate nohighlight">\(P_1\)</span> has mass <span class="math notranslate nohighlight">\(m_1\)</span>, <span class="math notranslate nohighlight">\(P_2\)</span> has mass <span class="math notranslate nohighlight">\(m_2\)</span>, and <span class="math notranslate nohighlight">\(P_3\)</span> has mass <span class="math notranslate nohighlight">\(m_3\)</span>. Define the general relative vector notation as.</p>
+<div class="math notranslate nohighlight" id="equation-three-body-problem-introduction-0">
+<span class="eqno">(1)<a class="headerlink" href="#equation-three-body-problem-introduction-0" title="Permalink to this equation">¶</a></span>\[\mathbf{r}_{ij} = \mathbf{r}_j - \mathbf{r}_i\]</div>
+<p>For example</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{r}_{12} = \mathbf{r}_2 - \mathbf{r}_1\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{r}_{12} = -\mathbf{r}_{21}\]</div>
+<p>We are interested in how vectors <span class="math notranslate nohighlight">\(\mathbf{r}_1\)</span>, <span class="math notranslate nohighlight">\(\mathbf{r}_2\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{r}_3\)</span> change as a function of time. Assuming they only interact gravitationally and each particle has a uniform spherical gravitational field.</p>
+<p>From Newton’s Law of Gravitation, the mutual gravitational interaction on one finite point mass due to the other masses is:</p>
+<div class="math notranslate nohighlight" id="equation-three-body-problem-introduction-1">
+<span class="eqno">(2)<a class="headerlink" href="#equation-three-body-problem-introduction-1" title="Permalink to this equation">¶</a></span>\[m_i \mathbf{\ddot{r}}_i = \mathbf{F_ij} + \mathbf{F_ik} \]</div>
+<p>For the Three-Body System the three force interactions are:</p>
+<div class="math notranslate nohighlight" id="equation-eom-1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eom-1" title="Permalink to this equation">¶</a></span>\[m_1\mathbf{\ddot{r}}_1 = -G\frac{(m_1m_2)}{{r^3_{21}}}\mathbf{r_{21}} -G\frac{(m_1m_3)}{{r^3_{31}}}\mathbf{r_{31}}\]</div>
+<div class="math notranslate nohighlight" id="equation-eom-2">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eom-2" title="Permalink to this equation">¶</a></span>\[m_1\mathbf{\ddot{r}}_2 = -G\frac{(m_2m_1)}{{r^3_{12}}}\mathbf{r_{12}} -G\frac{(m_2m_3)}{{r^3_{32}}}\mathbf{r_{32}}\]</div>
+<div class="math notranslate nohighlight" id="equation-eom-3">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eom-3" title="Permalink to this equation">¶</a></span>\[m_3\mathbf{\ddot{r}}_3 = -G\frac{(m_3m_1)}{{r^3_{13}}}\mathbf{r_{13}} -G\frac{(m_3m_2)}{{r^3_{23}}}\mathbf{r_{23}}\]</div>
+<p>These are equations of motion for the Three-Body Problem.
+Each particle has a State Vector made up of its position and velocity:</p>
+<div class="math notranslate nohighlight" id="equation-eq-state-vector">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-state-vector" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{\bar{x}_i} = \begin{bmatrix} 
+    \mathbf{x}_i \\ \mathbf{y}_i \\ \mathbf{z}_i \\
+    \mathbf{\dot{x}}_i \\ \mathbf{\dot{y}}_i \\ \mathbf{\dot{z}}_i
+\end{bmatrix}\end{split}\]</div>
+<p>To solve the for the Three-Body Problem we require 18 equations of motion due to 3 particle state vectors. Unfortunately, the Classical Integrals available are only 10. The Three-Body Problem is a non-trivial problem, and generally, a non-integrable problem in dynamics.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <a class="reference external" href="https://ssd.jpl.nasa.gov/">Solar System Dynamics</a> group at NASA JPL keeps track of parameters commonly used in Astrodynamics. Among the parameters listed on the <a class="reference external" href="https://ssd.jpl.nasa.gov/astro_par.html">Astrodynamics Parameters page</a> is the Newtonian Constant of Gravitation (<span class="math notranslate nohighlight">\(G\)</span>).</p>
+<div class="math notranslate nohighlight">
+\[G = 6.67430\left(\pm0.00015\right) \times 10^{-11} kg^{-1} m^{3} s^{-2}\]</div>
+<p>Another reference of interest for the Three-Body Problem is the <a class="reference external" href="https://ssd.jpl.nasa.gov/planets/phys_par.html">Physical Parameters of Planets page</a>. Here is a useful reference for the mass of a planetary body used in astrodynamic computations.</p>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="jacobian-coordinate-frame">
+<h1>Jacobian Coordinate Frame<a class="headerlink" href="#jacobian-coordinate-frame" title="Permalink to this headline">¶</a></h1>
+<p>To derive the equations of motion for the restricted Three-Body Problem, use the Jacobi Coordinate formulation. Define where <span class="math notranslate nohighlight">\(P_3\)</span> is with respect to the barycenter of the other two particles by attaching a non-inertial coordinate system to the barycenter of <span class="math notranslate nohighlight">\(m_1\)</span> and <span class="math notranslate nohighlight">\(m_2\)</span>.</p>
+<figure class="align-default" id="fig-jacobi-frame">
+<a class="reference internal image-reference" href="../_images/jacobi_frame.png"><img alt="../_images/jacobi_frame.png" src="../_images/jacobi_frame.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-text"><strong>Figure 1.2</strong> Jacobi Coordinate Frame</span><a class="headerlink" href="#fig-jacobi-frame" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>Where the center of mass of <span class="math notranslate nohighlight">\(P_1\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> is defined as vector <span class="math notranslate nohighlight">\(\mathbf{R}_{cm}\)</span></p>
+<div class="math notranslate nohighlight" id="equation-r-cm">
+<span class="eqno">(7)<a class="headerlink" href="#equation-r-cm" title="Permalink to this equation">¶</a></span>\[\mathbf{R}_{cm} = \frac{m_1\mathbf{r}_1+m_2\mathbf{r}_2}{m_1+m_2}\]</div>
+<p><span class="math notranslate nohighlight">\(\mathbf{R}\)</span> is the positional vector from <span class="math notranslate nohighlight">\(P_1\)</span> to <span class="math notranslate nohighlight">\(P_2\)</span></p>
+<div class="math notranslate nohighlight" id="equation-r">
+<span class="eqno">(8)<a class="headerlink" href="#equation-r" title="Permalink to this equation">¶</a></span>\[\mathbf{R} = \mathbf{r}_{12} = \mathbf{r}_2 - \mathbf{r}_1\]</div>
+<p>and the positional vector of <span class="math notranslate nohighlight">\(P_3\)</span> relative to the barycenter is defined as</p>
+<div class="math notranslate nohighlight" id="equation-r-3c">
+<span class="eqno">(9)<a class="headerlink" href="#equation-r-3c" title="Permalink to this equation">¶</a></span>\[\mathbf{r} = \mathbf{r}_3 - \mathbf{R}_cm\]</div>
+<p>The Jacobian Coordinate frame is a classic example of the Earth-Moon system where <span class="math notranslate nohighlight">\(P_1\)</span> and <span class="math notranslate nohighlight">\(P_2\)</span> represent the Earth and Moon, and <span class="math notranslate nohighlight">\(P_3\)</span> can be considered a spacecraft relative to the Earth-Moon system.</p>
+<p>By taking the derivative of Equation <a class="reference internal" href="#equation-r">(8)</a>, Equation <a class="reference internal" href="#equation-r-3c">(9)</a> and utilizing the Equations <a class="reference internal" href="#equation-eom-1">(3)</a> - <a class="reference internal" href="#equation-eom-3">(5)</a> we end up with the following two equations of motion:</p>
+<div class="math notranslate nohighlight" id="equation-3bp-eom-1">
+<span class="eqno">(10)<a class="headerlink" href="#equation-3bp-eom-1" title="Permalink to this equation">¶</a></span>\[\ddot{\mathbf{R}} = -G\left( m_1 + m_2 \right) \frac{\mathbf{R}}{R^3} + Gm_3 \left[ \frac{\mathbf{r} - \frac{m_1}{m_1+m_2}\mathbf{R}}{|\mathbf{r} - \frac{m_1}{m_1+m_2}\mathbf{R}|^3} - \frac{\mathbf{r} + \frac{m_2}{m_1+m_2}\mathbf{R}}{|\mathbf{r} + \frac{m_2}{m_1+m_2}\mathbf{R}|^3} \right]\]</div>
+<div class="math notranslate nohighlight" id="equation-3bp-eom-2">
+<span class="eqno">(11)<a class="headerlink" href="#equation-3bp-eom-2" title="Permalink to this equation">¶</a></span>\[\ddot{\mathbf{r}} = -G\frac{\left( m_1 + m_2 + m_3\right)}{m_1+m_2} \left[ \frac{m_1\left(\mathbf{r} + \frac{m_2}{m_1+m_2}\mathbf{R}\right)}{|\mathbf{r} + \frac{m_2}{m_1+m_2}\mathbf{R}|^3} + \frac{m_2\left(\mathbf{r} - \frac{m_1}{m_1+m_2}\mathbf{R}\right)}{|\mathbf{r} - \frac{m_1}{m_1+m_2}\mathbf{R}|^3} \right]\]</div>
+<p>This is a very complicated solution to the equations of motion for the Jacobian Coordinate frame. Generally, it is useful to assume the third particle has zero or negligible mass.</p>
+<div class="math notranslate nohighlight">
+\[m_3 \rightarrow 0\]</div>
+</section>
+
+
+          </div>
+          <div class="page-nav">
+            <div class="inner"><ul class="page-nav">
+  <li class="prev">
+    <a href="../Classical_Orbital_Elements/python_examples.html"
+       title="previous chapter">← Calculating Orbit Elements with Python</a>
+  </li>
+  <li class="next">
+    <a href="cr3bp.html"
+       title="next chapter">Circular Restricted Three-Body Problem →</a>
+  </li>
+</ul><div class="footer" role="contentinfo">
+      &#169; Copyright 2022, Eddie.
+    <br>
+    Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0 with <a href="https://github.com/schettino72/sphinx_press_theme">Press Theme</a>.
+</div>
+            </div>
+          </div>
+      </page>
+    </div>
+    
+    
+  </body>
+</html>

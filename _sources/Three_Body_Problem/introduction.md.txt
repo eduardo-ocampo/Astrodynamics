@@ -1,7 +1,7 @@
 
 # Introduction 
 
-The Three-Body Problem is nothing more than the [Two-Body Problem](../Classical_Orbital_Elements/Two_Body_Problem.md) with one more body added to the system. Consider a system with three finite masses and some origin in the inertial frame of reference:
+The Three-Body Problem is nothing more than the [Two-Body Problem](../Classical_Orbital_Elements/two_body_problem.md) with one more body added to the system. Consider a system with three finite masses and some origin in the inertial frame of reference:
 
 ```{figure} ./images/three-body_image.png
 :name: fig:Three-Body_Problem_Figure

@@ -1,14 +1,12 @@
 Three Body Problem
 ===========================
 
-Some Text
-
 ```{toctree}
 ---
 maxdepth: 6
 includehidden: true
 ---
-introduction.md
+introduction
 cr3bp
-jacobi_integral
 ```
+<!-- jacobi_integral -->
