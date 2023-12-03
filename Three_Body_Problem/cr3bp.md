@@ -481,8 +481,11 @@ The full [scipy.integrate.solve_ivp](https://docs.scipy.org/doc/scipy/reference/
 Plotting the results shows the spacecraft’s trajectory for a non-dimensional time of $8\pi$. It appears to be stable while orbiting the Earth at some periodic rate. To better illustrate the time of flight a blue gradient trajectory is plotted along non-dimensional axes showing where the spacecraft started and ended along the Earth-Moon system. 
 
 
-```{figure} ./images/cr3bp_example.png
+```{figure} ./images/cr3bp_example.jpeg
 :name: fig:cr3bp_example
 :width: 100%
-**Figure 1.7** Example Solution to the Circular Restricted Three-Body Problem 
+**Figure 1.7** Example Solution to the CR3BP in the Rotating Reference Frame
 ```
+
+
+TODO: Add a more exciting CR3BP trajectory example, also add figure/plot of trajectory in inertial frame

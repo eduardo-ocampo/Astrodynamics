@@ -9,7 +9,7 @@
 import numpy as np
 import three_body_problem as three_body_problem
 
-import plots_dev as plt
+import dev_plots as plt
 
 # Initial State Vectors
 # --------------------------------------------------------------------------------

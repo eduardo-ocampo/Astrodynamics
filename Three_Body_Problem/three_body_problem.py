@@ -88,6 +88,41 @@ class cr3bp(object):
             with open(self.num_sol_picklefile, 'wb') as handle:
                 pickle.dump(self, handle)
 
+    def differential_equations_jacobian(self,t,state):
+
+        x,y,z, vx,vy,vz, *phi = state
+
+        # State Transition Matrix
+        phi_matrix = np.reshape(phi,(4,4))
+
+        # Compute Differential Equation Constants:
+        # Position to Primary Bodies
+        r1 = math.sqrt((x+self.mu)**2 + y**2 + z**2)
+        r2 = math.sqrt((x-1+self.mu)**2 + y**2 + z**2)
+
+        # Differential Equations of Motions: ddot is a second derivative
+        x_ddot =  2*vy + x - (1-self.mu)*(x+self.mu)/r1**3 - self.mu*(self.mu+x-1)/r2**3
+        y_ddot = -2*vx + y - y*(1-self.mu)/r1**3 - self.mu*y/r2**3
+        z_ddot =  -z*(1-self.mu)/r1**3 - self.mu*z/r2**3
+
+        # Jacobian Partials
+        x1 = -self.mu
+        x2 = 1-self.mu
+        omega_xx = 1 - ((1-self.mu)/(r1**3))*(1-3*((x-x1)**2)/r1**2) - (self.mu/r2**3)*(1 - (3*(x-x2)**2)/r2**2)
+        omega_yy = 1 - ((1-self.mu)/(r1**3))*(1-3*(y**2)/r1**2) - (self.mu/r2**3)*(1 - (3*(y**2))/r2**2)
+        omega_xy = 3*y*((1-self.mu)*(x-x1)/(r1**5) + self.mu*(x-x2)/r2**5)
+        
+        # Jacobian in Matrix form
+        a = np.array([[       0,        0,    1,    0],
+                      [       0,        0,    0,    1],
+                      [omega_xx, omega_xy,    0,    2],
+                      [omega_xy, omega_yy,   -2,    0]])
+
+        # STM Differentail Equations
+        phi_dot = a@phi_matrix
+
+        return np.concatenate(([vx,vy,vz],[x_ddot,y_ddot,z_ddot],np.reshape(phi_dot, 16)))
+
     def get_jacobi(self,pos,vel):
 
         x,y,z = pos
@@ -103,3 +138,67 @@ class cr3bp(object):
         j = (0.5)*(vx**2+vy**2+vz**2)-v_potent
 
         return j
+
+class cr3bp_stability_analysis(object):
+
+    def __init__(self,posVector):
+
+        # Set File Names
+        # --------------------------------------------------------------------------------   
+        self.num_sol_picklefile = "cr3bp.pickle"        
+
+        # # Meta Data
+        # # --------------------------------------------------------------------------------   
+        # self.linebreak = "-"*70
+
+        # Set CR3BP Primary Bodies Mass Ratio
+        # --------------------------------------------------------------------------------   
+        # Default Set to Earth-Moon System
+        self.mu = 0.012150515586657583
+
+        # Set Position and Velocity Vector
+        # --------------------------------------------------------------------------------   
+        # Assumed input is in SI units (km, sec)    
+        self.initial_position = posVector
+        self.initial_positionMag = norm(posVector)
+        # self.initial_velocity = velVector
+        # self.initial_velocityMag = norm(velVector)
+
+        # # Set State Transition Matrix
+        # # --------------------------------------------------------------------------------   
+        # # Assumed this analysis if for planar trajector
+        # if initialPhis.ndim > 1:
+        #     initialPhis = initialPhis.reshape(16)
+        # self.initial_phis = initialPhis
+
+
+        # # Numerical Analysis Setup
+        # # --------------------------------------------------------------------------------
+        # self.initial_value_problem = posVector + velVector + list(initialPhis)
+        # # Default tolerance values
+        # self.absTol = 1e-10
+        # self.relTol = 1e-10
+
+
+    def jacobian_matrix(self,state):
+
+        x,y,z, = state
+
+        # Position to Primary Bodies
+        r1 = math.sqrt((x+self.mu)**2 + y**2 + z**2)
+        r2 = math.sqrt((x-1+self.mu)**2 + y**2 + z**2)
+
+        # Jacobian Partials
+        x1 = -self.mu
+        x2 = 1-self.mu
+        omega_xx = 1 - ((1-self.mu)/(r1**3))*(1-3*((x-x1)**2)/r1**2) - (self.mu/r2**3)*(1 - (3*(x-x2)**2)/r2**2)
+        omega_yy = 1 - ((1-self.mu)/(r1**3))*(1-3*(y**2)/r1**2) - (self.mu/r2**3)*(1 - (3*(y**2))/r2**2)
+        omega_xy = 3*y*((1-self.mu)*(x-x1)/(r1**5) + self.mu*(x-x2)/r2**5)
+        
+        # Jacobian in Matrix form
+        jm = np.array([[       0,        0,    1,    0],
+                       [       0,        0,    0,    1],
+                       [omega_xx, omega_xy,    0,    2],
+                       [omega_xy, omega_yy,   -2,    0]])
+
+        return jm
