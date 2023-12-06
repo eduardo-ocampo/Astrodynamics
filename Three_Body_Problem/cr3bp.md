@@ -13,7 +13,7 @@ kernelspec:
 
 ## Circular Restricted Three-Body Problem 
 
-By letting $m_3 \rightarrow 0$ then Equation {eq}`3bp_eom_1`-{eq}`3bp_eom_2` as derived from the [Jacobian Coordinate Frame](introduction.md/#jacobian-coordinate-frame) simplifies to the Two-Body Problem form. 
+By letting $m_3 \rightarrow 0$ then Equation {eq}`3bp_eom_1`-{eq}`3bp_eom_2` as derived from the [Jacobian Coordinate Frame](introduction.md/#jacobian-coordinate-frame) section simplifies to the Two-Body Problem form. 
 
 :::{math}
 :label:
@@ -130,11 +130,11 @@ The components of [$2n\mathbf{\hat{z}}\times\dot{\mathbf{r}}$] are usually refer
 
 ```
 
-These equations represent where the spacecraft is relative to the Jacobian Coordinate frame. **Figure 1.4** shows an update frame of reference:
+These equations represent where the spacecraft is relative to the Jacobian Coordinate frame. [Figure 1.4](jacobi_frame_shift_updated) below shows an updated frame of reference:
 
 
 ```{figure} ./images/jacobi_frame_shift_updated.png
-:name: fig:jacobi_frame_shift_updated
+:name: jacobi_frame_shift_updated
 :width: 90%
 **Figure 1.4** Circular Restricted Three-Body Problem in the Jacobian Coordinate Frame
 ```
@@ -192,7 +192,7 @@ The potential energy is made up of three components
 
 ```
 
-**Figure 1.5** below is an example of solving Force Potential {eq}`cr3bp_V` for the Earth-Moon system. The figure is interactive and generated using [Plotly](https://plotly.com/python/), an open-source graphing library for Python. The reader is encouraged to interact with **Figure 1.5** using their mouse to zoom into the region of space around the bodies and rotate the surface to inspect the potential wells.
+[Figure 1.5](cr3bp_potent) below is an example of solving Force Potential {eq}`cr3bp_V` for the Earth-Moon system. The figure is interactive and generated using [Plotly](https://plotly.com/python/), an open-source graphing library for Python. The reader is encouraged to interact with [Figure 1.5](cr3bp_potent) using their mouse to zoom into the region of space around the bodies and rotate the surface to inspect the potential wells.
 
 ```{code-cell} ipython3
 :tags: ["remove-input"]
@@ -208,7 +208,7 @@ glue("cr3bp_potent",cr3bp_fig1)
 **Figure 1.5.** Example of CR3BP Potential
 ```
 
-Finally, the equations of motion for the **Circular Restricted Three-Body Problem** become:
+Finally, the equations of motion for the **Circular Restricted Three-Body Problem** becomes:
 
 :::{math}
 :label: cr3bp_eom_simp
@@ -222,13 +222,14 @@ Finally, the equations of motion for the **Circular Restricted Three-Body Proble
 
 ## Non-Dimensional Circular Restricted Three-Body Problem 
 
+
 Non-dimensionalization of the Circular Restricted Three-Body Problem has the advantage of solving one problem and applying the results to a general number of problems. The system is generalized for any Three-Body Problem by removing the dependence of the rotating reference rate.
 
 Normalize the equations for the Three-Body Problem along 3 physical properties of the system 
 
-**1. Mass**
+### 1. Mass
 
-As shown in **Figure 1.4** the primary masses are normalized such that: 
+As shown by [Figure 1.4](jacobi_frame_shift_updated) the primary masses are normalized such that: 
 
 :::{math}
 :label:
@@ -241,9 +242,9 @@ As shown in **Figure 1.4** the primary masses are normalized such that:
 
 This allows our equations of motion to be independent of the primary masses and relies more on their relative size ratio. 
 
-**2. Length**
+### 2. Length
 
-As shown in the [Jacobian Coordinate Frame](introduction.md#jacobian-coordinate-frame) the characteristic length of the Three-Body system is the vector $\mathbf{R}$. Define the non-dimensional length scale as $\mathbf{R}$ and normalize position vectors $\mathbf{r_1}$, $\mathbf{r_2}$, etc. 
+As described by the [Jacobian Coordinate Frame](introduction.md#jacobian-coordinate-frame) section the characteristic length of the Three-Body system is the vector $\mathbf{R}$. Define the non-dimensional length scale as $\mathbf{R}$ and normalize position vectors $\mathbf{r_1}$, $\mathbf{r_2}$, etc. 
 
 the length scale is:
 
@@ -258,7 +259,7 @@ and yields the non-dimensional length term
 \mathbf{r}^* = \frac{\mathbf{r}}{r_s} = \frac{\mathbf{r}}{R}
 :::
 
-**3. Time**
+### 3. Time
 
 The time scale is simply normalized against the period of the circular orbit such that:
 
@@ -273,8 +274,9 @@ this yields the non-dimensional time term:
 \tau = nt
 :::
 
-***********
-Apply the non-dimensional terms to Equation {eq}`cr3bp_eom_simp` to get non-dimensional equations of motion:
+---
+
+Now apply the non-dimensional terms to Equation {eq}`cr3bp_eom_simp` to get non-dimensional equations of motion:
 
 
 :::{math}
@@ -296,7 +298,7 @@ Normalize the force potential Equation {eq}`cr3bp_V` as:
 
 :::
 
-Now the equations of motion for the **Non-Dimensional Circular Restricted Three-Body Problem** become: 
+The equations of motion for the **Non-Dimensional Circular Restricted Three-Body Problem** become: 
 
 :::{math}
 :label: cr3bp_eom_norm_simp
@@ -307,7 +309,7 @@ Now the equations of motion for the **Non-Dimensional Circular Restricted Three-
 \end{align*}
 :::
 
-Note that is this looks similar to Equation {eq}`cr3bp_eom_simp` it's just that the definition of $\mathbf{\tilde{V}}$ and $\mathbf{\tilde{U}}$ are different. Different in the sense that we scaled the force potential. 
+Note that this looks similar to the equations of motion for the Circular Restricted Three-Body Problem{eq}`cr3bp_eom_simp` it's just that the definition of $\mathbf{\tilde{V}}$ and $\mathbf{\tilde{U}}$ are different. Different in the sense that we scaled the force potential. 
 
 :::{math}
 :label: cr3bp_V_norm
@@ -319,7 +321,7 @@ Note that is this looks similar to Equation {eq}`cr3bp_eom_simp` it's just that 
 \mathbf{\tilde{U}} = \frac{U}{n^2R^2}
 :::
 
-We assume for the Non-Dimensional Restricted Three-Body Problem that $\mu < \frac{1}{2}$. This is not a bad assumptions for most problems we are Non-Dimensional Restricted Three-Body Problem that in solving. If not one can always swap $m_1$ and $m_2$.
+We assume for the **Non-Dimensional Restricted Three-Body Problem** that $\mu < \frac{1}{2}$. This is not a bad assumptions for most problems we are Non-Dimensional Restricted Three-Body Problem that in solving. If not one can always swap $m_1$ and $m_2$.
 
 The gravity potential can be written as 
 
@@ -337,7 +339,7 @@ r^*_2 &= \sqrt{\left( x^* - 1 + \mu \right)^2+{y^*}^2+{z^*}^2}
 \end{align*}
 :::
 
-**Figure 1.6** below is an example of solving the Non-Dimensional Force Potential {eq}`cr3bp_V_norm`. Since **Figure 1.5** gave an example for the Earth-Moon system ($\mu = 0.012156$) this example exaggerates the potential wells by looking at a large mass ratio of $\mu=0.09$. Again, the reader is encouraged to interact with **Figure 1.6** using their mouse to zoom into the region of space around the bodies and rotate the surface to inspect the potential wells.
+[Figure 1.6](cr3bp_nondim_potent) below is an example of solving the Non-Dimensional Force Potential {eq}`cr3bp_V_norm`. Since [Figure 1.5](cr3bp_potent) gave an example for the Earth-Moon system ($\mu = 0.012156$) this example exaggerates the potential wells by looking at a large mass ratio of $\mu=0.09$. Again, the reader is encouraged to interact with [Figure 1.6](cr3bp_nondim_potent) using their mouse to zoom into the region of space around the bodies and rotate the surface to inspect the potential wells.
 
 ```{code-cell} ipython3
 :tags: ["remove-input"]
@@ -368,7 +370,7 @@ n = \sqrt{\frac{G\left( m_1 + m_2 \right)}{R^3}}
 :::
 
 
-By solving one non-dimensional problem, we actually solve **infinite** number of problems in dimensional set.
+The advantage of this transformation is that by solving one non-dimensional problem, is actually solves **infinite** number of problems in a dimensional set!
 
 
 ## Python Example

@@ -83,7 +83,7 @@ Another reference of interest for the Three-Body Problem is the [Physical Parame
 
 # Jacobian Coordinate Frame
 
-To derive the equations of motion for the restricted Three-Body Problem, use the Jacobi Coordinate formulation. Define where $P_3$ is with respect to the barycenter of the other two particles by attaching a non-inertial coordinate system to the barycenter of $m_1$ and $m_2$.
+To derive the equations of motion for the restricted Three-Body Problem, use the Jacobi Coordinate formulation. Define where $P_3$ is with respect to the barycenter of the other two particles by attaching a non-inertial coordinate system to the barycenter of $P_1$ and $P_2$.
 
 ```{figure} ./images/jacobi_frame.png
 :name: fig:jacobi_frame
